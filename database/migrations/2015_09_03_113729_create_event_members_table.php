@@ -13,10 +13,9 @@ class CreateEventMembersTable extends Migration
     public function up()
     {
         Schema::create('event_members', function (Blueprint $table) {
-            $table->increments('id'); // necesary?
-            $table->integer('member_id')->unsigned();
             $table->integer('event_id')->unsigned();
             $table->integer('group_id')->unsigned();
+            $table->integer('member_id')->unsigned();
 
             $table->enum('role', [
                 App\Member::ROLE_APPLICANT,
@@ -26,23 +25,27 @@ class CreateEventMembersTable extends Migration
                 App\Member::ROLE_ADMIN,
             ]);
 
-            $table->timestamps(); // necesary?
+            // Timestamps for curiosity
+            $table->timestamps();
+
+            // Primary key
+            $table->primary(['event_id', 'group_id', 'member_id']);
 
             // Foreign keys
-            $table->foreign('member_id')
-              ->references('id')->on('members')
-              ->onDelete('cascade')
-              ->onUpdate('cascade');
-
             $table->foreign('event_id')
-              ->references('id')->on('events')
-              ->onDelete('cascade')
-              ->onUpdate('cascade');
+                ->references('id')->on('events')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->foreign('group_id')
-              ->references('id')->on('groups')
-              ->onDelete('cascade')
-              ->onUpdate('cascade');
+                ->references('id')->on('groups')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('member_id')
+                ->references('id')->on('members')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

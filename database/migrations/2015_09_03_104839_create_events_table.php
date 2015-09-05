@@ -21,9 +21,9 @@ class CreateEventsTable extends Migration
             $table->timestamps();
 
             $table->foreign('lc_id')
-              ->references('id')->on('lcs')
-              ->onDelete('cascade')
-              ->onUpdate('cascade');
+                ->references('id')->on('lcs')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
