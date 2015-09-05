@@ -35,10 +35,10 @@ class TestDataSeeder extends Seeder
 
         DB::table('groups')->insert(
             array(
-                [ 'id' => 1, 'name' => 'Jury' ],
-                [ 'id' => 2, 'name' => 'First Team' ],
-                [ 'id' => 3, 'name' => 'Second Team' ],
-                [ 'id' => 4, 'name' => 'Third Team' ]
+                [ 'id' => 1, 'event_id' => 1, 'name' => 'Jury' ],
+                [ 'id' => 2, 'event_id' => 1, 'name' => 'First Team' ],
+                [ 'id' => 3, 'event_id' => 1, 'name' => 'Second Team' ],
+                [ 'id' => 4, 'event_id' => 1, 'name' => 'Third Team' ]
             )
         );
 
