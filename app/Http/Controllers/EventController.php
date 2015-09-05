@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
 use Illuminate\Http\Request;
 
+use App\Event;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +18,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::all();
+        return response()->json($events);
     }
 
     /**
@@ -27,6 +30,9 @@ class EventController extends Controller
     public function create()
     {
         //
+        if (Gate::denies('create-event', $event)) {
+            abort(403);
+        }
     }
 
     /**
@@ -38,6 +44,9 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
+        if (Gate::denies('create-event', $event)) {
+            abort(403);
+        }
     }
 
     /**
@@ -48,7 +57,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return response()->json($event);
     }
 
     /**
@@ -60,6 +70,9 @@ class EventController extends Controller
     public function edit($id)
     {
         //
+        if (Gate::denies('edit-event', $event)) {
+            abort(403);
+        }
     }
 
     /**
@@ -72,6 +85,9 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if (Gate::denies('edit-event', $event)) {
+            abort(403);
+        }
     }
 
     /**
@@ -83,5 +99,8 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
+        if (Gate::denies('destroy-event', $event)) {
+            abort(403);
+        }
     }
 }

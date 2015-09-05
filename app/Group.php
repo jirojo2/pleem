@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
+    protected $table = 'groups';
+
     /**
      * Get the event that owns the group.
      */

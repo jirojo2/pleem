@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Member extends Model
 {
+    protected $table = 'members';
+
 	// Roles
 	const ROLE_APPLICANT   = 'applicant';
 	const ROLE_PARTICIPANT = 'participant';

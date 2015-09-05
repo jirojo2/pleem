@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Member;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $members = Member::all();
+        return response()->json($members);
     }
 
     /**
@@ -27,6 +29,9 @@ class MemberController extends Controller
     public function create()
     {
         //
+        if (Gate::denies('create-member', $event)) {
+            abort(403);
+        }
     }
 
     /**
@@ -38,6 +43,9 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         //
+        if (Gate::denies('create-member', $event)) {
+            abort(403);
+        }
     }
 
     /**
@@ -48,7 +56,8 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        //
+        $member = Member::findOrFail($id);
+        return response()->json($member);
     }
 
     /**
@@ -60,6 +69,9 @@ class MemberController extends Controller
     public function edit($id)
     {
         //
+        if (Gate::denies('edit-member', $event)) {
+            abort(403);
+        }
     }
 
     /**
@@ -72,6 +84,9 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if (Gate::denies('edit-member', $event)) {
+            abort(403);
+        }
     }
 
     /**
@@ -83,5 +98,8 @@ class MemberController extends Controller
     public function destroy($id)
     {
         //
+        if (Gate::denies('destroy-member', $event)) {
+            abort(403);
+        }
     }
 }

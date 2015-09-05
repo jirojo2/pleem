@@ -6,12 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    protected $table = 'events';
+
     /**
      * Get the LC that owns the event.
      */
     public function lc()
     {
         return $this->belongsTo(LC::class);
+    }
+
+    /**
+     * Get the event groups.
+     */
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
     }
 
     /**
