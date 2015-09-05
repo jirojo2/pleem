@@ -26,6 +26,6 @@ class Member extends Model
      */
     public function events()
     {
-        return $this->belongsToMany('App\Event', 'event_members');
+        return $this->belongsToMany('App\Event', 'event_members')->withPivot('role');
     }
 }

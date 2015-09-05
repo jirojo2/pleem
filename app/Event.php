@@ -29,7 +29,7 @@ class Event extends Model
      */
     public function applicants()
     {
-        return Event::newQuery()->members()->wherePivot('role', '=', Member::ROLE_APPLICANT)->get();
+        return $this->members()->wherePivot('role', '=', Member::ROLE_APPLICANT)->get();
     }
 
     /**
@@ -37,7 +37,7 @@ class Event extends Model
      */
     public function participants()
     {
-        return Event::newQuery()->members()->wherePivot('role', '=', Member::ROLE_PARTICIPANT)->get();
+        return $this->members()->wherePivot('role', '=', Member::ROLE_PARTICIPANT)->get();
     }
 
     /**
@@ -45,7 +45,7 @@ class Event extends Model
      */
     public function judges()
     {
-        return Event::newQuery()->members()->wherePivot('role', '=', Member::ROLE_JUDGE)->get();
+        return $this->members()->wherePivot('role', '=', Member::ROLE_JUDGE)->get();
     }
 
     /**
@@ -53,7 +53,7 @@ class Event extends Model
      */
     public function organizers()
     {
-        return Event::newQuery()->members()->wherePivot('role', '=', Member::ROLE_ORGANIZER)->get();
+        return $this->members()->wherePivot('role', '=', Member::ROLE_ORGANIZER)->get();
     }
 
     /**
@@ -61,6 +61,6 @@ class Event extends Model
      */
     public function admins()
     {
-        return Event::newQuery()->members()->wherePivot('role', '=', Member::ROLE_ADMIN)->get();
+        return $this->members()->wherePivot('role', '=', Member::ROLE_ADMIN)->get();
     }
 }
