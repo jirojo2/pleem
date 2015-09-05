@@ -18,6 +18,17 @@ class CreateEventMembersTable extends Migration
             $table->integer('event_id')->unsigned();
             $table->integer('group_id')->unsigned();
 
+            $table->enum('role', [
+                App\Member::ROLE_APPLICANT,
+                App\Member::ROLE_PARTICIPANT,
+                App\Member::ROLE_JUDGE,
+                App\Member::ROLE_ORGANIZER,
+                App\Member::ROLE_ADMIN,
+            ]);
+
+            $table->timestamps(); // necesary?
+
+            // Foreign keys
             $table->foreign('member_id')
               ->references('id')->on('members')
               ->onDelete('cascade')
@@ -32,16 +43,6 @@ class CreateEventMembersTable extends Migration
               ->references('id')->on('groups')
               ->onDelete('cascade')
               ->onUpdate('cascade');
-
-            $table->enum('role', [
-                App\Member::ROLE_APPLICANT,
-                App\Member::ROLE_PARTICIPANT,
-                App\Member::ROLE_JUDGE,
-                App\Member::ROLE_ORGANIZER,
-                App\Member::ROLE_ADMIN,
-            ]);
-
-            $table->timestamps(); // necesary?
         });
     }
 

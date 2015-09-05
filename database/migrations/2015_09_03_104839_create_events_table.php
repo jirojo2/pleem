@@ -14,10 +14,16 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('lc_id')->unsigned();
             $table->string('name');
             $table->dateTime('starts_at');
             $table->dateTime('ends_at');
             $table->timestamps();
+
+            $table->foreign('lc_id')
+              ->references('id')->on('lcs')
+              ->onDelete('cascade')
+              ->onUpdate('cascade');
         });
     }
 
