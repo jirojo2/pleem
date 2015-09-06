@@ -36,5 +36,7 @@ Route::group(array('prefix' => 'api/v1'), function() {
                     ['only' => ['index', 'show']]);
     Route::resource('event.group.member', 'EventGroupMemberController',
                     ['only' => ['index', 'show', 'store', 'destroy']]);
+    Route::resource('event.group.score', 'EventGroupScoreController',
+                    ['only' => ['index', 'show', 'store', 'destroy']]);
 
 });

@@ -99,9 +99,10 @@ class LCEventController extends Controller
         $event = LC::findOrFail($lcId)->events()->findOrFail($id);
 
         //
-        if (Gate::denies('destroy-event', $event)) {
-            abort(403);
-        }
+        //if (Gate::denies('destroy-event', $event)) {
+        //    abort(403);
+        //}
+        //
 
         $event->delete();
         return response()->json("ok");

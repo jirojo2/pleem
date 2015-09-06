@@ -33,6 +33,7 @@ class LCController extends Controller
         //if (Gate::denies('create-lc')) {
         //    abort(403);
         //}
+        //
 
         $this->validate($request, [
             'city' => 'required|max:255',
@@ -69,9 +70,10 @@ class LCController extends Controller
         $lc = LC::findOrFail($id);
 
         //
-        if (Gate::denies('edit-lc', $lc)) {
-            abort(403);
-        }
+        //if (Gate::denies('edit-lc', $lc)) {
+        //    abort(403);
+        //}
+        //
 
         $this->validate($request, [
             'city' => 'required|max:255',
@@ -91,9 +93,15 @@ class LCController extends Controller
      */
     public function destroy($id)
     {
+        $lc = LC::findOrFail($id);
+
         //
-        if (Gate::denies('destroy-lc', $event)) {
-            abort(403);
-        }
+        //if (Gate::denies('destroy-lc', $lc)) {
+        //    abort(403);
+        //}
+        //
+
+        $lc->delete();
+        return response()->json("ok");
     }
 }

@@ -30,9 +30,12 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         //
-        if (Gate::denies('create-member', $event)) {
-            abort(403);
-        }
+        //if (Gate::denies('create-member', $event)) {
+        //    abort(403);
+        //}
+        //
+
+        // @TODO
     }
 
     /**
@@ -57,9 +60,12 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         //
-        if (Gate::denies('edit-member', $event)) {
-            abort(403);
-        }
+        //if (Gate::denies('edit-member', $event)) {
+        //    abort(403);
+        //}
+        //
+
+        // @TODO
     }
 
     /**
@@ -70,9 +76,15 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
+        $member = Member::findOrFail($id);
+
         //
-        if (Gate::denies('destroy-member', $event)) {
-            abort(403);
-        }
+        //if (Gate::denies('destroy-member', $event)) {
+        //    abort(403);
+        //}
+        //
+
+        $member->delete();
+        return response()->json("ok");
     }
 }

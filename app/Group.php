@@ -15,7 +15,7 @@ class Group extends Model
      */
     public function event()
     {
-        return $this->belongsTo('App\Event');
+        return $this->belongsTo(Event::class);
     }
 
     /**
@@ -23,6 +23,14 @@ class Group extends Model
      */
     public function members()
     {
-        return $this->belongsToMany('App\Member', 'event_members');
+        return $this->belongsToMany(Member::Class, 'event_members');
+    }
+
+    /**
+     * Get the scores issued for this group.
+     */
+    public function scores()
+    {
+        return $this->hasMany(Score::class);
     }
 }

@@ -69,5 +69,11 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('destroy-member', function($user, $member) {
             return true;
         });
+
+        // Group Score related abilities
+        $gate->define('group-private-scores', function($user, $event, $group) {
+            // check if user's member is a jury for that event
+            return true;
+        });
     }
 }

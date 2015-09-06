@@ -55,7 +55,8 @@ class EventGroupController extends Controller
      */
     public function show($eventId, $id)
     {
-        $group = Event::findOrFail($eventId)->groups()->findOrFail($id);
+        $group = Event::findOrFail($eventId)
+                    ->groups()->findOrFail($id);
         return response()->json($group);
     }
 
@@ -66,12 +67,13 @@ class EventGroupController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $eventId, $id)
     {
         $event = Event::findOrFail($eventId);
+        $group = $event->groups()->findOrFail($id);
 
         //
-        //if (Gate::denies('edit-group', $event)) {
+        //if (Gate::denies('edit-group', $event, $group)) {
         //    abort(403);
         //}
         //
@@ -91,14 +93,16 @@ class EventGroupController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($eventId, $id)
     {
-        $group = Group::findOrFail($id);
+        $event = Event::findOrFail($eventId);
+        $group = $event->groups()->findOrFail($id);
 
         //
-        if (Gate::denies('destroy-group', $group)) {
-            abort(403);
-        }
+        //if (Gate::denies('destroy-group', $event, $group)) {
+        //    abort(403);
+        //}
+        //
 
         $group->delete();
         return response()->json("ok");

@@ -70,5 +70,12 @@ class TestDataSeeder extends Seeder
                 [ 'member_id' => 8, 'event_id' => 1, 'group_id' => 4, 'role' => App\Member::ROLE_PARTICIPANT ],
             )
         );
+
+        DB::table('users')->insert(
+            array(
+                [ 'member_id' => 1, 'name' => 'judge', 'email' => 'judge@test.pleem.local', 'password' => bcrypt('secret') ],
+                [ 'member_id' => 5, 'name' => 'participant', 'email' => 'participant@test.pleem.local', 'password' => bcrypt('secret') ]
+            )
+        );
     }
 }
