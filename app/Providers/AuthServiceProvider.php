@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         parent::registerPolicies($gate);
 
         // Event related abilities
-        $gate->define('create-event', function($user, $event) {
+        $gate->define('create-event', function($user) {
             return true;
         });
         $gate->define('edit-event', function($user, $event) {

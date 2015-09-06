@@ -4,22 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\LC;
 use App\Event;
-use App\Group;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class EventGroupController extends Controller
+class LCEventController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index($eventId)
+    public function index($lcId)
     {
-        $groups = Event::findOrFail($eventId)->groups;
-        return response()->json($groups);
+        $events = LC::findOrFail($lcId)->events()->paginate(10);
+        return response()->json($events);
     }
 
     /**
@@ -28,12 +28,12 @@ class EventGroupController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request, $eventId)
+    public function store(Request $request, $lcId)
     {
-        $event = Event::findOrFail($eventId);
+        $lc = LC::findOrFail($lcId);
 
         //
-        //if (Gate::denies('create-group', $event)) {
+        //if (Gate::denies('create-event', $lc)) {
         //    abort(403);
         //}
         //
@@ -42,9 +42,10 @@ class EventGroupController extends Controller
             'name' => 'required|max:255'
         ]);
 
-        $group = new Group($request->all());
-        $group = $event->groups()->save($group);
-        return response()->json($group);
+        $event = new Event($request->all());
+        $event = $lc->events()->save($event);
+
+        return response()->json($event);
     }
 
     /**
@@ -53,10 +54,10 @@ class EventGroupController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($eventId, $id)
+    public function show($lcId, $id)
     {
-        $group = Event::findOrFail($eventId)->groups()->findOrFail($id);
-        return response()->json($group);
+        $event = LC::findOrFail($lcId)->events()->findOrFail($id);
+        return response()->json($event);
     }
 
     /**
@@ -66,12 +67,12 @@ class EventGroupController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $lcId, $id)
     {
-        $event = Event::findOrFail($eventId);
+        $event = LC::findOrFail($lcId)->events()->findOrFail($id);
 
         //
-        //if (Gate::denies('edit-group', $event)) {
+        //if (Gate::denies('edit-event', $event)) {
         //    abort(403);
         //}
         //
@@ -80,9 +81,11 @@ class EventGroupController extends Controller
             'name' => 'required|max:255'
         ]);
 
-        $group->fill($request->all());
-        $group->save();
-        return response()->json($group);
+        $event->fill($request->all());
+        $event->lc()->associate($lcId);
+        $event->save();
+
+        return response()->json($event);
     }
 
     /**
@@ -93,14 +96,14 @@ class EventGroupController extends Controller
      */
     public function destroy($id)
     {
-        $group = Group::findOrFail($id);
+        $event = LC::findOrFail($lcId)->events()->findOrFail($id);
 
         //
-        if (Gate::denies('destroy-group', $group)) {
+        if (Gate::denies('destroy-event', $event)) {
             abort(403);
         }
 
-        $group->delete();
+        $event->delete();
         return response()->json("ok");
     }
 }

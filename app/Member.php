@@ -8,6 +8,8 @@ class Member extends Model
 {
     protected $table = 'members';
 
+    protected $fillable = ['first_name', 'last_name', 'birthdate'];
+
 	// Roles
 	const ROLE_APPLICANT   = 'applicant';
 	const ROLE_PARTICIPANT = 'participant';

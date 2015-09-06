@@ -22,19 +22,6 @@ class MemberController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-        if (Gate::denies('create-member', $event)) {
-            abort(403);
-        }
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
@@ -58,20 +45,6 @@ class MemberController extends Controller
     {
         $member = Member::findOrFail($id);
         return response()->json($member);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-        if (Gate::denies('edit-member', $event)) {
-            abort(403);
-        }
     }
 
     /**

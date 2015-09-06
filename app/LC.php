@@ -8,6 +8,8 @@ class LC extends Model
 {
     protected $table = 'lcs';
 
+    protected $fillable = ['city', 'country'];
+
     /**
     * Get the events for this lc.
     */

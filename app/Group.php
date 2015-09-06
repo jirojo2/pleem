@@ -8,6 +8,8 @@ class Group extends Model
 {
     protected $table = 'groups';
 
+    protected $fillable = ['name'];
+
     /**
      * Get the event that owns the group.
      */

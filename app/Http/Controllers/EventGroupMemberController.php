@@ -24,17 +24,7 @@ class EventGroupMemberController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Associate the specified member resource to the group-event tuple
      *
      * @param  Request  $request
      * @return Response
@@ -57,30 +47,7 @@ class EventGroupMemberController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
+     * Dissasociate the specified member resource from the group-event tuple.
      *
      * @param  int  $id
      * @return Response

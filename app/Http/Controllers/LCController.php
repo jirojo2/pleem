@@ -22,19 +22,6 @@ class LCController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-        if (Gate::denies('create-lc', $event)) {
-            abort(403);
-        }
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
@@ -43,9 +30,19 @@ class LCController extends Controller
     public function store(Request $request)
     {
         //
-        if (Gate::denies('create-lc', $event)) {
-            abort(403);
-        }
+        //if (Gate::denies('create-lc')) {
+        //    abort(403);
+        //}
+
+        $this->validate($request, [
+            'city' => 'required|max:255',
+            'country' => 'required|max:255'
+        ]);
+
+        $lc = new LC($request->all());
+        $lc->save();
+
+        return response()->json($lc);
     }
 
     /**
@@ -61,20 +58,6 @@ class LCController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-        if (Gate::denies('edit-lc', $event)) {
-            abort(403);
-        }
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  Request  $request
@@ -83,10 +66,21 @@ class LCController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $lc = LC::findOrFail($id);
+
         //
-        if (Gate::denies('edit-lc', $event)) {
+        if (Gate::denies('edit-lc', $lc)) {
             abort(403);
         }
+
+        $this->validate($request, [
+            'city' => 'required|max:255',
+            'country' => 'required|max:255'
+        ]);
+
+        $lc->fill($request->all());
+        $lc->save();
+        return response()->json($lc);
     }
 
     /**

@@ -8,6 +8,8 @@ class Event extends Model
 {
     protected $table = 'events';
 
+    protected $fillable = ['name'];
+
     /**
      * Get the LC that owns the event.
      */

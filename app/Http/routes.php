@@ -21,13 +21,20 @@ Route::group(array('prefix' => 'api/v1'), function() {
         return response()->json([ 'token' => Session::token() ]);
     });
 
-    Route::resource('lc', 'LCController');
-    Route::resource('event', 'EventController');
-    Route::resource('group', 'GroupController');
-    Route::resource('member', 'MemberController');
+    Route::resource('lc', 'LCController',
+                    ['except' => ['create', 'edit']]);
+    Route::resource('event', 'EventController',
+                    ['only' => ['index', 'show']]);
+    Route::resource('member', 'MemberController',
+                    ['except' => ['create', 'edit']]);
 
-    Route::resource('event.member', 'EventMemberController');
-    Route::resource('event.group', 'EventGroupController');
-    Route::resource('event.group.member', 'EventGroupMemberController');
+    Route::resource('lc.event', 'LCEventController',
+                    ['except' => ['create', 'edit']]);
+    Route::resource('event.group', 'EventGroupController',
+                    ['except' => ['create', 'edit']]);
+    Route::resource('event.member', 'EventMemberController',
+                    ['only' => ['index', 'show']]);
+    Route::resource('event.group.member', 'EventGroupMemberController',
+                    ['only' => ['index', 'show', 'store', 'destroy']]);
 
 });
