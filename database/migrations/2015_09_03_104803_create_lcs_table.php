@@ -17,6 +17,8 @@ class CreateLcsTable extends Migration
             $table->string('city');
             $table->string('country');
             $table->timestamps();
+
+            $table->unique(['city', 'country']);
         });
     }
 
