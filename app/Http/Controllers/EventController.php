@@ -44,9 +44,22 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
-        if (Gate::denies('create-event', $event)) {
-            abort(403);
-        }
+        //if (Gate::denies('create-event')) {
+        //    abort(403);
+        //}
+        //
+
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'lc' => 'required|exists:lcs,id'
+        ]);
+
+        $event = new Event;
+        $event->name = $request->name;
+        $event->lc()->associate($request->lc);
+        $event->save();
+
+        return response()->json($event);
     }
 
     /**
