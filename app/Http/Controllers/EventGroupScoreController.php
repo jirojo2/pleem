@@ -21,9 +21,9 @@ class EventGroupScoreController extends Controller
      */
     public function index($eventId, $groupId)
     {
-        $scores = Event::findOrFail($eventId)
-                    ->groups()->findOrFail($groupId)
-                    ->scores();
+        $event = Event::findOrFail($eventId);
+        $group = $event->groups()->findOrFail($groupId);
+        $scores = $group->scores();
 
         if (Gate::denies('group-private-scores', $event, $group)) {
             $scores = $scores->where('public', true)->get();
