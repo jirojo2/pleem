@@ -16,14 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Authentication
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
-Route::get('auth/user', 'Auth\AuthController@getUser');
-
-// Registration
-Route::post('auth/register', 'Auth\AuthController@postRegister');
-
 // Password reset link request
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
@@ -38,6 +30,11 @@ Route::group(array('prefix' => 'api/v1'), function() {
     Route::get('/csrf-token', function() {
         return response()->json([ 'token' => Session::token() ]);
     });
+
+    // Authentication
+    Route::post('auth/login', 'Auth\AuthController@postLogin');
+    Route::get('auth/logout', 'Auth\AuthController@getLogout');
+    Route::get('auth/user', 'Auth\AuthController@getUser');
 
     Route::resource('lc', 'LCController',
                     ['except' => ['create', 'edit']]);

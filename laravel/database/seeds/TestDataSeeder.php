@@ -44,14 +44,14 @@ class TestDataSeeder extends Seeder
 
         DB::table('members')->insert(
             array(
-                [ 'id' => 1, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime ],
-                [ 'id' => 2, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime ],
-                [ 'id' => 3, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime ],
-                [ 'id' => 4, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime ],
-                [ 'id' => 5, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime ],
-                [ 'id' => 6, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime ],
-                [ 'id' => 7, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime ],
-                [ 'id' => 8, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime ],
+                [ 'id' => 1, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime, 'email' => 'admin@test.pleem.local', 'password' => bcrypt('secret'), 'admin' => true ],
+                [ 'id' => 2, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime, 'email' => 'judge@test.pleem.local', 'password' => bcrypt('secret'), 'admin' => false ],
+                [ 'id' => 3, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime, 'email' => 'participant@test.pleem.local', 'password' => bcrypt('secret'), 'admin' => false ],
+                [ 'id' => 5, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime, 'email' => str_random(10).'@test.pleem.local', 'password' => bcrypt('secret'), 'admin' => false ],
+                [ 'id' => 6, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime, 'email' => str_random(10).'@test.pleem.local', 'password' => bcrypt('secret'), 'admin' => false ],
+                [ 'id' => 4, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime, 'email' => str_random(10).'@test.pleem.local', 'password' => bcrypt('secret'), 'admin' => false ],
+                [ 'id' => 7, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime, 'email' => str_random(10).'@test.pleem.local', 'password' => bcrypt('secret'), 'admin' => false ],
+                [ 'id' => 8, 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime, 'email' => str_random(10).'@test.pleem.local', 'password' => bcrypt('secret'), 'admin' => false ],
             )
         );
 
@@ -68,13 +68,6 @@ class TestDataSeeder extends Seeder
                 [ 'member_id' => 6, 'event_id' => 1, 'group_id' => 3, 'role' => App\Member::ROLE_PARTICIPANT ],
                 [ 'member_id' => 7, 'event_id' => 1, 'group_id' => 4, 'role' => App\Member::ROLE_PARTICIPANT ],
                 [ 'member_id' => 8, 'event_id' => 1, 'group_id' => 4, 'role' => App\Member::ROLE_PARTICIPANT ],
-            )
-        );
-
-        DB::table('users')->insert(
-            array(
-                [ 'member_id' => 1, 'name' => 'judge', 'email' => 'judge@test.pleem.local', 'password' => bcrypt('secret') ],
-                [ 'member_id' => 5, 'name' => 'participant', 'email' => 'participant@test.pleem.local', 'password' => bcrypt('secret') ]
             )
         );
     }

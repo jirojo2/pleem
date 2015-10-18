@@ -37,34 +37,6 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
-
-    /**
      * Send the response after the user was authenticated.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -93,7 +65,8 @@ class AuthController extends Controller
     public function postLogin(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required', 'password' => 'required',
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
