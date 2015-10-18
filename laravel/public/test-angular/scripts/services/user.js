@@ -4,7 +4,7 @@ angular.module('pleem.frontend')
 
         var user = null;
 
-        var userPromise = $http.get('/auth/user');
+        var userPromise = $http.get('/api/v1/auth/user');
 
         userPromise.then(function(response) {
             if (response.data && !angular.equals({}, response.data)) {
@@ -15,7 +15,7 @@ angular.module('pleem.frontend')
         return {
             login: function(email, password, remember) {
                 var deferred = $q.defer();
-                $http.post('/auth/login', {
+                $http.post('/api/v1/auth/login', {
                     email: email,
                     password: password,
                     remember: remember
@@ -33,7 +33,7 @@ angular.module('pleem.frontend')
                 if (!user) {
                     deferred.reject('not logged in');
                 }
-                $http.get('/auth/logout')
+                $http.get('/api/v1/auth/logout')
                     .then(function ok(response) {
                         deferred.resolve(response);
                     }, function err(response) {

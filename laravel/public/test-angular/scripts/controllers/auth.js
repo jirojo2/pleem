@@ -22,3 +22,22 @@ angular.module('pleem.frontend')
         }
     }
 ])
+
+.controller('SignupCtrl', ['$scope', '$state', 'User',
+    function($scope, $state, User) {
+
+        $scope.config = {
+            maxTeamMembers: 3
+        };
+
+        $scope.members = [];
+
+        $scope.addMember = function(member) {
+            $scope.members.push(member);
+        }
+
+        $scope.removeMember = function(member) {
+            $scope.members.splice(member);
+        }
+    }
+])

@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1 class="panel-title">{{ group.name }}</h1>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4" ng-repeat="member in group.members">
+                <div class="panel" ng-class="{
+                        'panel-default': user.id != member.id,
+                        'panel-info': user.id == member.id
+                    }">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">{{ member.first_name }} {{ member.last_name }}</h1>
+                    </div>
+                    <div class="panel-body">
+                        <p><label>Email:</label>&nbsp;{{ member.email }}</p>
+                        <p><label>Frist Name:</label>&nbsp;{{ member.first_name }}</p>
+                        <p><label>Last Name:</label>&nbsp;{{ member.last_name }}</p>
+                        <p><label>Birthdate:</label>&nbsp;{{ member.birthdate | date }}</p>
+                        <p><label>Sex:</label>&nbsp;{{ member.sex | uppercase }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

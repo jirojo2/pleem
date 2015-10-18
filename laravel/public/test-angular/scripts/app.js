@@ -47,7 +47,8 @@ angular.module('pleem.frontend', [
             })
             .state('authed.profile', {
                 url: '/profile',
-                templateUrl: 'views/profile/profile.html'
+                templateUrl: 'views/profile/profile.html',
+                controller: 'ProfileCtrl'
             });
     }
 ])
