@@ -4,11 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class Member extends Model implements AuthenticatableContract,
+                                      AuthorizableContract,
+                                      CanResetPasswordContract
 {
+    use Authenticatable, Authorizable, CanResetPassword;
+
     protected $table = 'members';
 
-    protected $fillable = ['first_name', 'last_name', 'birthdate'];
+    protected $fillable = ['first_name', 'last_name', 'birthdate', 'email', 'password'];
+    protected $hidden = ['password', 'remember_token'];
 
 	// Roles
 	const ROLE_APPLICANT   = 'applicant';

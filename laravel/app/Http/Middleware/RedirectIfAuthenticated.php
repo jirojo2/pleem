@@ -35,6 +35,9 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
         if ($this->auth->check()) {
+            if ($request->ajax()) {
+                return response()->json([ "error" => "this endpoint requieres not being authed" ], 401);
+            }
             return redirect('/');
         }
 

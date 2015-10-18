@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use Validator;
 use App\Http\Controllers\Controller;
+
+use Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
@@ -21,9 +24,7 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
-    protected $redirectTo = '/';
+    use ThrottlesLogins;
 
     /**
      * Create a new authentication controller instance.
@@ -32,7 +33,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => ['getLogout', 'getUser'] ]);
     }
 
     /**
@@ -44,7 +45,6 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -59,9 +59,115 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Send the response after the user was authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  bool  $throttles
+     * @return \Illuminate\Http\Response
+     */
+    protected function handleUserWasAuthenticated(Request $request, $throttles)
+    {
+        if ($throttles) {
+            $this->clearLoginAttempts($request);
+        }
+
+        if ($request->ajax()) {
+            return Auth::user();
+        }
+
+        return redirect()->intended($this->redirectPath());
+    }
+
+    /**
+     * Handle a login request to the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required', 'password' => 'required',
+        ]);
+
+        // If the class is using the ThrottlesLogins trait, we can automatically throttle
+        // the login attempts for this application. We'll key this by the username and
+        // the IP address of the client making these requests into this application.
+        $throttles = false;
+
+        if ($throttles && $this->hasTooManyLoginAttempts($request)) {
+            if ($request->ajax()) {
+                return response()->json([
+                    "error" => "Too many login attempts",
+                ], 401);
+            }
+            return $this->sendLockoutResponse($request);
+        }
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials, $request->has('remember'))) {
+            return $this->handleUserWasAuthenticated($request, $throttles);
+        }
+
+        // If the login attempt was unsuccessful we will increment the number of attempts
+        // to login and redirect the user back to the login form. Of course, when this
+        // user surpasses their maximum number of attempts they will get locked out.
+        if ($throttles) {
+            $this->incrementLoginAttempts($request);
+        }
+
+
+        if ($request->ajax()) {
+            return response()->json([
+                'email' => 'login failed',
+            ], 401);
+        }
+        else {
+            return redirect($this->loginPath())
+                ->withInput($request->only($this->loginUsername(), 'remember'))
+                ->withErrors([
+                    'email' => 'login failed',
+                ]);
+        }
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getLogout(Request $request)
+    {
+        Auth::logout();
+
+        if ($request->ajax()) {
+            return response()->json([ "msg" => "logout ok" ]);
+        }
+
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
+    }
+
+    /**
+     * Return the authed user, if any.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getUser(Request $request)
+    {
+        $user = Auth::user();
+
+        if ($user)
+            return Auth::user();
+        else
+            return response()->json(null);
     }
 }
