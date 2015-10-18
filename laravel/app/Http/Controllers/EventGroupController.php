@@ -38,9 +38,31 @@ class EventGroupController extends Controller
         //}
         //
 
-        $this->validate($request, [
-            'name' => 'required|max:255'
+        $v = Validator::make($request, [
+            'name' => 'required|max:255',
+            'members' => 'required|array',
         ]);
+
+        for ($n = 1; $n < count($request->members); $n++) {
+            $v->sometimes("members.$n.email", 'required|email|max:255|unique:members', function($input) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.password", 'required|confirmed|min:6', function($input) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.first_name", 'max:255', function($input) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.last_name", 'max:255', function($input) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.birthdate", 'required|date', function($input) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.sex", 'required|in:m,f', function($input) { return count($input->members >= $n); });
+        }
+
+        $v->after(function($validator) {
+            if (count($request->members) < 1 || count($request->members) > 3)
+                $validator->errors()->add('members', 'Only 1-3 members are accepted');
+        });
+
+        if ($v->fails()) {
+            return response()->json($v->errors(), 400);
+        }
+
+        // TODO: Members creation
+        // IF the member exists AND the password is correct, add to the event's group
 
         $group = new Group($request->all());
         $group = $event->groups()->save($group);
@@ -56,7 +78,10 @@ class EventGroupController extends Controller
     public function show($eventId, $id)
     {
         $group = Event::findOrFail($eventId)
-                    ->groups()->findOrFail($id);
+                    ->groups()
+                    ->with('members')
+                    ->with('scores')
+                    ->findOrFail($id);
         return response()->json($group);
     }
 
