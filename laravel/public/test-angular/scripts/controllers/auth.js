@@ -23,21 +23,33 @@ angular.module('pleem.frontend')
     }
 ])
 
-.controller('SignupCtrl', ['$scope', '$state', 'User',
-    function($scope, $state, User) {
+.controller('SignupCtrl', ['$scope', '$state', 'User', 'API',
+    function($scope, $state, User, API) {
 
         $scope.config = {
             maxTeamMembers: 3
         };
 
-        $scope.members = [];
+        $scope.members = [{}];
 
-        $scope.addMember = function(member) {
-            $scope.members.push(member);
+        $scope.addMember = function() {
+            $scope.members.push({});
         }
 
         $scope.removeMember = function(member) {
             $scope.members.splice(member);
+        }
+
+        $scope.signup = function(name, members) {
+            var group = new API.Group({ name: name });
+            group.members = members;
+            group.$save()
+                .then(function ok(response) {
+                    $state.go('signin');
+                }, function err(response) {
+                    // TODO: parse validator response
+                    console.log(response)
+                });
         }
     }
 ])

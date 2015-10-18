@@ -18,12 +18,24 @@ angular.module('pleem.frontend', [
                 User.checkAuth().then(
                     function authed() {
                         // ok!
-                        console.log("Authed!");
                     },
                     function notAuthed() {
-                        console.log("NOT Authed!");
                         //return to signin page
                         $state.go('signin');
+                    }
+                )
+            }
+        ];
+
+        var requireNoAuth = ['$stateParams', '$state', 'User',
+            function($stateParams, $state, User) {
+                User.checkAuth().then(
+                    function authed() {
+                        //return to profile page
+                        $state.go('authed.profile');
+                    },
+                    function notAuthed() {
+                        // ok!
                     }
                 )
             }
@@ -34,11 +46,14 @@ angular.module('pleem.frontend', [
             .state('signin', {
                 url: '/signin',
                 templateUrl: 'views/auth/signin.html',
-                controller: 'AuthCtrl'
+                controller: 'AuthCtrl',
+                onEnter: requireNoAuth
             })
             .state('signup', {
                 url: '/signup',
-                templateUrl: 'views/auth/signup.html'
+                templateUrl: 'views/auth/signup.html',
+                controller: 'SignupCtrl',
+                onEnter: requireNoAuth
             })
             .state('authed', {
                 abstract: true,

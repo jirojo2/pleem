@@ -35,6 +35,8 @@ angular.module('pleem.frontend')
                 }
                 $http.get('/api/v1/auth/logout')
                     .then(function ok(response) {
+                        user = null;
+                        userPromise = $q.resolve({ data: {} });
                         deferred.resolve(response);
                     }, function err(response) {
                         deferred.reject(response);

@@ -15,6 +15,9 @@
         <li ui-sref-active="active"><a href ui-sref="authed.ideas">Ideas</a></li>
         <li ui-sref-active="active"><a href ui-sref="authed.feedbacks">Feedbacks</a></li>
       </ul>
+      <ul class="nav navbar-nav navbar-right" ng-controller="AuthCtrl">
+        <li><a href ng-click="logout()">Logout</a></li>
+      </ul>
     </div><!--/.nav-collapse -->
   </div>
 </nav>
