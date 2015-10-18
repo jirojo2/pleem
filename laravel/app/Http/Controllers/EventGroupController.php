@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
+use Hash;
+use Validator;
 use App\Event;
 use App\Group;
+use App\Member;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -38,21 +42,21 @@ class EventGroupController extends Controller
         //}
         //
 
-        $v = Validator::make($request, [
-            'name' => 'required|max:255',
+        $v = Validator::make($request->all(), [
+            'name' => 'required|max:255|unique:groups',
             'members' => 'required|array',
         ]);
 
-        for ($n = 1; $n < count($request->members); $n++) {
-            $v->sometimes("members.$n.email", 'required|email|max:255|unique:members', function($input) { return count($input->members >= $n); });
-            $v->sometimes("members.$n.password", 'required|confirmed|min:6', function($input) { return count($input->members >= $n); });
-            $v->sometimes("members.$n.first_name", 'max:255', function($input) { return count($input->members >= $n); });
-            $v->sometimes("members.$n.last_name", 'max:255', function($input) { return count($input->members >= $n); });
-            $v->sometimes("members.$n.birthdate", 'required|date', function($input) { return count($input->members >= $n); });
-            $v->sometimes("members.$n.sex", 'required|in:m,f', function($input) { return count($input->members >= $n); });
+        for ($n = 0; $n < count($request->members); $n++) {
+            $v->sometimes("members.$n.email", 'required|email|max:255', function($input) use($n) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.password", 'required|confirmed|min:6', function($input) use($n) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.first_name", 'max:255', function($input) use($n) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.last_name", 'max:255', function($input) use($n) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.birthdate", 'required|date', function($input) use($n) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.sex", 'required|in:m,f', function($input) use($n) { return count($input->members >= $n); });
         }
 
-        $v->after(function($validator) {
+        $v->after(function($validator) use ($request) {
             if (count($request->members) < 1 || count($request->members) > 3)
                 $validator->errors()->add('members', 'Only 1-3 members are accepted');
         });
@@ -61,11 +65,37 @@ class EventGroupController extends Controller
             return response()->json($v->errors(), 400);
         }
 
-        // TODO: Members creation
-        // IF the member exists AND the password is correct, add to the event's group
+        // validate all members have correct auth or do not exist yet
+        foreach ($request->members as $m) {
+            $qm = Member::where('email', $m['email']);
+            if ($qm->exists()) {
+                // Check password
+                if (!Auth::once(['email' => $m['email'], 'password' => $m['password']])) {
+                    return request()->json([
+                            "msg" => "User already exists, and password is incorrect",
+                            "offender" => $m['email']
+                        ], 400);
+                }
+            }
+        }
 
-        $group = new Group($request->all());
+        $group = new Group($request->only('name'));
         $group = $event->groups()->save($group);
+
+        // create or register to the group all the members
+        foreach ($request->members as $m) {
+            $qm = Member::where('email', $m['email']);
+            if (!$qm->exists()) {
+                $qm = new Member($m);
+                $qm->password = Hash::make($m['password']);
+                $qm->save();
+            }
+            else {
+                $qm = $qm->first();
+            }
+            $qm->groups()->attach($group->id, ['event_id' => $eventId]);
+        }
+
         return response()->json($group);
     }
 
