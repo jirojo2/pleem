@@ -23,7 +23,7 @@ class Group extends Model
      */
     public function members()
     {
-        return $this->belongsToMany(Member::Class, 'event_members');
+        return $this->belongsToMany(Member::Class, 'event_members')->withPivot('role');
     }
 
     /**
