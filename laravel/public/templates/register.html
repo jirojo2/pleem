@@ -61,6 +61,9 @@
 								<div class="ui pointing red basic label" ng-show="(member2Form.email.$dirty || submitted)  && member2Form.email.$error.required">
 							    	Email is required!
 							    </div>
+								<div class="ui pointing red basic label" ng-show="member2Form.email.$error.email">
+							    	Not valid email!
+							    </div>
 							</div>
 							<div class="field">
 								<label>Passowrd</label>
@@ -127,6 +130,9 @@
 		    					<input type="email" name="email" placeholder="Email" required ng-model="member1.email">
 								<div class="ui pointing red basic label" ng-show="(member1Form.email.$dirty || submitted)  && member1Form.email.$error.required">
 							    	Email is required!
+							    </div>
+								<div class="ui pointing red basic label" ng-show="member1Form.email.$error.email">
+							    	Not valid email!
 							    </div>
 							</div>
 							<div class="field">
@@ -199,6 +205,9 @@
 		    					<input type="email" name="email" placeholder="Email" required ng-model="member3.email">
 								<div class="ui pointing red basic label" ng-show="(member3Form.email.$dirty || submitted)  && member3Form.email.$error.required">
 							    	Email is required!
+							    </div>
+								<div class="ui pointing red basic label" ng-show="member3Form.email.$error.email">
+							    	Not valid email!
 							    </div>
 							</div>
 							<div class="field">

@@ -1,4 +1,4 @@
-<div class="ui inverted green vertical masthead center aligned segment">
+<section id="home" class="ui inverted green vertical masthead center aligned segment">
 	<div class="ui stackable grid container">
 		<div class="row">
 		  	<div class="ui flex center eight wide column">
@@ -30,12 +30,95 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div data-editable data-name="home-content" class="ui container row">
+</section>
 
-</div>
+<section id="about" class="ui content container">
+	<h2 class="ui header aligned center">EESTEC Competition for Android</h2>
+	<h4 class="ui header aligned center">A contest of ideas and mobile applications!</h4>
+	<p>4th Competition for Android, organised for the third consecutive year, is an EESTEC International project which is open to students from all over the world. This academical event aims at opening a door for creative innovation by deploying knowledge about programming and design.</p>
+	<p>In the past years, the usage of applications has reached immense popularity and their usefulness slowly transformed what was merely a luxurious advantage into a basic tool for daily needs in terms of information, communication, mobility, etc.</p>
+	<p>Because Android has became part of our everyday life, we ought to participate enhancing the quality of the services that such platform is providing. As young students and free thinkers, we can bring ourselves to understand the necessities of our generation and help in unknotting them.</p>
+	<p>4th EESTEC Competition for Android can be a great experience because not only it teaches you about useful technical tools, but it also pushes you to research and analyse in order to meet a demand. </p>
+	<p>This event will be an amazing opportunity for the students of your university to gain experience about programming and design, show their creativity, and build an application that could be used by millions of people from around the globe. </p>
+	<img src="assets/images/eca-logo.png" alt="" class="ui centered large image">
+	<h2 class="ui header aligned center margin top four">About <strong class="ui red header">EESTEC</strong></h2>
+	<h3 class="ui header aligned center">Electrical Engineering STudents' European assoCiation</h3>
+	<p>EESTEC is a non-political, non-profit organization of and for Electrical Engineering and Computer Science (EECS) students at universities, institutes and technical schools in Europe awarding an engineering degree. The aim is to promote and develop international contacts and the exchange of ideas among the students of EECS. The association achieves its aim through improving technical knowledge of EECS students, introducing them to the industry and the educational system of other countries. The association was founded in The Netherlands in 1986. Since then, EESTEC has spreaded all around Europe and is now connecting over 4000 students from 32 countries and 55 universities. EESTEC addresses students with skills, openness, enthusiasm and ambition. It connects them to a wider range of opportunities in the educational as well as the professional world.</p>
+	<a href="https://www.eestec.net" target="_blank">
+		<img src="assets/images/eestec-logo.png" alt="" class="ui centered large image">
+	</a>
+</section>
 
+<section id="rules" class="ui content inverted green segment">
+	<div class="ui center aligned container">
+		<h2 class="ui inverted light header aligned center">Start working on your app <strong>today</strong></h2>
+		<h4 class="ui inverted light header aligned center">Easy steps to succeed!</h4>
+		<div class="ui center aligned grid margin top four">
+			<div class="four column row">
+				<div class="column">
+					<i class="ui huge idea icon"></i>
+					<h4 class="ui header inverted">Brainstorm</h4>
+					<p>Start thinking of your ideas! Be a creative mind and the best will come!</p>
+				</div>
+				<div class="column">
+					<i class="ui huge users icon"></i>
+					<h4 class="ui header inverted">Group Up</h4>
+					<p>Teamwork is the key to succeed! Find your teammates and rock the world of apps!</p>
+				</div>
+				<div class="column">
+					<i class="ui huge code icon"></i>
+					<h4 class="ui header inverted">Code</h4>
+					<p>The hard task of debugging is waiting for you! Patience is the key!</p>
+				</div>
+				<div class="column">
+					<i class="ui huge trophy icon"></i>
+					<h4 class="ui header inverted">Win!</h4>
+					<p>Win prizes! And even if you don't the experience in the way till here was valuable!</p>
+				</div>
+			</div>
+		</div>
+		<button data-modal="#faq-rules-modal" class="ui large violet button margin top four">
+			<i class="help circle icon"></i>
+			FAQ &amp; Rules
+		</button>
+		<div id="faq-rules-modal" class="ui basic modal">
+			<i class="close icon"></i>
+			<div class="header">
+				FAQ &amp; Rules
+			</div>
+			<div class="content">
+				<div class="description">
+					<div class="ui inverted accordion">
+						<div class="title">
+							<i class="dropdown icon"></i>
+							What is EESTEC Competition for Android?
+						</div>
+						<div class="content">
+							<p>EESTEC Competition for Android is a contest of ideas and mobile applications, developed for the Android platform.<br> The project is organized for the 4th consecutive year by Electrical Engineering STudents European assoCiation.</p>
+						</div>
+						<div class="title">
+							<i class="dropdown icon"></i>
+							Who can participate?
+						</div>
+						<div class="content">
+							<p>This Contest is open to anyone under 30 years old, coming from all around the world.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="actions">
+				<div class="ui inverted red basic cancel button">Close</div>
+			</div>
+		</div>
+	</div>
+</section>
 <script>
-	// editor = ContentTools.EditorApp.get();
-	// editor.init('*[data-editable]', 'data-name');
+// Enable modal toggle
+	$('[data-modal]').click(function() {
+		var modal = $(this).attr('data-modal');
+		$(modal).modal('show');
+	});
+
+	// Enable accordions
+	$('.ui.accordion').accordion();
 </script>

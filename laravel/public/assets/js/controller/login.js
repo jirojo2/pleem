@@ -1,5 +1,6 @@
 angular.module('ecaApp')
-.controller ('loginController', ['$scope', '$state', 'User', function($scope, $state, User){
+.controller ('loginController', ['$scope', '$rootScope', '$state', 'User',
+	function($scope, $rootScope, $state, User){
 
 	$scope.submitted = false;
 
@@ -8,10 +9,12 @@ angular.module('ecaApp')
 		if ($scope.loginForm.$valid){
 	        User.login($scope.email, $scope.password, true)
 	            .then(function ok(user) {
+					$rootScope.loggedin = true;
 	                $state.go('team');
 	            }, function err(msg) {
 	                $scope.error = msg.data;
 	            })
 		}
     };
+
 }])
