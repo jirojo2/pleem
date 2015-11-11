@@ -138,9 +138,12 @@ class AuthController extends Controller
     {
         $user = Auth::user();
 
-        if ($user)
+        if ($user) {
+            $user->load('groups');
             return Auth::user();
-        else
+        }
+        else {
             return response()->json(null);
+        }
     }
 }
