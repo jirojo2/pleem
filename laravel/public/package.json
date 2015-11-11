@@ -3,7 +3,6 @@
 	"version": "1.0.0",
 	"description": "EESTEC Competition for Android",
 	"devDependencies": {
-		"jquery": "^2.1.4",
 		"semantic-ui": "^2.1.6"
 	}
 }
