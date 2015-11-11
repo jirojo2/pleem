@@ -50,6 +50,7 @@ class AuthController extends Controller
         }
 
         if ($request->ajax()) {
+            Auth::user()->load('groups');
             return Auth::user();
         }
 
