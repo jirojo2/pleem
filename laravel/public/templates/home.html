@@ -2,7 +2,7 @@
 	<div class="ui stackable grid container">
 		<div class="row">
 		  	<div class="ui flex center eight wide column">
-				<div class="row">
+				<div class="row" data-editable data-name="heading">
 					<h1 class="ui inverted header">Let's <strong>APP</strong> the world!</h1>
 					<h2 class="ui inverted medium header">
 						EESTEC Competition for Android <br/>
@@ -32,7 +32,7 @@
 	</div>
 </section>
 
-<section id="about" class="ui content container">
+<section id="about" class="ui content container" data-editable data-name="about">
 	<h2 class="ui header aligned center">EESTEC Competition for Android</h2>
 	<h4 class="ui header aligned center">A contest of ideas and mobile applications!</h4>
 	<p>4th Competition for Android, organised for the third consecutive year, is an EESTEC International project which is open to students from all over the world. This academical event aims at opening a door for creative innovation by deploying knowledge about programming and design.</p>
@@ -50,27 +50,29 @@
 </section>
 
 <section id="rules" class="ui content inverted green segment">
-	<div class="ui center aligned container">
-		<h2 class="ui inverted light header aligned center">Start working on your app <strong>today</strong></h2>
-		<h4 class="ui inverted light header aligned center">Easy steps to succeed!</h4>
+	<div class="ui center aligned container" >
+		<div data-editable data-name="rules-heading">
+			<h2 class="ui inverted light header aligned center">Start working on your app <strong>today</strong></h2>
+			<h4 class="ui inverted light header aligned center">Easy steps to succeed!</h4>
+		</div>
 		<div class="ui center aligned grid margin top four">
 			<div class="four column row">
-				<div class="column">
+				<div class="column" data-editable data-name="rules-1">
 					<i class="ui huge idea icon"></i>
 					<h4 class="ui header inverted">Brainstorm</h4>
 					<p>Start thinking of your ideas! Be a creative mind and the best will come!</p>
 				</div>
-				<div class="column">
+				<div class="column" data-editable data-name="rules-2">
 					<i class="ui huge users icon"></i>
 					<h4 class="ui header inverted">Group Up</h4>
 					<p>Teamwork is the key to succeed! Find your teammates and rock the world of apps!</p>
 				</div>
-				<div class="column">
+				<div class="column" data-editable data-name="rules-3">
 					<i class="ui huge code icon"></i>
 					<h4 class="ui header inverted">Code</h4>
 					<p>The hard task of debugging is waiting for you! Patience is the key!</p>
 				</div>
-				<div class="column">
+				<div class="column" data-editable data-name="rules-4">
 					<i class="ui huge trophy icon"></i>
 					<h4 class="ui header inverted">Win!</h4>
 					<p>Win prizes! And even if you don't the experience in the way till here was valuable!</p>
@@ -89,18 +91,18 @@
 			<div class="content">
 				<div class="description">
 					<div class="ui inverted accordion">
-						<div class="title">
+						<div class="title" data-editable data-name="faq-q-1">
 							<i class="dropdown icon"></i>
-							What is EESTEC Competition for Android?
+							<p>What is EESTEC Competition for Android?</p>
 						</div>
-						<div class="content">
+						<div class="content" data-editable data-name="faq-a-1">
 							<p>EESTEC Competition for Android is a contest of ideas and mobile applications, developed for the Android platform.<br> The project is organized for the 4th consecutive year by Electrical Engineering STudents European assoCiation.</p>
 						</div>
-						<div class="title">
+						<div class="title" data-editable data-name="faq-q-2">
 							<i class="dropdown icon"></i>
-							Who can participate?
+							<p>Who can participate?</p>
 						</div>
-						<div class="content">
+						<div class="content" data-editable data-name="faq-a-2">
 							<p>This Contest is open to anyone under 30 years old, coming from all around the world.</p>
 						</div>
 					</div>
@@ -112,8 +114,181 @@
 		</div>
 	</div>
 </section>
+
+<section id="prizes" class="ui content container">
+	<div class="ui center aligned container" data-editable data-name="prizes">
+		<h2 class="ui header aligned center">Prizes coming soon...</h2>
+	</div>
+</section>
+
+<section id="people" class="ui content container">
+	<div class="ui center aligned container" data-editable data-name="prizes">
+		<h2 class="ui header aligned center">People</h2>
+		<h4 class="ui header aligned center">The contributors of EESTEC Competition for Android 2015-2016</h4>
+		<div class="ui green inverted three item menu">
+	  		<a class="item active"><i class="users icon"></i>Organizers</a>
+		  	<a class="item"><i class="star icon"></i>Jury</a>
+		  	<a class="item"><i class="announcement icon"></i>Ambassadors</a>
+		</div>
+		<div id="organizers" class="ui people container">
+			<h3 class="ui header aligned center">Organizers</h3>
+			<div class="ui four stackable cards">
+				<div class="ui card">
+	  				<div class="image">
+			    		<img src="assets/images/image.png">
+			  		</div>
+			  		<div class="content">
+			    		<div class="header">Marco Cavaliere</div>
+						<div class="meta">Mentor</div>
+			    		<div class="description">LC Cosenza</div>
+			  		</div>
+				</div>
+				<div class="ui card">
+	  				<div class="image">
+			    		<img src="assets/images/image.png">
+			  		</div>
+			  		<div class="content">
+			    		<div class="header">Marco Cavaliere</div>
+						<div class="meta">Mentor</div>
+			    		<div class="description">LC Cosenza</div>
+			  		</div>
+				</div>
+				<div class="ui card">
+	  				<div class="image">
+			    		<img src="assets/images/image.png">
+			  		</div>
+			  		<div class="content">
+			    		<div class="header">Marco Cavaliere</div>
+						<div class="meta">Mentor</div>
+			    		<div class="description">LC Cosenza</div>
+			  		</div>
+				</div>
+				<div class="ui card">
+	  				<div class="image">
+			    		<img src="assets/images/image.png">
+			  		</div>
+			  		<div class="content">
+			    		<div class="header">Marco Cavaliere</div>
+						<div class="meta">Mentor</div>
+			    		<div class="description">LC Cosenza</div>
+			  		</div>
+				</div>
+			</div>
+			<div class="ui horizontal divider">Experts Team</div>
+			<div class="ui four stackable cards">
+				<div class="ui card">
+	  				<div class="image">
+			    		<img src="assets/images/image.png">
+			  		</div>
+			  		<div class="content">
+			    		<div class="header">Marco Cavaliere</div>
+						<div class="meta">Mentor</div>
+			    		<div class="description">LC Cosenza</div>
+			  		</div>
+				</div>
+				<div class="ui card">
+	  				<div class="image">
+			    		<img src="assets/images/image.png">
+			  		</div>
+			  		<div class="content">
+			    		<div class="header">Marco Cavaliere</div>
+						<div class="meta">Mentor</div>
+			    		<div class="description">LC Cosenza</div>
+			  		</div>
+				</div>
+				<div class="ui card">
+	  				<div class="image">
+			    		<img src="assets/images/image.png">
+			  		</div>
+			  		<div class="content">
+			    		<div class="header">Marco Cavaliere</div>
+						<div class="meta">Mentor</div>
+			    		<div class="description">LC Cosenza</div>
+			  		</div>
+				</div>
+				<div class="ui card">
+	  				<div class="image">
+			    		<img src="assets/images/image.png">
+			  		</div>
+			  		<div class="content">
+			    		<div class="header">Marco Cavaliere</div>
+						<div class="meta">Mentor</div>
+			    		<div class="description">LC Cosenza</div>
+			  		</div>
+				</div>
+			</div>
+			<div class="ui horizontal divider">PR Team</div>
+			<div class="ui four stackable cards">
+				<div class="ui card">
+	  				<div class="image">
+			    		<img src="assets/images/image.png">
+			  		</div>
+			  		<div class="content">
+			    		<div class="header">Marco Cavaliere</div>
+						<div class="meta">Mentor</div>
+			    		<div class="description">LC Cosenza</div>
+			  		</div>
+				</div>
+				<div class="ui card">
+	  				<div class="image">
+			    		<img src="assets/images/image.png">
+			  		</div>
+			  		<div class="content">
+			    		<div class="header">Marco Cavaliere</div>
+						<div class="meta">Mentor</div>
+			    		<div class="description">LC Cosenza</div>
+			  		</div>
+				</div>
+				<div class="ui card">
+	  				<div class="image">
+			    		<img src="assets/images/image.png">
+			  		</div>
+			  		<div class="content">
+			    		<div class="header">Marco Cavaliere</div>
+						<div class="meta">Mentor</div>
+			    		<div class="description">LC Cosenza</div>
+			  		</div>
+				</div>
+				<div class="ui card">
+	  				<div class="image">
+			    		<img src="assets/images/image.png">
+			  		</div>
+			  		<div class="content">
+			    		<div class="header">Marco Cavaliere</div>
+						<div class="meta">Mentor</div>
+			    		<div class="description">LC Cosenza</div>
+			  		</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="contact" class="ui content container">
+	<div class="ui text container">
+		<h2 class="ui header aligned center">Contact Us</h2>
+		<div class="ui form">
+			<div class="required field">
+				<label for="contact-name">Name</label>
+				<input type="text" id="contact-name" name="contact-name" required>
+			</div>
+			<div class="required field">
+				<label for="contact-email">E-mail Address</label>
+				<input type="text" id="contact-email" name="contact-email" required>
+			</div>
+			<div class="required field">
+				<label for="contact-message">Message</label>
+				<textarea name="contact-message" id="contact-message" required></textarea>
+			</div>
+			<div class="field">
+				<div class="ui green submit button">Submit</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 <script>
-// Enable modal toggle
+	// Enable modal toggle
 	$('[data-modal]').click(function() {
 		var modal = $(this).attr('data-modal');
 		$(modal).modal('show');
@@ -121,4 +296,26 @@
 
 	// Enable accordions
 	$('.ui.accordion').accordion();
+
+	// Enable Content Tools
+	editor = ContentTools.EditorApp.get();
+	editor.init('*[data-editable]', 'data-name');
+
+	// Save Content Tools changes
+	editor.bind('save', function (regions) {
+	    var name, payload;
+
+	    // Set the editor as busy while we save our changes
+	    this.busy(true);
+
+	    // Collect the contents of each region into a FormData instance
+	    payload = new FormData();
+	    for (name in regions) {
+	        if (regions.hasOwnProperty(name)) {
+	            payload.append(name, regions[name]);
+	        }
+	    }
+
+		console.log(payload);
+	});
 </script>
