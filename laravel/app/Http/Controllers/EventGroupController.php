@@ -36,12 +36,6 @@ class EventGroupController extends Controller
     {
         $event = Event::findOrFail($eventId);
 
-        //
-        //if (Gate::denies('create-group', $event)) {
-        //    abort(403);
-        //}
-        //
-
         $v = Validator::make($request->all(), [
             'name' => 'required|max:255|unique:groups',
             'members' => 'required|array',

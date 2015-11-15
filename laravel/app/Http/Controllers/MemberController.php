@@ -59,11 +59,9 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        //if (Gate::denies('edit-member', $event)) {
-        //    abort(403);
-        //}
-        //
+        if (Gate::denies('edit-member', $event)) {
+            abort(403);
+        }
 
         // @TODO
     }
@@ -78,11 +76,9 @@ class MemberController extends Controller
     {
         $member = Member::findOrFail($id);
 
-        //
-        //if (Gate::denies('destroy-member', $event)) {
-        //    abort(403);
-        //}
-        //
+        if (Gate::denies('destroy-member', $event)) {
+            abort(403);
+        }
 
         $member->delete();
         return response()->json("ok");

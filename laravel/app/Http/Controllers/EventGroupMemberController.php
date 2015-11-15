@@ -34,25 +34,29 @@ class EventGroupMemberController extends Controller
         $event = Event::findOrFail($eventId);
         $group = $event->groups()->findOrFail($groupId);
 
-        //
-        //if (Gate::denies('attach-member', $event, $group)) {
-        //    abort(403);
-        //}
-        //
+        if (Gate::denies('attach-member', $group)) {
+            abort(403);
+        }
 
         $this->validate($request, [
-            'role' => 'required',
-            'member' => 'required|exists:members,id'
+            'member.email' => 'required|unique|email|max:255',
+            'member.password' => 'required|confirmed|min:6',
+            'member.first_name' => 'required|max:255',
+            'member.last_name' => 'required|max:255',
+            'member.birthdate' => 'required|date',
+            'member.sex' => 'required|in:m,f'
         ]);
 
-        $member = Member::findOrFail($request->member);
+        $member = new Member($request->input('member'));
+        $member->password = Hash::make($request->input('member.password'));
+        $member->save();
 
         try {
-            $member->events()->attach($eventId, [ 'role' => $request->role, 'group_id' => $group->id ] );
+            $member->groups()->attach($group->id, ['event_id' => $eventId]);
             return response()->json("ok");
         }
         catch (\Illuminate\Database\QueryException $e) {
-            return response()->json("that member is already in the event");
+            return response()->json("error");
         }
     }
 

@@ -22,9 +22,6 @@ class ContentToolsController extends Controller
      */
     public function savePage(Request $request)
     {
-        // DISABLE UNTIL FURTHER NOTICE
-        //abort(403);
-
         // Authorize
         if (Gate::denies('save-page')) {
             abort(403);

@@ -34,12 +34,12 @@ class AuthServiceProvider extends ServiceProvider
 
         // ContentTools
         $gate->define('save-page', function($user) {
-            return $user->admin;
+            return $user->isSuperAdmin();
         });
 
         // Event related abilities
         $gate->define('create-event', function($user) {
-            return true;
+            return $user->isSuperAdmin();
         });
         $gate->define('edit-event', function($user, $event) {
             return $user->roleForEvent($event) === App\Member::ROLE_ADMIN;
@@ -50,7 +50,7 @@ class AuthServiceProvider extends ServiceProvider
 
         // Event group related abilities
         $gate->define('create-group', function($user, $event) {
-            return $user->roleForEvent($event) === App\Member::ROLE_ADMIN;
+            return true;
         });
         $gate->define('edit-group', function($user, $group) {
             return $user->roleForEvent($group->event) === App\Member::ROLE_ADMIN;
@@ -61,23 +61,23 @@ class AuthServiceProvider extends ServiceProvider
 
         // LC related abilities
         $gate->define('create-lc', function($user, $lc) {
-            return true;
+            return $user->isSuperAdmin();
         });
         $gate->define('edit-lc', function($user, $lc) {
-            return true;
+            return $user->isSuperAdmin();
         });
         $gate->define('destroy-lc', function($user, $lc) {
-            return true;
+            return $user->isSuperAdmin();
         });
 
         // Member related abilities
-        $gate->define('create-member', function($user, $member) {
+        $gate->define('attach-member', function($user, $group) {
+            return $group->members()->contains($user);
+        });
+        $gate->define('edit-member', function($user) {
             return true;
         });
-        $gate->define('edit-member', function($user, $member) {
-            return true;
-        });
-        $gate->define('destroy-member', function($user, $member) {
+        $gate->define('destroy-member', function($user) {
             return true;
         });
 

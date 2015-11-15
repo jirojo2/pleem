@@ -32,11 +32,9 @@ class LCEventController extends Controller
     {
         $lc = LC::findOrFail($lcId);
 
-        //
-        //if (Gate::denies('create-event', $lc)) {
-        //    abort(403);
-        //}
-        //
+        if (Gate::denies('create-event', $lc)) {
+            abort(403);
+        }
 
         $this->validate($request, [
             'name' => 'required|max:255'
@@ -71,11 +69,9 @@ class LCEventController extends Controller
     {
         $event = LC::findOrFail($lcId)->events()->findOrFail($id);
 
-        //
-        //if (Gate::denies('edit-event', $event)) {
-        //    abort(403);
-        //}
-        //
+        if (Gate::denies('edit-event', $event)) {
+            abort(403);
+        }
 
         $this->validate($request, [
             'name' => 'required|max:255'
@@ -98,11 +94,9 @@ class LCEventController extends Controller
     {
         $event = LC::findOrFail($lcId)->events()->findOrFail($id);
 
-        //
-        //if (Gate::denies('destroy-event', $event)) {
-        //    abort(403);
-        //}
-        //
+        if (Gate::denies('destroy-event', $event)) {
+            abort(403);
+        }
 
         $event->delete();
         return response()->json("ok");
