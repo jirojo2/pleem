@@ -22,6 +22,12 @@ function($scope, $rootScope, $state, $location, $anchorScroll, User, API){
     }
 
     $scope.scrollTo = function(id) {
+        if ($state != 'home') {
+                $state.go('home').then(function() {
+                    $location.hash(id);
+                 	$anchorScroll();
+                });
+        }
 		$location.hash(id);
      	$anchorScroll();
 	}

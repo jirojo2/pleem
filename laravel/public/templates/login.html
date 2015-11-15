@@ -3,6 +3,11 @@
 	<div class="ui fluid card">
 		<div class="content">
 			<div class="header ui centered">Log in for your team profile</div>
+			<div class="ui negative message" ng-show="error.length">
+				<div class="header">
+					{{error}}
+				</div>
+			</div>
 			<div class="description">
 				<form class="ui form" name="loginForm">
 					<div class="field">

@@ -53,6 +53,7 @@ angular.module('ecaApp')
 
     $scope.signup = function() {
         $scope.members = [];
+        $scope.error = "";
         $scope.submitted = true;
         if(!myEl1.hasClass('dimmed')) {
             if ($scope.member2Form.$valid){
@@ -76,8 +77,18 @@ angular.module('ecaApp')
                 .then(function ok(response) {
                     $state.go('authed.team');
                 }, function err(response) {
-                    // TODO: parse validator response
-                    console.log(response)
+                    if (response.data['name']){
+                        $scope.error = response.data['name'][0];
+                    }
+                    if (response.data['members.0.password']){
+                        $scope.error = response.data['members.0.password'][0];
+                    }
+                    if (response.data['members.1.password']){
+                        $scope.error = response.data['members.1.password'][0];
+                    }
+                    if (response.data['members.2.password']){
+                        $scope.error = response.data['members.2.password'][0];
+                    }
                 });
         }
     }

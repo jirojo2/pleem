@@ -24,11 +24,11 @@
                     </a>
                     <div class="right small menu">
                         <a ui-sref="home" class="item">Home</a>
-                        <a ui-sref="home" class="item">About</a>
-                        <a ui-sref="home" class="item">Rules</a>
-                        <a ui-sref="home" class="item">Prizes</a>
-                        <a ui-sref="home" class="item">People</a>
-                        <a ui-sref="home" class="item">Contact</a>
+                        <a ng-click="scrollTo('about')" class="item">About</a>
+                        <a ng-click="scrollTo('rules')" class="item">Rules</a>
+                        <a ng-click="scrollTo('prizes')" class="item">Prizes</a>
+                        <a ng-click="scrollTo('people')" class="item">People</a>
+                        <a ng-click="scrollTo('contact')" class="item">Contact</a>
                         <div class="item" ng-show="!loggedin">
                             <a ui-sref="login" class="ui green button">
                                 <i class="user icon"></i> Log in
@@ -74,11 +74,11 @@
                     </div>
                     <div class="ui inverted green vertical navbar menu hidden fluid">
                         <a ui-sref="home" class="item">Home</a>
-                        <a ui-sref="home" class="item">About</a>
-                        <a ui-sref="home" class="item">Rules</a>
-                        <a ui-sref="home" class="item">Prizes</a>
-                        <a ui-sref="home" class="item">People</a>
-                        <a ui-sref="home" class="item">Contact</a>
+                        <a ng-click="scrollTo('about')" class="item">About</a>
+                        <a ng-click="scrollTo('rules')" class="item">Rules</a>
+                        <a ng-click="scrollTo('prizes')" class="item">Prizes</a>
+                        <a ng-click="scrollTo('people')" class="item">People</a>
+                        <a ng-click="scrollTo('contact')" class="item">Contact</a>
                     </div>
                 </div>
             </div>
