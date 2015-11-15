@@ -3,6 +3,7 @@
 		<div class="row">
 		  	<div class="ui flex center eight wide column">
 				<div class="row" data-editable data-name="heading">
+					<!-- editable heading -->
 					<h1 class="ui inverted header">Let's <strong>APP</strong> the world!</h1>
 					<h2 class="ui inverted medium header">
 						EESTEC Competition for Android <br/>
@@ -23,6 +24,7 @@
 					<button class="ui circular icon huge violet button">
 						<i class="play icon"></i>
 					</button>
+					<!-- endeditable heading -->
 				</div>
 		  	</div>
 			<div class="six wide right floated column">
@@ -33,6 +35,7 @@
 </section>
 
 <section id="about" class="ui content container" data-editable data-name="about">
+	<!-- editable about -->
 	<h2 class="ui header aligned center">EESTEC Competition for Android</h2>
 	<h4 class="ui header aligned center">A contest of ideas and mobile applications!</h4>
 	<p>4th Competition for Android, organised for the third consecutive year, is an EESTEC International project which is open to students from all over the world. This academical event aims at opening a door for creative innovation by deploying knowledge about programming and design.</p>
@@ -47,35 +50,46 @@
 	<a href="https://www.eestec.net" target="_blank">
 		<img src="assets/images/eestec-logo.png" alt="" class="ui centered large image">
 	</a>
+	<!-- endeditable about -->
 </section>
 
 <section id="rules" class="ui content inverted green segment">
 	<div class="ui center aligned container" >
 		<div data-editable data-name="rules-heading">
+			<!-- editable rules-heading -->
 			<h2 class="ui inverted light header aligned center">Start working on your app <strong>today</strong></h2>
 			<h4 class="ui inverted light header aligned center">Easy steps to succeed!</h4>
+			<!-- endeditable rules-heading -->
 		</div>
 		<div class="ui center aligned grid margin top four">
 			<div class="four column row">
 				<div class="column" data-editable data-name="rules-1">
+					<!-- editable rules-1 -->
 					<i class="ui huge idea icon"></i>
 					<h4 class="ui header inverted">Brainstorm</h4>
 					<p>Start thinking of your ideas! Be a creative mind and the best will come!</p>
+					<!-- endeditable rules-1 -->
 				</div>
 				<div class="column" data-editable data-name="rules-2">
+					<!-- editable rules-2 -->
 					<i class="ui huge users icon"></i>
 					<h4 class="ui header inverted">Group Up</h4>
 					<p>Teamwork is the key to succeed! Find your teammates and rock the world of apps!</p>
+					<!-- endeditable rules-2 -->
 				</div>
 				<div class="column" data-editable data-name="rules-3">
+					<!-- editable rules-3 -->
 					<i class="ui huge code icon"></i>
 					<h4 class="ui header inverted">Code</h4>
 					<p>The hard task of debugging is waiting for you! Patience is the key!</p>
+					<!-- endeditable rules-3 -->
 				</div>
 				<div class="column" data-editable data-name="rules-4">
+					<!-- editable rules-4 -->
 					<i class="ui huge trophy icon"></i>
 					<h4 class="ui header inverted">Win!</h4>
 					<p>Win prizes! And even if you don't the experience in the way till here was valuable!</p>
+					<!-- endeditable rules-4 -->
 				</div>
 			</div>
 		</div>
@@ -92,18 +106,26 @@
 				<div class="description">
 					<div class="ui inverted accordion">
 						<div class="title" data-editable data-name="faq-q-1">
+							<!-- editable faq-q-1 -->
 							<i class="dropdown icon"></i>
 							<p>What is EESTEC Competition for Android?</p>
+							<!-- endeditable faq-q-1 -->
 						</div>
 						<div class="content" data-editable data-name="faq-a-1">
+							<!-- editable faq-a-1 -->
 							<p>EESTEC Competition for Android is a contest of ideas and mobile applications, developed for the Android platform.<br> The project is organized for the 4th consecutive year by Electrical Engineering STudents European assoCiation.</p>
+							<!-- endeditable faq-a-1 -->
 						</div>
 						<div class="title" data-editable data-name="faq-q-2">
+							<!-- editable faq-q-2 -->
 							<i class="dropdown icon"></i>
 							<p>Who can participate?</p>
+							<!-- endeditable faq-q-2 -->
 						</div>
 						<div class="content" data-editable data-name="faq-a-2">
+							<!-- editable faq-a-2 -->
 							<p>This Contest is open to anyone under 30 years old, coming from all around the world.</p>
+							<!-- endeditable faq-a-2 -->
 						</div>
 					</div>
 				</div>
@@ -117,12 +139,15 @@
 
 <section id="prizes" class="ui content container">
 	<div class="ui center aligned container" data-editable data-name="prizes">
+		<!-- editable prizes -->
 		<h2 class="ui header aligned center">Prizes coming soon...</h2>
+		<!-- endeditable prizes -->
 	</div>
 </section>
 
 <section id="people" class="ui content container">
-	<div class="ui center aligned container" data-editable data-name="prizes">
+	<div class="ui center aligned container" data-editable data-name="people">
+		<!-- editable people -->
 		<h2 class="ui header aligned center">People</h2>
 		<h4 class="ui header aligned center">The contributors of EESTEC Competition for Android 2015-2016</h4>
 		<div class="ui green inverted three item menu">
@@ -261,6 +286,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- endeditable people -->
 	</div>
 </section>
 
@@ -298,24 +324,46 @@
 	$('.ui.accordion').accordion();
 
 	// Enable Content Tools
-	editor = ContentTools.EditorApp.get();
+	var editor = ContentTools.EditorApp.get();
 	editor.init('*[data-editable]', 'data-name');
 
-	// Save Content Tools changes
-	editor.bind('save', function (regions) {
-	    var name, payload;
+	// Listen for save events
+	editor.bind('save', function (regions, calledBy) {
+		var name, onStateChange, payload, xhr;
 
-	    // Set the editor as busy while we save our changes
-	    this.busy(true);
+		// Set the editor as busy while we save our changes
+		if (calledBy !== 'autoSave') {
+			this.busy(true);
+		}
 
-	    // Collect the contents of each region into a FormData instance
-	    payload = new FormData();
-	    for (name in regions) {
-	        if (regions.hasOwnProperty(name)) {
-	            payload.append(name, regions[name]);
-	        }
-	    }
+		// Collect the contents of each region into a FormData instance
+		payload = new FormData();
+		payload.append('__page__', 'home.html');
+		for (name in regions) {
+			payload.append(name, regions[name]);
+		}
 
-		console.log(payload);
+		// Send the update content to the server to be saved
+		onStateChange = function(ev) {
+			// Check if the request is finished
+			if (ev.target.readyState == 4) {
+				editor.busy(false);
+				if (ev.target.status == '200') {
+					// Save was successful, notify the user with a flash
+					if (calledBy !== 'autoSave') {
+						new ContentTools.FlashUI('ok');
+					}
+				} else {
+					// Save failed, notify the user with a flash
+					new ContentTools.FlashUI('no');
+				}
+			}
+		};
+
+		xhr = new XMLHttpRequest();
+		xhr.addEventListener('readystatechange', onStateChange);
+		xhr.open('POST', '/x/save-page');
+		xhr.setRequestHeader('X-CSRF-TOKEN', getCookie('XSRF-TOKEN'));
+		xhr.send(payload);
 	});
 </script>

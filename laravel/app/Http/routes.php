@@ -24,6 +24,9 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
+// ContentTools save
+Route::post('x/save-page', 'ContentToolsController@savePage');
+
 // API
 Route::group(array('prefix' => 'api/v1'), function() {
 
