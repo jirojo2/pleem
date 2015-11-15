@@ -100,14 +100,14 @@ class AuthController extends Controller
 
         if ($request->ajax()) {
             return response()->json([
-                'email' => 'login failed',
+                'email' => 'Login failed',
             ], 401);
         }
         else {
             return redirect($this->loginPath())
                 ->withInput($request->only($this->loginUsername(), 'remember'))
                 ->withErrors([
-                    'email' => 'login failed',
+                    'email' => 'Login failed',
                 ]);
         }
     }
@@ -123,7 +123,7 @@ class AuthController extends Controller
         Auth::logout();
 
         if ($request->ajax()) {
-            return response()->json([ "msg" => "logout ok" ]);
+            return response()->json([ "msg" => "Logout ok" ]);
         }
 
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
