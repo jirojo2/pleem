@@ -31,14 +31,20 @@
                         <a ui-sref="home" class="item">Contact</a>
                         <div class="item" ng-show="!loggedin">
                             <a ui-sref="login" class="ui green button">
-                                <i class="user icon"></i>Log in
+                                <i class="user icon"></i> Log in
                             </a>
                         </div>
-                        <div class="item" ng-show="loggedin" ng-click="logout()">
-                            <a ui-sref="login" class="ui green button">
-                                <i class="user icon"></i>Log out
-                            </a>
-                        </div>
+                        <div class="ui dropdown item" ng-show="loggedin">
+							Account <i class="dropdown icon"></i>
+							<div class="menu">
+								<a class="item" ui-sref="authed.team">
+									<i class="users icon"></i> My Team
+								</a>
+								<a class="item" ng-click="logout()" ui-sref="login">
+									<i class="log out icon"></i> Log out
+								</a>
+							</div>
+						</div>
                     </div>
                 </div>
                 <div class="ui mobile only row">
@@ -51,11 +57,17 @@
                                 <i class="user icon"></i>
                             </a>
                         </div>
-                        <div class="item" ng-show="loggedin" ng-click="logout()">
-                            <a ui-sref="login" class="ui green button">
-                                <i class="user icon"></i>
-                            </a>
-                        </div>
+                        <div class="ui dropdown item" ng-show="loggedin">
+							Account <i class="dropdown icon"></i>
+							<div class="menu">
+								<a class="item" ui-sref="authed.team">
+									<i class="users icon"></i> My Team
+								</a>
+								<a class="item" ng-click="logout()" ui-sref="login">
+									<i class="log out icon"></i> Log out
+								</a>
+							</div>
+						</div>
                         <a class="toggle item">
                             <i class="green sidebar icon"></i>
                         </a>
