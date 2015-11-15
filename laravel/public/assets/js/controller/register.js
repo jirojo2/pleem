@@ -7,6 +7,8 @@ angular.module('ecaApp')
 
     $scope.name = '';
     $scope.submitted = false;
+    $scope.submitted2 = false;
+    $scope.submitted3 = false;
 
     $scope.member1 = {
         first_name: '',
@@ -41,8 +43,6 @@ angular.module('ecaApp')
     var myEl1 = angular.element( document.querySelector( '.member2' ) );
     var myEl2 = angular.element( document.querySelector( '.member3' ) );
 
-    $scope.members = [];
-
     $scope.addMember = function() {
         $scope.members.push({});
     }
@@ -52,12 +52,21 @@ angular.module('ecaApp')
     }
 
     $scope.signup = function() {
+        $scope.members = [];
         $scope.submitted = true;
-        if((!myEl1.hasClass('dimmed'))&&($scope.member2Form.$valid)){
-            $scope.members.push($scope.member2)
+        if(!myEl1.hasClass('dimmed')) {
+            if ($scope.member2Form.$valid){
+                $scope.members.push($scope.member2)
+            } else {
+                $scope.submitted2 = true;
+            }
         }
-        if((!myEl2.hasClass('dimmed'))&&($scope.member3Form.$valid)){
-            $scope.members.push($scope.member3)
+        if(!myEl2.hasClass('dimmed')) {
+            if ($scope.member3Form.$valid){
+                $scope.members.push($scope.member3)
+            } else {
+                $scope.submitted3 = true;
+            }
         }
         if (($scope.nameForm.$valid)||($scope.member1Form.$valid)){
             $scope.members.push($scope.member1)
@@ -65,7 +74,7 @@ angular.module('ecaApp')
             group.members = $scope.members;
             group.$save()
                 .then(function ok(response) {
-                    $state.go('team');
+                    $state.go('authed.team');
                 }, function err(response) {
                     // TODO: parse validator response
                     console.log(response)

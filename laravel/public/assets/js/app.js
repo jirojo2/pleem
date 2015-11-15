@@ -62,7 +62,7 @@ angular.module('ecaApp', [
                 templateUrl: 'templates/authed.layout.html',
                 onEnter: requireAuth
             })
-            .state('team', {
+            .state('authed.team', {
                 url: '/team',
                 templateUrl: 'templates/team.html',
 				onEnter: requireAuth
