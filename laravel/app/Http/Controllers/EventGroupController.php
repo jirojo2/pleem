@@ -71,7 +71,7 @@ class EventGroupController extends Controller
             if ($qm->exists()) {
                 // Check password
                 if (!Auth::once(['email' => $m['email'], 'password' => $m['password']])) {
-                    return request()->json([
+                    return response()->json([
                             "msg" => "User already exists, and password is incorrect",
                             "offender" => $m['email']
                         ], 400);
