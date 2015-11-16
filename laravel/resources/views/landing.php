@@ -142,6 +142,7 @@
         <script src="assets/js/controller/login.js"></script>
         <script src="assets/js/controller/register.js"></script>
         <script src="assets/js/controller/header.js"></script>
+        <script src="assets/js/controller/team.js"></script>
         <script src="assets/js/services/user.js"></script>
         <script src="assets/js/services/api.js"></script>
         <script src="assets/lib/content-tools/content-tools.min.js"></script>

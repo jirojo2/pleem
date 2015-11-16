@@ -31,7 +31,7 @@ angular.module('ecaApp', [
                 User.checkAuth().then(
                     function authed() {
                         //return to profile page
-                        $state.go('authed.team');
+                        //$state.go('authed.team');
                     },
                     function notAuthed() {
                         // ok!
