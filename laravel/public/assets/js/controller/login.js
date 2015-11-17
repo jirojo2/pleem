@@ -10,9 +10,11 @@ angular.module('ecaApp')
 	        User.login($scope.email, $scope.password, true)
 	            .then(function ok(user) {
 					$rootScope.loggedin = true;
+					$rootScope.group = user.groups[0].id;
 	                $state.go('authed.team');
 	            }, function err(msg) {
-	                $scope.error = msg.data;
+					console.log(msg.data);
+	                $scope.error = msg.data.email;
 	            })
 		}
     };

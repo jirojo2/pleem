@@ -1,1 +1,23 @@
-<h1>This will be the team page.</h1>
+<div class="ui three stackable cards" ng-controller="teamController">
+    <div class="ui green fluid card" ng-repeat="member in team.members">
+        <div class="image">
+            <img ng-src="assets/images/{{member.sex}}.jpg">
+        </div>
+        <div class="content">
+            <div class="header">{{member.first_name}} {{member.last_name}}</div>
+            <div class="meta">
+                <a href="mailto:matt.giampietro@gmail.com">{{member.email}}</a>
+            </div>
+        </div>
+        <div class="extra content">
+            <span class="right floated">
+                {{member.birthdate}}
+            </span>
+            <span>
+                <i class="user icon"></i>
+                <span ng-show="member.sex=='m'">Male</span>
+                <span ng-show="member.sex=='f'">Female</span>
+            </span>
+        </div>
+    </div>
+</div>

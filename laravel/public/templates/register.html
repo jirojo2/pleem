@@ -237,6 +237,13 @@
 		</div>
 	</div>
 	<div class="ui three column centered grid">
+		<div class="ui negative message" ng-show="error.length">
+			<div class="header">
+				{{error}}
+			</div>
+		</div>
+	</div>
+	<div class="ui three column centered grid">
 		<div class="column header center aligned">
 			<div class="ui horizontal divider">Or</div>
 			<a ui-sref="login">

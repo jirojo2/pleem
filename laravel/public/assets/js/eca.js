@@ -31,6 +31,8 @@ function getCookie(cname) {
 		$('.bottom.buttons > .button').on('click', function() {
 			$(this).parents('.segment').dimmer('show');
 		});
+
+		$('.ui.dropdown').dropdown();
 	});
 
 })(jQuery)

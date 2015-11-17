@@ -24,21 +24,27 @@
                     </a>
                     <div class="right small menu">
                         <a ui-sref="home" class="item">Home</a>
-                        <a ui-sref="home" class="item">About</a>
-                        <a ui-sref="home" class="item">Rules</a>
-                        <a ui-sref="home" class="item">Prizes</a>
-                        <a ui-sref="home" class="item">People</a>
-                        <a ui-sref="home" class="item">Contact</a>
+                        <a ng-click="scrollTo('about')" class="item">About</a>
+                        <a ng-click="scrollTo('rules')" class="item">Rules</a>
+                        <a ng-click="scrollTo('prizes')" class="item">Prizes</a>
+                        <a ng-click="scrollTo('people')" class="item">People</a>
+                        <a ng-click="scrollTo('contact')" class="item">Contact</a>
                         <div class="item" ng-show="!loggedin">
                             <a ui-sref="login" class="ui green button">
-                                <i class="user icon"></i>Log in
+                                <i class="user icon"></i> Log in
                             </a>
                         </div>
-                        <div class="item" ng-show="loggedin" ng-click="logout()">
-                            <a ui-sref="login" class="ui green button">
-                                <i class="user icon"></i>Log out
-                            </a>
-                        </div>
+                        <div class="ui dropdown item" ng-show="loggedin">
+							Account <i class="dropdown icon"></i>
+							<div class="menu">
+								<a class="item" ui-sref="authed.team">
+									<i class="users icon"></i> My Team
+								</a>
+								<a class="item" ng-click="logout()" ui-sref="login">
+									<i class="log out icon"></i> Log out
+								</a>
+							</div>
+						</div>
                     </div>
                 </div>
                 <div class="ui mobile only row">
@@ -51,22 +57,28 @@
                                 <i class="user icon"></i>
                             </a>
                         </div>
-                        <div class="item" ng-show="loggedin" ng-click="logout()">
-                            <a ui-sref="login" class="ui green button">
-                                <i class="user icon"></i>
-                            </a>
-                        </div>
+                        <div class="ui dropdown item" ng-show="loggedin">
+							Account <i class="dropdown icon"></i>
+							<div class="menu">
+								<a class="item" ui-sref="authed.team">
+									<i class="users icon"></i> My Team
+								</a>
+								<a class="item" ng-click="logout()" ui-sref="login">
+									<i class="log out icon"></i> Log out
+								</a>
+							</div>
+						</div>
                         <a class="toggle item">
                             <i class="green sidebar icon"></i>
                         </a>
                     </div>
                     <div class="ui inverted green vertical navbar menu hidden fluid">
                         <a ui-sref="home" class="item">Home</a>
-                        <a ui-sref="home" class="item">About</a>
-                        <a ui-sref="home" class="item">Rules</a>
-                        <a ui-sref="home" class="item">Prizes</a>
-                        <a ui-sref="home" class="item">People</a>
-                        <a ui-sref="home" class="item">Contact</a>
+                        <a ng-click="scrollTo('about')" class="item">About</a>
+                        <a ng-click="scrollTo('rules')" class="item">Rules</a>
+                        <a ng-click="scrollTo('prizes')" class="item">Prizes</a>
+                        <a ng-click="scrollTo('people')" class="item">People</a>
+                        <a ng-click="scrollTo('contact')" class="item">Contact</a>
                     </div>
                 </div>
             </div>
@@ -130,6 +142,7 @@
         <script src="assets/js/controller/login.js"></script>
         <script src="assets/js/controller/register.js"></script>
         <script src="assets/js/controller/header.js"></script>
+        <script src="assets/js/controller/team.js"></script>
         <script src="assets/js/services/user.js"></script>
         <script src="assets/js/services/api.js"></script>
         <script src="assets/lib/content-tools/content-tools.min.js"></script>
