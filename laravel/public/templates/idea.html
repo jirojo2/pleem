@@ -1,13 +1,19 @@
-<div class="ui container row">
-	<form class="ui form">
+<div class="ui container row" ng-controller="ideaController">
+	<form class="ui form" name="ideaForm">
 		<div class="field">
 			<label for="idea">Idea</label>
-			<input type="text" name="idea" id="idea" placeholder="Your idea">
+			<input type="text" name="idea" id="idea" placeholder="Your idea" ng-model="idea" required>
+			<div class="ui pointing red basic label" ng-show="(ideaForm.idea.$dirty || submitted)  && ideaForm.idea.$error.required">
+				Idea is required!
+			</div>
 		</div>
 		<div class="field">
 			<label for="idea-description">Idea description</label>
-			<textarea name="idea-description" id="idea-description" placeholder="Your idea description"></textarea>
+			<textarea name="ideadescription" id="ideadescription" placeholder="Your idea description" ng-model="ideadescription" required></textarea>
+			<div class="ui pointing red basic label" ng-show="(ideaForm.ideadescription.$dirty || submitted)  && ideaForm.ideadescription.$error.required">
+				Idea description is required!
+			</div>
 		</div>
-		<button class="ui green button" type="submit">Submit</button>
+		<button class="ui green button" ng-click="submitIdea()">Submit</button>
 	</form>
 </div>

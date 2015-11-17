@@ -8,7 +8,6 @@ angular.module('ecaApp')
                 console.log($scope.team);
                 $rootScope.teamName = $scope.team.name;
             });
-            // console.log($scope.team);
         });
     }
 ])
