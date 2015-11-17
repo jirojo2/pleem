@@ -66,6 +66,11 @@ angular.module('ecaApp', [
                 url: '/team',
                 templateUrl: 'templates/team.html',
 				onEnter: requireAuth
+            })
+            .state('authed.idea', {
+                url: '/idea',
+                templateUrl: 'templates/idea.html',
+				onEnter: requireAuth
             });
     }
 ])
