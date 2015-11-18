@@ -45,7 +45,7 @@ class IdeaController extends Controller
         ]);
 
         $idea = new Idea($request->only('name', 'description'));
-        $idea = $idea->save();
+        $idea = Auth::user()->group->idea()->save($idea);
 
         return response()->json($idea);
     }
