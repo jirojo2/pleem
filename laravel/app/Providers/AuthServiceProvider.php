@@ -84,5 +84,22 @@ class AuthServiceProvider extends ServiceProvider
             // check if user's member is a jury for that event
             return true;
         });
+
+        // Idea related abilities
+        $gate->define('list-ideas', function($user) {
+            return true;
+        });
+        $gate->define('create-idea', function($user) {
+            return true;
+        });
+        $gate->define('view-idea', function($user, $idea) {
+            return $idea->group->members->contains($user);
+        });
+        $gate->define('edit-idea', function($user, $idea) {
+            return $idea->group->members->contains($user);
+        });
+        $gate->define('destroy-idea', function($user, $idea) {
+            return $idea->group->members->contains($user);
+        });
     }
 }
