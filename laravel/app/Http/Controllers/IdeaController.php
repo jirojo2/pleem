@@ -40,7 +40,7 @@ class IdeaController extends Controller
         }
 
         $this->validate($request, [
-            'name' => 'required|unique|max:255',
+            'name' => 'required|unique:ideas|max:255',
             'description' => 'required',
         ]);
 
@@ -83,7 +83,7 @@ class IdeaController extends Controller
         }
 
         $this->validate($request, [
-            'name' => 'required|unique|max:255',
+            'name' => 'required|unique:ideas|max:255',
             'description' => 'required',
         ]);
 
