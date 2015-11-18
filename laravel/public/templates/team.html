@@ -14,7 +14,8 @@
                 {{member.birthdate}}
             </span>
             <span>
-                <i class="user icon"></i>
+                <span ng-show="member.sex=='m'"><i class="man icon"></i></span>
+                <span ng-show="member.sex=='f'"><i class="woman icon"></i></span>
                 <span ng-show="member.sex=='m'">Male</span>
                 <span ng-show="member.sex=='f'">Female</span>
             </span>
