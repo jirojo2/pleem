@@ -1,5 +1,5 @@
 angular.module('ecaApp')
-.controller ('registerController', ['$scope', '$state', 'User', 'API', function($scope, $state, User, API){
+.controller ('registerController', ['$scope', '$state', '$http', 'User', 'API', function($scope, $state, $http, User, API){
 
     $scope.config = {
         maxTeamMembers: 3
@@ -9,12 +9,14 @@ angular.module('ecaApp')
     $scope.submitted = false;
     $scope.submitted2 = false;
     $scope.submitted3 = false;
+    $scope.countries = [];
 
     $scope.member1 = {
         first_name: '',
         last_name: '',
         birthdate: '',
         sex:'',
+        country: '',
         email: '',
         password: '',
         password_confirmation: ''
@@ -39,6 +41,14 @@ angular.module('ecaApp')
         password: '',
         password_confirmation: ''
     }
+
+    $http.get('https://restcountries-v1.p.mashape.com/region/europe', {headers: {
+        'X-Mashape-Key': 'yhNwA5NusOmshGvY4U4Q0WBGXQS4p17AkD7jsnzl6zSzE44h5w',
+        'Accept': 'application/json'
+    }}).then(function(response) {
+        $scope.countries = response.data;
+    });
+
 
     var myEl1 = angular.element( document.querySelector( '.member2' ) );
     var myEl2 = angular.element( document.querySelector( '.member3' ) );
