@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Gate;
 use Illuminate\Http\Request;
 
