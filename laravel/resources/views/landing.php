@@ -134,6 +134,7 @@
         </div>
 
         <script src="assets/lib/jquery-2.1.4.min.js"></script>
+        <script src="assets/lib/jquery-observe.js"></script>
         <script src="semantic/dist/semantic.min.js"></script>
         <script src="assets/lib/angular.min.js"></script>
         <script src="assets/lib/angular-resource.js"></script>

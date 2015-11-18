@@ -117,7 +117,8 @@
 							</div>
 							<div class="field">
 								<label>Gender</label>
-		    					<select name="gender" placeholder="Gender" required ng-model="member1.sex">
+		    					<select name="gender" required ng-model="member1.sex">
+									<option value="">Select Gender</option>
 									<option value='m'>Male</option>
 									<option value='f'>Female</option>
 								</select>
@@ -147,6 +148,19 @@
 		    					<input type="password" name="password_confirmation" placeholder="Confirm Password" required ng-model="member1.password_confirmation">
 								<div class="ui pointing red basic label" ng-show="(member1Form.password_confirmation.$dirty || submitted)  && member1Form.password_confirmation.$error.required">
 							    	Password confirmation is required!
+							    </div>
+							</div>
+							<div class="field">
+								<label>CV</label>
+								<div class="ui action input">
+							        <input type="text" readonly id="_attachmentName">
+							        <label for="attachmentName" class="ui icon button btn-file">
+							             <i class="attach icon"></i>
+							             <input type="file" id="attachmentName" name="cv" ng-model="cv" style="display: none">
+							        </label>
+							    </div>
+								<div class="ui pointing red basic label" ng-show="(member1Form.cv.$dirty || submitted) && member1Form.cv.$error.required">
+							    	CV is required!
 							    </div>
 							</div>
 						</form>
