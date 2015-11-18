@@ -1,0 +1,14 @@
+<section class="ui stackable content main grid container">
+    <h1 class="ui header aligned center sixteen wide column">Admin Panel</h1>
+
+    <div class="four wide column">
+        <div class="ui inverted green vertical fluid menu">
+            <a ui-sref="admin.dashboard" ui-sref-active="active" class="item"><i class="dashboard icon"></i>Dashboard</a>
+            <a ui-sref="admin.config" ui-sref-active="active" class="item"><i class="configure icon"></i>Config</a>
+        </div>
+    </div>
+
+    <div class="twelve wide column">
+        <ui-view></ui-view>
+    </div>
+</section>

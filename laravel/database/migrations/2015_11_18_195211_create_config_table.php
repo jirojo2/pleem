@@ -13,7 +13,9 @@ class CreateConfigTable extends Migration
     public function up()
     {
         Schema::create('config', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('registration_enabled');
+            $table->dateTime('countdown');
             $table->timestamps();
         });
     }

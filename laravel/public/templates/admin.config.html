@@ -1,0 +1,16 @@
+<div class="ui container" ng-controller="AdminConfigController">
+    <div class="ui icon message">
+        <i class="inbox icon"></i>
+        <div class="content">
+            <div class="ui toggle checkbox">
+                <input type="checkbox" name="registration_enabled" id="registration_enabled" ng-model="config.registration_enabled">
+                <label for="registration_enabled">
+                    Registration enabled
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="extra content">
+        <button class="ui green button" ng-click="config.$save()">Save</button>
+    </div>
+</div>

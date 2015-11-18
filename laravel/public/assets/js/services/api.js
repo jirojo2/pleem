@@ -13,6 +13,14 @@ angular.module('ecaApp')
                     'remove': { method:'DELETE' },
                     'delete': { method:'DELETE' }
                 }
+            ),
+            Config: $resource('/api/v1/config',
+                {
+                },
+                {
+                    'get':  { method:'GET' },
+                    'save': { method:'POST'}
+                }
             )
         }
     }

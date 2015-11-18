@@ -10,6 +10,7 @@ use Validator;
 use App\Event;
 use App\Group;
 use App\Member;
+use App\Config;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -52,7 +53,7 @@ class GroupController extends Controller
             $v->sometimes("members.$n.birthdate", 'required|date', function($input) use($n) { return count($input->members >= $n); });
             $v->sometimes("members.$n.sex", 'required|in:m,f', function($input) use($n) { return count($input->members >= $n); });
             $v->sometimes("members.$n.country", 'required', function($input) use($n) { return count($input->members >= $n); });
-            $v->sometimes("members.$n.cv", 'required|mimes:pdf', function($input) use($n) { return count($input->members >= $n); });
+            //$v->sometimes("members.$n.cv", 'required|mimes:pdf', function($input) use($n) { return count($input->members >= $n); });
         }
 
         $v->after(function($validator) use ($request) {
@@ -91,9 +92,9 @@ class GroupController extends Controller
                 $qm = $group->save($qm);
 
                 // Handle cv PDF
-                if ($m['cv']->isValid()) {
-                    $m['cv']->move(storage_path('app/cvs'), $qm->id.'.pdf');
-                }
+                //if ($m['cv']->isValid()) {
+                //    $m['cv']->move(storage_path('app/cvs'), $qm->id.'.pdf');
+                //}
             }
         }
 

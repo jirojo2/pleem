@@ -39,7 +39,12 @@ class IdeaController extends Controller
             abort(403);
         }
 
-        $idea = new Idea($request->only('name', 'description', 'modules', 'platform'));
+        $this->validate($request, [
+            'name' => 'required|unique|max:255',
+            'description' => 'required',
+        ]);
+
+        $idea = new Idea($request->only('name', 'description'));
         $idea = $idea->save();
     }
 
@@ -75,10 +80,13 @@ class IdeaController extends Controller
             abort(403);
         }
 
+        $this->validate($request, [
+            'name' => 'required|unique|max:255',
+            'description' => 'required',
+        ]);
+
         $idea->name = $request->name;
         $idea->description = $request->description;
-        $idea->modules = $request->modules;
-        $idea->platform = $request->platform;
         $idea->save();
 
         return response()->json($idea);

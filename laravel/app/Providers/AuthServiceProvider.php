@@ -73,11 +73,33 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             return $member->group->id == $user->group->id;
         });
+        $gate->define('upload-cv', function($user, $member) {
+            if ($user->admin)
+                return true;
+            return $member->group->id == $user->group->id;
+        });
 
         // Group Score related abilities
         $gate->define('group-private-scores', function($user, $group) {
             // check if user's member is a jury for that event
             return true;
+        });
+
+        // Idea related abilities
+        $gate->define('list-ideas', function($user) {
+            return true;
+        });
+        $gate->define('create-idea', function($user) {
+            return true;
+        });
+        $gate->define('view-idea', function($user, $idea) {
+            return $idea->group->members->contains($user);
+        });
+        $gate->define('edit-idea', function($user, $idea) {
+            return $idea->group->members->contains($user);
+        });
+        $gate->define('destroy-idea', function($user, $idea) {
+            return $idea->group->members->contains($user);
         });
     }
 }

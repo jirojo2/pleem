@@ -22,9 +22,7 @@ class ConfigController extends Controller
             abort(403);
         }
 
-        $config = Config::firstOrCreate([
-            'registration_enabled' => true
-        ]);
+        $config = Config::first();
 
         return response()->json($config);
     }
