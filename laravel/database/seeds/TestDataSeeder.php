@@ -16,6 +16,7 @@ class TestDataSeeder extends Seeder
         DB::table('members')->delete();
         DB::table('scores')->delete();
         DB::table('ideas')->delete();
+        DB::table('config')->delete();
 
         // insert test data
         DB::table('groups')->insert(
@@ -43,5 +44,10 @@ class TestDataSeeder extends Seeder
                 [ 'id' => 8, 'country' => 'es', 'sex' => 'm', 'first_name' => str_random(10), 'last_name' => str_random(10), 'birthdate' => date('Y-m-d H:i:s', rand(315532800, 788918400)), 'created_at' => new DateTime, 'email' => str_random(10).'@test.pleem.local', 'password' => bcrypt('secret'), 'admin' => false, 'judge' => false, 'group_id' => 3 ],
             )
         );
+
+        // Config
+        DB::table('config')->insert([
+            'registration_enabled' => true
+        ]);
     }
 }

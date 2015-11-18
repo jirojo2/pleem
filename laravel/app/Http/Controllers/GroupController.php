@@ -34,6 +34,11 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
+        // Check config if registration is enabled
+        if (!Config::first()->registration_enabled) {
+            return response()->json(["msg" => "registrations are disabled"], 403);
+        }
+
         $v = Validator::make($request->all(), [
             'name' => 'required|max:255|unique:groups',
             'members' => 'required|array',
