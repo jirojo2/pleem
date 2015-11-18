@@ -1,21 +1,13 @@
-<div class="ui card" ng-controller="AdminConfigController">
-    <div class="content">
-        <div class="header">ECA5 Config</div>
-    </div>
-    <div class="content">
-        <div class="ui toggle checkbox">
-            <input type="checkbox" name="registration_enabled" id="registration_enabled" ng-model="config.registration_enabled">
-            <label for="registration_enabled">
-                Registration enabled
-            </label>
-        </div>
-        <br><br>
-        <div class="field">
-            <input type="datetime-local" name="countdown" id="countdown" ng-model="config.countdown">
-            <label for="countdown">
-                Countdown
-            </label>
-            <button class="ui green button" ng-click="countdown20sec()">In 20 seconds</button>
+<div class="ui container" ng-controller="AdminConfigController">
+    <div class="ui icon message">
+        <i class="inbox icon"></i>
+        <div class="content">
+            <div class="ui toggle checkbox">
+                <input type="checkbox" name="registration_enabled" id="registration_enabled" ng-model="config.registration_enabled">
+                <label for="registration_enabled">
+                    Registration enabled
+                </label>
+            </div>
         </div>
     </div>
     <div class="extra content">
