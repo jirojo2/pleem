@@ -51,4 +51,7 @@ Route::group(array('prefix' => 'api/v1'), function() {
     Route::resource('group.score', 'GroupScoreController',
                     ['only' => ['index', 'show', 'store', 'destroy']]);
 
+    Route::resource('config', 'ConfigController',
+                    ['only' => ['index', 'store']]);
+
 });

@@ -37,6 +37,14 @@ class AuthServiceProvider extends ServiceProvider
             return $user->admin;
         });
 
+        // Config
+        $gate->define('view-config', function($user) {
+            return $user->admin;
+        });
+        $gate->define('set-config', function($user) {
+            return $user->admin;
+        });
+
         // Event group related abilities
         $gate->define('create-group', function($user) {
             return true;

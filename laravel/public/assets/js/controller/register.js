@@ -17,6 +17,7 @@ angular.module('ecaApp')
         birthdate: '',
         sex:'',
         country: '',
+        cv: '',
         email: '',
         password: '',
         password_confirmation: ''
@@ -55,6 +56,10 @@ angular.module('ecaApp')
 
     $scope.addMember = function() {
         $scope.members.push({});
+    }
+
+    $scope.checkDirty = function() {
+        console.log('Changed');
     }
 
     $scope.removeMember = function(member) {
