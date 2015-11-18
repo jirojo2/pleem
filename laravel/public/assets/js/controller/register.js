@@ -16,7 +16,7 @@ angular.module('ecaApp')
         last_name: '',
         birthdate: '',
         sex:'',
-        country: '',
+        country: "",
         cv: '',
         email: '',
         password: '',
