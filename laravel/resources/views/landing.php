@@ -34,7 +34,7 @@
                                 <i class="user icon"></i> Log in
                             </a>
                         </div>
-                        <div class="ui dropdown item" ng-show="loggedin">
+                        <div ui-sref-active="active" class="ui dropdown item" ng-show="loggedin">
 							Account <i class="dropdown icon"></i>
 							<div class="menu">
 								<a class="item" ui-sref="authed.team">
@@ -145,6 +145,7 @@
         <script src="assets/js/controller/header.js"></script>
         <script src="assets/js/controller/team.js"></script>
         <script src="assets/js/controller/idea.js"></script>
+        <script src="assets/js/controller/admin.js"></script>
         <script src="assets/js/services/user.js"></script>
         <script src="assets/js/services/api.js"></script>
         <script src="assets/lib/content-tools/content-tools.min.js"></script>

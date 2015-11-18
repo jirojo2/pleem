@@ -40,6 +40,26 @@ angular.module('ecaApp', [
             }
         ];
 
+        var requireAdmin = ['$stateParams', '$state', 'User',
+            function($stateParams, $state, User) {
+                User.checkAuth().then(
+                    function authed() {
+                        if (!User.user().admin) {
+                            //return to home page
+                            $state.go('home');
+                        }
+                        else {
+                            // ok!
+                        }
+                    },
+                    function notAuthed() {
+                        //return to signin page
+                        $state.go('login');
+                    }
+                )
+            }
+        ];
+
         // router
         $stateProvider
 			.state('home', {
@@ -71,6 +91,21 @@ angular.module('ecaApp', [
                 url: '/idea',
                 templateUrl: 'templates/idea.html',
 				onEnter: requireAuth
+            })
+            .state('admin', {
+                abstract: true,
+                templateUrl: 'templates/admin.layout.html',
+                onEnter: requireAdmin
+            })
+            .state('admin.config', {
+                url: '/admin/config',
+                templateUrl: 'templates/admin.config.html',
+                onEnter: requireAdmin
+            })
+            .state('admin.dashboard', {
+                url: '/admin',
+                templateUrl: 'templates/admin.dashboard.html',
+                onEnter: requireAdmin
             });
     }
 ])

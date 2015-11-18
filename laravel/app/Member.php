@@ -21,6 +21,11 @@ class Member extends Model implements AuthenticatableContract,
     protected $fillable = ['first_name', 'last_name', 'birthdate', 'email', 'password', 'country'];
     protected $hidden = ['password', 'remember_token'];
 
+    protected $casts = [
+        'admin' => 'boolean',
+        'judge' => 'boolean',
+    ];
+
     /**
      * Get the groups where this member participates.
      */
