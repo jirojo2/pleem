@@ -24,10 +24,18 @@ function getCookie(cname) {
 			$menuToggle.trigger('click');
 		});
 
+		// Enable dropdown
 		$('.ui.dropdown').dropdown();
 
 		$('body').observe('added', '.ui.dropdown', function() {
 			$('.ui.dropdown').dropdown();
+		});
+
+		// Enable accordions
+		$('.ui.accordion').accordion();
+
+		$('body').observe('added', '.ui.accordion', function() {
+			$('.ui.accordion').accordion();
 		});
 
 		$('body').on('click', '#people .menu a.item', function() {
@@ -38,6 +46,12 @@ function getCookie(cname) {
 
 			$(this).addClass('active');
 			$(this).siblings().removeClass('active');
+		});
+
+		// Enable modal toggle
+		$('body').on('click', '[data-modal]', function() {
+			var modal = $(this).attr('data-modal');
+			$(modal).modal('show');
 		});
 
 	});
