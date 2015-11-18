@@ -30,6 +30,16 @@ function getCookie(cname) {
 			$('.ui.dropdown').dropdown();
 		});
 
+		$('body').on('click', '#people .menu a.item', function() {
+			var target = $(this).attr('data-target');
+
+			$('.ui.people.container').addClass('hidden');
+			$(target).removeClass('hidden');
+
+			$(this).addClass('active');
+			$(this).siblings().removeClass('active');
+		});
+
 	});
 
 })(jQuery)
