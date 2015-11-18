@@ -89,6 +89,19 @@
 							    	Password confirmation is required!
 							    </div>
 							</div>
+							<div class="field">
+								<label>CV</label>
+								<div class="ui action input">
+							        <input type="text" readonly id="_cv2">
+							        <label for="attachmentName" class="ui icon button btn-file">
+							             <i class="attach icon"></i>
+							             <input type="file" id="cv2" name="cv2" ng-model="member2.cv" style="display: none">
+							        </label>
+							    </div>
+								<div class="ui pointing red basic label" ng-show="(member2Form.cv2.$dirty || submitted) && member2Form.cv2.$error.required">
+							    	CV is required!
+							    </div>
+							</div>
 						</form>
 					</div>
 				</div>
@@ -176,10 +189,10 @@
 							        <input type="text" readonly class="_cv1">
 							        <label for="cv1" class="ui icon button btn-file">
 							             <i class="attach icon"></i>
-							             <input type="file" id="cv1" name="cv1" ng-model="cv" style="display: none">
+							             <input type="file" id="cv1" name="cv1" ng-model="member1.cv" style="display: none">
 							        </label>
 							    </div>
-								<div class="ui pointing red basic label" ng-show="(member1Form.cv.$dirty || submitted) && member1Form.cv.$error.required">
+								<div class="ui pointing red basic label" ng-show="(member1Form.cv1.$dirty || submitted) && member1Form.cv1.$error.required">
 							    	CV is required!
 							    </div>
 							</div>
@@ -266,6 +279,19 @@
 		    					<input type="password" name="password_confirmation" placeholder="Confirm Password" required ng-model="member3.password_confirmation">
 								<div class="ui pointing red basic label" ng-show="(member3Form.password_confirmation.$dirty || submitted3)  && member3Form.password_confirmation.$error.required">
 							    	Password confirmation is required!
+							    </div>
+							</div>
+							<div class="field">
+								<label>CV</label>
+								<div class="ui action input">
+							        <input type="text" readonly id="_cv3">
+							        <label for="attachmentName" class="ui icon button btn-file">
+							             <i class="attach icon"></i>
+							             <input type="file" id="cv3" name="cv3" ng-model="member3.cv" style="display: none">
+							        </label>
+							    </div>
+								<div class="ui pointing red basic label" ng-show="(member3Form.cv3.$dirty || submitted) && member3Form.cv3.$error.required">
+							    	CV is required!
 							    </div>
 							</div>
 						</form>
