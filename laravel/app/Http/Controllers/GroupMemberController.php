@@ -31,6 +31,11 @@ class GroupMemberController extends Controller
      */
     public function store(Request $request, $groupId)
     {
+        // Check config if registration is enabled
+        if (!Config::first()->registration_enabled) {
+            return response()->json(["msg" => "registrations are disabled"], 403);
+        }
+
         $group = Group::findOrFail($groupId);
 
         if (Gate::denies('attach-member', $group)) {
