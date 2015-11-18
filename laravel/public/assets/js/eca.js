@@ -24,6 +24,8 @@ function getCookie(cname) {
 			$menuToggle.trigger('click');
 		});
 
+		$('.ui.dropdown').dropdown();
+
 		$('body').observe('added', '.ui.dropdown', function() {
 			$('.ui.dropdown').dropdown();
 		});
