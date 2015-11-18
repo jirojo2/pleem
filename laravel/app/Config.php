@@ -8,5 +8,9 @@ class Config extends Model
 {
     protected $table = 'config';
 
-    protected $fillable = ['registration_enabled'];
+    protected $fillable = ['registration_enabled', 'countdown'];
+
+    protected $casts = [
+        'registration_enabled' => 'boolean',
+    ];
 }
