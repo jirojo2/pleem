@@ -1,16 +1,23 @@
 <div class="ui container row" ng-controller="ideaController">
+	<div  ng-show="idea!=null">
+		<h1 class="ui header aligned center sixteen wide column">Current idea</h1>
+		<div class="aligned center piled segment">
+			{{idea.name}}
+			{{idea.description}}
+		</div>
+	</div>
 	<form class="ui form" name="ideaForm">
 		<div class="field">
 			<label for="idea">Idea</label>
-			<input type="text" name="idea" id="idea" placeholder="Your idea" ng-model="idea" required>
-			<div class="ui pointing red basic label" ng-show="(ideaForm.idea.$dirty || submitted)  && ideaForm.idea.$error.required">
-				Idea is required!
+			<input type="text" name="name" id="idea" placeholder="Your idea" ng-model="name" required>
+			<div class="ui pointing red basic label" ng-show="(ideaForm.name.$dirty || submitted)  && ideaForm.name.$error.required">
+				Idea name is required!
 			</div>
 		</div>
 		<div class="field">
 			<label for="idea-description">Idea description</label>
-			<textarea name="ideadescription" id="ideadescription" placeholder="Your idea description" ng-model="ideadescription" required></textarea>
-			<div class="ui pointing red basic label" ng-show="(ideaForm.ideadescription.$dirty || submitted)  && ideaForm.ideadescription.$error.required">
+			<textarea name="description" id="description" placeholder="Your idea description" ng-model="description" required></textarea>
+			<div class="ui pointing red basic label" ng-show="(ideaForm.description.$dirty || submitted)  && ideaForm.description.$error.required">
 				Idea description is required!
 			</div>
 		</div>

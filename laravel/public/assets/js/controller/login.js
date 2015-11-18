@@ -13,7 +13,6 @@ angular.module('ecaApp')
 					$rootScope.group = user.group.id;
 	                $state.go('authed.team');
 	            }, function err(msg) {
-					console.log(msg.data);
 	                $scope.error = msg.data.email;
 	            })
 		}
