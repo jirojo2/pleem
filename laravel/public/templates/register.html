@@ -56,6 +56,16 @@
 							    </div>
 							</div>
 							<div class="field">
+								<label>Country</label>
+		    					<select name="country" placeholder="Country" required ng-model="member2.country">
+									<option selected value="">Select country</option>
+									<option ng-repeat="country in countries" value="{{country.alpha2Code}}">{{country.name}}</option>
+								</select>
+								<div class="ui pointing red basic label" ng-show="(member2Form.country.$dirty || submitted)  && member2Form.country.$error.required">
+							    	Country is required!
+							    </div>
+							</div>
+							<div class="field">
 								<label>Email</label>
 		    					<input type="email" name="email" placeholder="Email" required ng-model="member2.email">
 								<div class="ui pointing red basic label" ng-show="(member2Form.email.$dirty || submitted2)  && member2Form.email.$error.required">
@@ -129,8 +139,8 @@
 							<div class="field">
 								<label>Country</label>
 		    					<select name="country" placeholder="Country" required ng-model="member1.country">
-									<option value="">Select country</option>
-									<option ng-repeat="country in countries" value="{{country.alpha2code}}">{{country.name}}</option>
+									<option selected value="">Select country</option>
+									<option ng-repeat="country in countries" value="{{country.alpha2Code}}">{{country.name}}</option>
 								</select>
 								<div class="ui pointing red basic label" ng-show="(member1Form.country.$dirty || submitted)  && member1Form.country.$error.required">
 							    	Country is required!
@@ -222,6 +232,16 @@
 								</select>
 								<div class="ui pointing red basic label" ng-show="(member3Form.gender.$dirty || submitted3)  && member3Form.gender.$error.required">
 							    	Gender is required!
+							    </div>
+							</div>
+							<div class="field">
+								<label>Country</label>
+		    					<select name="country" placeholder="Country" required ng-model="member3.country">
+									<option selected value="">Select country</option>
+									<option ng-repeat="country in countries" value="{{country.alpha2Code}}">{{country.name}}</option>
+								</select>
+								<div class="ui pointing red basic label" ng-show="(member3Form.country.$dirty || submitted)  && member3Form.country.$error.required">
+							    	Country is required!
 							    </div>
 							</div>
 							<div class="field">
