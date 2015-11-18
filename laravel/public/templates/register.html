@@ -128,9 +128,9 @@
 							</div>
 							<div class="field">
 								<label>Country</label>
-		    					<select class="ui search dropdown" name="country" placeholder="Country" required ng-model="member1.country">
+		    					<select name="country" placeholder="Country" required ng-model="member1.country">
 									<option value="">Select country</option>
-									<option ng-repeat="country in countries" value='{{country.alpha2code}}'>{{country.name}}</option>
+									<option ng-repeat="country in countries" value="{{country.alpha2code}}">{{country.name}}</option>
 								</select>
 								<div class="ui pointing red basic label" ng-show="(member1Form.country.$dirty || submitted)  && member1Form.country.$error.required">
 							    	Country is required!

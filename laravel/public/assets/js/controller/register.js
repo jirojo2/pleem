@@ -115,4 +115,39 @@ angular.module('ecaApp')
     $('.bottom.buttons > .button').on('click', function() {
         $(this).parents('.segment').dimmer('show');
     });
+
+    // File input
+
+    var fileExtentionRange = '.pdf';
+    var MAX_SIZE = 30; // MB
+
+    $(document).on('change', '.btn-file :file', function() {
+        var input = $(this);
+
+        if (navigator.appVersion.indexOf("MSIE") != -1) { // IE
+            var label = input.val();
+            validateFile(label, 0);
+        } else {
+            var label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            var size = input.get(0).files[0].size;
+            validateFile(label, size);
+        }
+    });
+
+    function validateFile(l, s) {
+        var postfix = l.substr(l.lastIndexOf('.'));
+        if (fileExtentionRange.indexOf(postfix.toLowerCase()) > -1) {
+            if (s > 1024 * 1024 * MAX_SIZE ) {
+                alert('Max size for file is ' + MAX_SIZE);
+                $('.btn-file :file').val('');
+                $('#_attachmentName').val('');
+            } else {
+                $('#_attachmentName').val(l);
+            }
+        } else {
+            alert('File type must be ' + fileExtentionRange);
+            $('.btn-file :file').val('');
+            $('#_attachmentName').val('');
+        }
+    }
 }])
