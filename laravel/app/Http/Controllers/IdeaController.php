@@ -46,6 +46,8 @@ class IdeaController extends Controller
 
         $idea = new Idea($request->only('name', 'description'));
         $idea = $idea->save();
+
+        return response()->json($idea);
     }
 
     /**
