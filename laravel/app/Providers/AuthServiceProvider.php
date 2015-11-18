@@ -27,52 +27,30 @@ class AuthServiceProvider extends ServiceProvider
         parent::registerPolicies($gate);
 
         $gate->before(function ($user, $ability) {
-            if ($user->isSuperAdmin()) {
+            if ($user->admin) {
                 return true;
             }
         });
 
         // ContentTools
         $gate->define('save-page', function($user) {
-            return $user->isSuperAdmin();
-        });
-
-        // Event related abilities
-        $gate->define('create-event', function($user) {
-            return $user->isSuperAdmin();
-        });
-        $gate->define('edit-event', function($user, $event) {
-            return $user->roleForEvent($event) === App\Member::ROLE_ADMIN;
-        });
-        $gate->define('destroy-event', function($user, $event) {
-            return $user->roleForEvent($event) === App\Member::ROLE_ADMIN;
+            return $user->admin;
         });
 
         // Event group related abilities
-        $gate->define('create-group', function($user, $event) {
+        $gate->define('create-group', function($user) {
             return true;
         });
         $gate->define('edit-group', function($user, $group) {
-            return $user->roleForEvent($group->event) === App\Member::ROLE_ADMIN;
+            return $group->members->contains($user);
         });
         $gate->define('destroy-group', function($user, $group) {
-            return $user->roleForEvent($group->event) === App\Member::ROLE_ADMIN;
-        });
-
-        // LC related abilities
-        $gate->define('create-lc', function($user, $lc) {
-            return $user->isSuperAdmin();
-        });
-        $gate->define('edit-lc', function($user, $lc) {
-            return $user->isSuperAdmin();
-        });
-        $gate->define('destroy-lc', function($user, $lc) {
-            return $user->isSuperAdmin();
+            return $group->members->contains($user);
         });
 
         // Member related abilities
         $gate->define('attach-member', function($user, $group) {
-            return $group->members()->contains($user);
+            return $group->members->contains($user);
         });
         $gate->define('edit-member', function($user) {
             return true;
@@ -80,9 +58,16 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('destroy-member', function($user) {
             return true;
         });
+        $gate->define('view-cv', function($user, $member) {
+            if ($user->admin)
+                return true;
+            if ($user->judge)
+                return true;
+            return $member->group->id == $user->group->id;
+        });
 
         // Group Score related abilities
-        $gate->define('group-private-scores', function($user, $event, $group) {
+        $gate->define('group-private-scores', function($user, $group) {
             // check if user's member is a jury for that event
             return true;
         });

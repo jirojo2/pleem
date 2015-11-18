@@ -18,29 +18,14 @@ class Member extends Model implements AuthenticatableContract,
 
     protected $table = 'members';
 
-    protected $fillable = ['first_name', 'last_name', 'birthdate', 'email', 'password'];
+    protected $fillable = ['first_name', 'last_name', 'birthdate', 'email', 'password', 'country'];
     protected $hidden = ['password', 'remember_token'];
-
-    // Roles
-    const ROLE_APPLICANT   = 'applicant';
-    const ROLE_PARTICIPANT = 'participant';
-    const ROLE_JUDGE       = 'judge';
-    const ROLE_ORGANIZER   = 'organizer';
-    const ROLE_ADMIN       = 'admin';
 
     /**
      * Get the groups where this member participates.
      */
-    public function groups()
+    public function group()
     {
-        return $this->belongsToMany('App\Group', 'event_members')->withPivot('role');
-    }
-
-    /**
-     * Get the events where this member participates.
-     */
-    public function events()
-    {
-        return $this->belongsToMany('App\Event', 'event_members')->withPivot('role');
+        return $this->belongsTo('App\Group');
     }
 }

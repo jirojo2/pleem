@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsTable extends Migration
+class CreateIdeasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,18 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('ideas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('lc_id')->unsigned();
+            $table->integer('group_id')->unsigned();
+
             $table->string('name');
-            $table->dateTime('starts_at');
-            $table->dateTime('ends_at');
+            $table->string('description');
+            $table->string('modules');
+            $table->string('platform');
             $table->timestamps();
 
-            $table->foreign('lc_id')
-                ->references('id')->on('lcs')
+            $table->foreign('group_id')
+                ->references('id')->on('groups')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -34,6 +36,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('events');
+        Schema::drop('ideas');
     }
 }

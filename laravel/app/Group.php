@@ -11,19 +11,11 @@ class Group extends Model
     protected $fillable = ['name'];
 
     /**
-     * Get the event that owns the group.
-     */
-    public function event()
-    {
-        return $this->belongsTo(Event::class);
-    }
-
-    /**
      * Get the members that compose this group.
      */
     public function members()
     {
-        return $this->belongsToMany(Member::Class, 'event_members')->withPivot('role');
+        return $this->hasMany(Member::Class);
     }
 
     /**
@@ -32,5 +24,13 @@ class Group extends Model
     public function scores()
     {
         return $this->hasMany(Score::class);
+    }
+
+    /**
+     * Get the idea submited by this group.
+     */
+    public function idea()
+    {
+        return $this->hasOne(Idea::class);
     }
 }

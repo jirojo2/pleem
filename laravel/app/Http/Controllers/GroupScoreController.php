@@ -10,22 +10,20 @@ use App\Score;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class EventGroupScoreController extends Controller
+class GroupScoreController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @param  int  $eventId
      * @param  int  $groupId
      * @return Response
      */
-    public function index($eventId, $groupId)
+    public function index($groupId)
     {
-        $event = Event::findOrFail($eventId);
-        $group = $event->groups()->findOrFail($groupId);
+        $group = Group::findOrFail($groupId);
         $scores = $group->scores();
 
-        if (Gate::denies('group-private-scores', $event, $group)) {
+        if (Gate::denies('group-private-scores', $group)) {
             $scores = $scores->where('public', true)->get();
         }
         else {
@@ -39,14 +37,12 @@ class EventGroupScoreController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
-     * @param  int  $eventId
      * @param  int  $groupId
      * @return Response
      */
-    public function store(Request $request, $eventId, $groupId)
+    public function store(Request $request, $groupId)
     {
-        $event = Event::findOrFail($eventId);
-        $group = $event->groups()->findOrFail($groupId);
+        $group = Group::findOrFail($groupId);
 
         //@TODO: Validate we are a judge for this event
         //
@@ -65,7 +61,6 @@ class EventGroupScoreController extends Controller
 
         $score = new Score($request->all());
         $score->judge()->associate(1); // @TODO get judge's member id from $user
-        $score->event()->associate($eventId);
         $score->group()->associate($groupId);
         $score->save();
         return response()->json($score);
@@ -74,15 +69,14 @@ class EventGroupScoreController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $eventId
      * @param  int  $groupId
      * @param  int  $id
      * @return Response
      */
-    public function show($eventId, $groupId, $id)
+    public function show($groupId, $id)
     {
-        $score = Event::findOrFail($eventId)->groups()
-                    ->findOrFail($groupId)->scores()
+        $score = Group::findOrFail($groupId)
+                    ->scores()
                     ->findOrFail($id);
         return response()->json($score);
     }
@@ -91,12 +85,11 @@ class EventGroupScoreController extends Controller
      * Update the specified resource in storage.
      *
      * @param  Request  $request
-     * @param  int  $eventId
      * @param  int  $groupId
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $eventId, $groupId, $id)
+    public function update(Request $request, $groupId, $id)
     {
         //@TODO
     }
@@ -107,7 +100,7 @@ class EventGroupScoreController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($eventId, $groupId, $id)
+    public function destroy($groupId, $id)
     {
         $score = Score::findOrFail($id);
 

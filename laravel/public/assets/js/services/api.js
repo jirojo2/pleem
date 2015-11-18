@@ -2,9 +2,8 @@ angular.module('ecaApp')
 .factory('API', ['$q', '$resource', '$http',
     function($q, $resource, $http) {
         return {
-            Group: $resource('/api/v1/event/:eventId/group/:groupId',
+            Group: $resource('/api/v1/group/:groupId',
                 {
-                    'eventId': 1,
                     'groupId': '@id'
                 },
                 {

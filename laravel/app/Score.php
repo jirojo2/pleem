@@ -8,7 +8,7 @@ class Score extends Model
 {
     protected $table = 'scores';
 
-    protected $fillable = ['name', 'score'];
+    protected $fillable = ['name', 'score', 'feedback'];
 
     /**
      * Get the judge that issued this score.

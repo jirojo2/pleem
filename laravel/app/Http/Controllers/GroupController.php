@@ -13,16 +13,16 @@ use App\Member;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class EventGroupController extends Controller
+class GroupController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index($eventId)
+    public function index()
     {
-        $groups = Event::findOrFail($eventId)->groups;
+        $groups = Group::all();
         return response()->json($groups);
     }
 
@@ -32,10 +32,8 @@ class EventGroupController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request, $eventId)
+    public function store(Request $request)
     {
-        $event = Event::findOrFail($eventId);
-
         $v = Validator::make($request->all(), [
             'name' => 'required|max:255|unique:groups',
             'members' => 'required|array',
@@ -44,10 +42,12 @@ class EventGroupController extends Controller
         for ($n = 0; $n < count($request->members); $n++) {
             $v->sometimes("members.$n.email", 'required|email|max:255', function($input) use($n) { return count($input->members >= $n); });
             $v->sometimes("members.$n.password", 'required|confirmed|min:6', function($input) use($n) { return count($input->members >= $n); });
-            $v->sometimes("members.$n.first_name", 'max:255', function($input) use($n) { return count($input->members >= $n); });
-            $v->sometimes("members.$n.last_name", 'max:255', function($input) use($n) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.first_name", 'required|max:255', function($input) use($n) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.last_name", 'required|max:255', function($input) use($n) { return count($input->members >= $n); });
             $v->sometimes("members.$n.birthdate", 'required|date', function($input) use($n) { return count($input->members >= $n); });
             $v->sometimes("members.$n.sex", 'required|in:m,f', function($input) use($n) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.country", 'required', function($input) use($n) { return count($input->members >= $n); });
+            $v->sometimes("members.$n.cv", 'required|mimes:pdf', function($input) use($n) { return count($input->members >= $n); });
         }
 
         $v->after(function($validator) use ($request) {
@@ -74,7 +74,7 @@ class EventGroupController extends Controller
         }
 
         $group = new Group($request->only('name'));
-        $group = $event->groups()->save($group);
+        $group = $group->save();
 
         // create or register to the group all the members
         foreach ($request->members as $m) {
@@ -82,12 +82,14 @@ class EventGroupController extends Controller
             if (!$qm->exists()) {
                 $qm = new Member($m);
                 $qm->password = Hash::make($m['password']);
-                $qm->save();
+
+                $qm = $group->save($qm);
+
+                // Handle cv PDF
+                if ($m['cv']->isValid()) {
+                    $m['cv']->move(storage_path('app/cvs'), $qm->id.'.pdf');
+                }
             }
-            else {
-                $qm = $qm->first();
-            }
-            $qm->groups()->attach($group->id, ['event_id' => $eventId]);
         }
 
         return response()->json($group);
@@ -99,12 +101,11 @@ class EventGroupController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($eventId, $id)
+    public function show($id)
     {
-        $group = Event::findOrFail($eventId)
-                    ->groups()
-                    ->with('members')
+        $group = Group::with('members')
                     ->with('scores')
+                    ->with('idea')
                     ->findOrFail($id);
         return response()->json($group);
     }
@@ -116,10 +117,9 @@ class EventGroupController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $eventId, $id)
+    public function update(Request $request, $id)
     {
-        $event = Event::findOrFail($eventId);
-        $group = $event->groups()->findOrFail($id);
+        $group = Group::findOrFail($id);
 
         //
         //if (Gate::denies('edit-group', $event, $group)) {
@@ -142,10 +142,9 @@ class EventGroupController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($eventId, $id)
+    public function destroy($id)
     {
-        $event = Event::findOrFail($eventId);
-        $group = $event->groups()->findOrFail($id);
+        $group = Group::findOrFail($id);
 
         //
         //if (Gate::denies('destroy-group', $event, $group)) {
