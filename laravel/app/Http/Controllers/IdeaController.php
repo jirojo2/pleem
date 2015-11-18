@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Gate;
 use Illuminate\Http\Request;
 
@@ -40,12 +41,14 @@ class IdeaController extends Controller
         }
 
         $this->validate($request, [
-            'name' => 'required|unique|max:255',
+            'name' => 'required|unique:ideas|max:255',
             'description' => 'required',
         ]);
 
         $idea = new Idea($request->only('name', 'description'));
-        $idea = $idea->save();
+        $idea = Auth::user()->group->idea()->save($idea);
+
+        return response()->json($idea);
     }
 
     /**
@@ -81,7 +84,7 @@ class IdeaController extends Controller
         }
 
         $this->validate($request, [
-            'name' => 'required|unique|max:255',
+            'name' => 'required|unique:ideas|max:255',
             'description' => 'required',
         ]);
 

@@ -13,7 +13,7 @@ class Idea extends Model
     /**
      * Get the team that sumbited this idea.
      */
-    public function team()
+    public function group()
     {
         return $this->belongsTo(Group::class, 'group_id');
     }

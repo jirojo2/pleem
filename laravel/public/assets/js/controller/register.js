@@ -16,8 +16,6 @@ angular.module('ecaApp')
         last_name: '',
         birthdate: '',
         sex:'',
-        country: "",
-        cv: '',
         email: '',
         password: '',
         password_confirmation: ''
@@ -28,6 +26,7 @@ angular.module('ecaApp')
         last_name: '',
         birthdate: '',
         sex:'',
+        country: '',
         email: '',
         password: '',
         password_confirmation: ''
@@ -38,6 +37,7 @@ angular.module('ecaApp')
         last_name: '',
         birthdate: '',
         sex:'',
+        country: '',
         email: '',
         password: '',
         password_confirmation: ''

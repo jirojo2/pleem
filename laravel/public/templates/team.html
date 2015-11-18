@@ -108,19 +108,6 @@
                     Password confirmation is required!
                 </div>
             </div>
-            <div class="field">
-                <label>CV</label>
-                <div class="ui action input">
-                    <input type="text" readonly class="_cv1">
-                    <label for="cv1" class="ui icon button btn-file">
-                         <i class="attach icon"></i>
-                         <input type="file" id="cv1" name="cv1" ng-model="member1.cv" style="display: none">
-                    </label>
-                </div>
-                <div class="ui pointing red basic label" ng-show="(member1Form.cv1.$dirty || submitted) && member1Form.cv1.$error.required">
-                    CV is required!
-                </div>
-            </div>
         </form>
     </div>
     <div class="actions">
