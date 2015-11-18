@@ -15,6 +15,6 @@ class Idea extends Model
      */
     public function team()
     {
-        return $this->belongsTo(Team::class, 'team_id');
+        return $this->belongsTo(Group::class, 'group_id');
     }
 }

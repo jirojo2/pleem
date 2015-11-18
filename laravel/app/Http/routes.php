@@ -27,6 +27,9 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 // ContentTools save
 Route::post('x/save-page', 'ContentToolsController@savePage');
 
+// View CV
+Route::get('cv/{userId}', 'MemberController@showCV');
+
 // API
 Route::group(array('prefix' => 'api/v1'), function() {
 
@@ -39,22 +42,13 @@ Route::group(array('prefix' => 'api/v1'), function() {
     Route::get('auth/logout', 'Auth\AuthController@getLogout');
     Route::get('auth/user', 'Auth\AuthController@getUser');
 
-    Route::resource('lc', 'LCController',
-                    ['except' => ['create', 'edit']]);
-    Route::resource('event', 'EventController',
-                    ['only' => ['index', 'show']]);
     Route::resource('member', 'MemberController',
+                    ['except' => ['index', 'show', 'create', 'edit']]);
+    Route::resource('group', 'GroupController',
                     ['except' => ['create', 'edit']]);
-
-    Route::resource('lc.event', 'LCEventController',
-                    ['except' => ['create', 'edit']]);
-    Route::resource('event.group', 'EventGroupController',
-                    ['except' => ['create', 'edit']]);
-    Route::resource('event.member', 'EventMemberController',
-                    ['only' => ['index', 'show']]);
-    Route::resource('event.group.member', 'EventGroupMemberController',
+    Route::resource('group.member', 'GroupMemberController',
                     ['only' => ['index', 'show', 'store', 'destroy']]);
-    Route::resource('event.group.score', 'EventGroupScoreController',
+    Route::resource('group.score', 'GroupScoreController',
                     ['only' => ['index', 'show', 'store', 'destroy']]);
 
 });

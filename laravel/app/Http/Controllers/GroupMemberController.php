@@ -10,29 +10,28 @@ use App\Member;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class EventGroupMemberController extends Controller
+class GroupMemberController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index($eventId, $groupId)
+    public function index($groupId)
     {
-        $members = Event::findOrFail($eventId)->groups()->findOrFail($groupId)->members;
+        $members = Group::findOrFail($groupId)->members;
         return response()->json($members);
     }
 
     /**
-     * Associate the specified member resource to the group-event tuple
+     * Associate the specified member resource to the group tuple
      *
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request, $eventId, $groupId)
+    public function store(Request $request, $groupId)
     {
-        $event = Event::findOrFail($eventId);
-        $group = $event->groups()->findOrFail($groupId);
+        $group = Group::findOrFail($groupId);
 
         if (Gate::denies('attach-member', $group)) {
             abort(403);
@@ -52,7 +51,7 @@ class EventGroupMemberController extends Controller
         $member->save();
 
         try {
-            $member->groups()->attach($group->id, ['event_id' => $eventId]);
+            $member->groups()->attach($group->id);
             return response()->json("ok");
         }
         catch (\Illuminate\Database\QueryException $e) {
@@ -66,10 +65,10 @@ class EventGroupMemberController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($eventId, $groupId, $id)
+    public function show($groupId, $id)
     {
-        $member = Event::findOrFail($eventId)->groups()
-                    ->findOrFail($groupId)->members()
+        $member = Group::findOrFail($groupId)
+                    ->members()
                     ->findOrFail($id);
         return response()->json($member);
     }
@@ -77,15 +76,13 @@ class EventGroupMemberController extends Controller
     /**
      * Dissasociate the specified member resource from the group-event tuple.
      *
-     * @param  int  $eventId
      * @param  int  $groupId
      * @param  int  $memberId
      * @return Response
      */
-    public function destroy($eventId, $groupId, $memeberId)
+    public function destroy($groupId, $memeberId)
     {
-        $event = Event::findOrFail($eventId);
-        $group = $event->groups()->findOrFail($groupId);
+        $group = Group::findOrFail($groupId);
         $member = $group->members()->findOrFail($memeberId);
 
         //
@@ -94,7 +91,7 @@ class EventGroupMemberController extends Controller
         //}
         //
 
-        $member->events()->detach($event->id);
+        $member->groups()->detach();
         return response()->json("ok");
     }
 }

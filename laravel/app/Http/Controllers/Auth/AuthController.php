@@ -50,7 +50,7 @@ class AuthController extends Controller
         }
 
         if ($request->ajax()) {
-            Auth::user()->load('groups');
+            Auth::user()->load('group');
             return Auth::user();
         }
 
@@ -140,7 +140,7 @@ class AuthController extends Controller
         $user = Auth::user();
 
         if ($user) {
-            $user->load('groups');
+            $user->load('group');
             return Auth::user();
         }
         else {

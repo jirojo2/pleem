@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
 use Illuminate\Http\Request;
 
-use App\LC;
+use App\Idea;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class LCController extends Controller
+class IdeaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,13 @@ class LCController extends Controller
      */
     public function index()
     {
-        $lcs = LC::all();
-        return response()->json($lcs);
+        if (Gate::denies('list-ideas')) {
+            abort(403);
+        }
+
+        $ideas = Idea::all();
+
+        return response()->json($ideas);
     }
 
     /**
@@ -29,19 +35,12 @@ class LCController extends Controller
      */
     public function store(Request $request)
     {
-        if (Gate::denies('create-lc')) {
+        if (Gate::denies('create-idea')) {
             abort(403);
         }
 
-        $this->validate($request, [
-            'city' => 'required|max:255',
-            'country' => 'required|max:255'
-        ]);
-
-        $lc = new LC($request->all());
-        $lc->save();
-
-        return response()->json($lc);
+        $idea = new Idea($request->only('name', 'description', 'modules', 'platform'));
+        $idea = $idea->save();
     }
 
     /**
@@ -52,8 +51,13 @@ class LCController extends Controller
      */
     public function show($id)
     {
-        $lc = LC::findOrFail($id);
-        return response()->json($lc);
+        $idea = Idea::findOrFail($id);
+
+        if (Gate::denies('view-idea', $idea)) {
+            abort(403);
+        }
+
+        return response()->json($idea);
     }
 
     /**
@@ -65,20 +69,19 @@ class LCController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $lc = LC::findOrFail($id);
+        $idea = Idea::findOrFail($id);
 
-        if (Gate::denies('edit-lc', $lc)) {
+        if (Gate::denies('edit-idea', $idea)) {
             abort(403);
         }
 
-        $this->validate($request, [
-            'city' => 'required|max:255',
-            'country' => 'required|max:255'
-        ]);
+        $idea->name = $request->name;
+        $idea->description = $request->description;
+        $idea->modules = $request->modules;
+        $idea->platform = $request->platform;
+        $idea->save();
 
-        $lc->fill($request->all());
-        $lc->save();
-        return response()->json($lc);
+        return response()->json($idea);
     }
 
     /**
@@ -89,13 +92,13 @@ class LCController extends Controller
      */
     public function destroy($id)
     {
-        $lc = LC::findOrFail($id);
+        $idea = Idea::findOrFail($id);
 
-        if (Gate::denies('destroy-lc', $lc)) {
+        if (Gate::denies('destroy-idea', $idea)) {
             abort(403);
         }
 
-        $lc->delete();
+        $idea->delete();
         return response()->json("ok");
     }
 }

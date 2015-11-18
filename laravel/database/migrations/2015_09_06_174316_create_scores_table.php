@@ -14,18 +14,12 @@ class CreateScoresTable extends Migration
     {
         Schema::create('scores', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('event_id')->unsigned();
             $table->integer('judge_id')->unsigned();
             $table->integer('group_id')->unsigned();
             $table->boolean('public');
             $table->string('name');
             $table->float('score');
             $table->timestamps();
-
-            $table->foreign('event_id')
-                ->references('id')->on('events')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
 
             $table->foreign('judge_id')
                 ->references('id')->on('members')
