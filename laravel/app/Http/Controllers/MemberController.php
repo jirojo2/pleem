@@ -109,4 +109,33 @@ class MemberController extends Controller
             abort(404);
         }
     }
+
+    /**
+     * Upload the user's CV
+     *
+     * @param  Request  $request
+     * @param  int  $id
+     * @return Response
+     */
+    public function uploadCV(Request $request, $id)
+    {
+        $member = Member::findOrFail($id);
+
+        if (Gate::denies('upload-cv', $member)) {
+            abort(403);
+        }
+
+        $this->validate($request, [
+            'cv' => 'required|mimes:pdf',
+        ]);
+
+        // Handle cv PDF
+        if ($request->file('cv')->isValid()) {
+            $request->file('cv')->move(storage_path('app/cvs'), $id.'.pdf');
+            return response()->json("ok");
+        }
+        else {
+            abort(400);
+        }
+    }
 }

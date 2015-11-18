@@ -73,6 +73,11 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             return $member->group->id == $user->group->id;
         });
+        $gate->define('upload-cv', function($user, $member) {
+            if ($user->admin)
+                return true;
+            return $member->group->id == $user->group->id;
+        });
 
         // Group Score related abilities
         $gate->define('group-private-scores', function($user, $group) {

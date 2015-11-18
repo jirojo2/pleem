@@ -29,6 +29,7 @@ Route::post('x/save-page', 'ContentToolsController@savePage');
 
 // View CV
 Route::get('cv/{userId}', 'MemberController@showCV');
+Route::post('cv/{userId}', 'MemberController@uploadCV');
 
 // API
 Route::group(array('prefix' => 'api/v1'), function() {
