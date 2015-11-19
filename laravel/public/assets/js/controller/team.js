@@ -5,7 +5,6 @@ angular.module('ecaApp')
             $scope.user = response.data;
             API.Group.get({ groupId: $scope.user.group.id }, function(response){
                 $scope.team = response;
-                console.log($scope.team);
                 $rootScope.teamName = $scope.team.name;
             });
         });

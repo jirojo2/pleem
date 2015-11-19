@@ -87,47 +87,65 @@
         <div ui-view></div>
 
         <div class="ui green inverted vertical footer bottom segment row">
-            <div class="ui center aligned container">
-                <div class="ui stackable divided grid">
+            <div class="ui container">
+                <div class="ui stackable grid">
                     <div class="four wide column">
-                        <h4 class="ui invertedheader">Group 1</h4>
+                        <h4 class="ui invertedheader">Overview</h4>
                         <div class="ui inverted link list">
-                            <a ui-sref="#" class="item">Link One</a>
-                            <a ui-sref="#" class="item">Link Two</a>
-                            <a ui-sref="#" class="item">Link Three</a>
-                            <a ui-sref="#" class="item">Link Four</a>
+                            <a ng-click="scrollTo('about')" class="item">About Us</a>
+                            <a ng-click="scrollTo('rules')" class="item">Rules</a>
+                            <a ng-click="scrollTo('prizes')" class="item">Prizes</a>
+                            <a ng-click="scrollTo('people')" class="item">People</a>
                         </div>
                     </div>
                     <div class="four wide column">
-                        <h4 class="ui inverted header">Group 2</h4>
+                        <h4 class="ui inverted header">Support</h4>
                         <div class="ui inverted link list">
-                            <a ui-sref="#" class="item">Link One</a>
-                            <a ui-sref="#" class="item">Link Two</a>
-                            <a ui-sref="#" class="item">Link Three</a>
-                            <a ui-sref="#" class="item">Link Four</a>
+                            <a href="" class="item">Online Seminar</a>
+                            <a href="" class="item">Support Portal</a>
+                            <a href="" class="item">Tutorials</a>
                         </div>
                     </div>
                     <div class="four wide column">
-                        <h4 class="ui inverted header">Group 3</h4>
+                        <h4 class="ui inverted header">Contact Us</h4>
                         <div class="ui inverted link list">
-                            <a ui-sref="#" class="item">Link One</a>
-                            <a ui-sref="#" class="item">Link Two</a>
-                            <a ui-sref="#" class="item">Link Three</a>
-                            <a ui-sref="#" class="item">Link Four</a>
+                            <a ng-click="scrollTo('contact')" class="item">Contact Form</a>
+                            <a href="mailto:android.competition@eestec.net" class="item">android.competition@eestec.net</a>
+                            <a href="mailto:eca-cp@eestec.net" class="item">eca-cp@eestec.net</a>
                         </div>
                     </div>
                     <div class="four wide column">
-                        <h4 class="ui inverted header">Group 4</h4>
+                        <h4 class="ui inverted header">Stay in touch</h4>
                         <div class="ui inverted link list">
-                            <a ui-sref="#" class="item">Link One</a>
-                            <a ui-sref="#" class="item">Link Two</a>
-                            <a ui-sref="#" class="item">Link Three</a>
-                            <a ui-sref="#" class="item">Link Four</a>
+                            <a href="http://www.fb.com/CompetitionForAndroid" target="_blank" class="item">
+                                <button class="ui circular facebook icon button">
+                                    <i class="facebook icon"></i>
+                                </button>
+                                Facebook
+                            </a>
+                            <a href="https://twitter.com/ECAEESTEC" target="_blank" class="item">
+                                <button class="ui circular twitter icon button">
+                                    <i class="twitter icon"></i>
+                                </button>
+                                Twitter
+                            </a>
+                            <a href="https://plus.google.com/100084775576992258658/about" target="_blank" class="item">
+                                <button class="ui circular google plus icon button">
+                                    <i class="google plus icon"></i>
+                                </button>
+                                Google Plus
+                            </a>
+                            <a href="http://www.linkedin.com/groups/EESTEC-Competition-Android-8160587" target="_blank" class="item">
+                                <button class="ui circular linkedin icon button">
+                                    <i class="linkedin icon"></i>
+                                </button>
+                                LinkedIn
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="ui inverted section divider"></div>
-                <div class="ui horizontal inverted small">
+                <div class="ui horizontal center aligned inverted small container">
                     <span>&copy; 2015-2016 EESTEC</span>
                 </div>
             </div>
