@@ -18,9 +18,9 @@ class ConfigController extends Controller
      */
     public function index()
     {
-        if (Gate::denies('view-config')) {
-            abort(403);
-        }
+        //if (Gate::denies('view-config')) {
+        //    abort(403);
+        //}
 
         $config = Config::first();
 

@@ -5,6 +5,8 @@ angular.module('ecaApp')
         maxTeamMembers: 3
     };
 
+    $scope.appConfig = API.Config.get();
+
     $scope.name = '';
     $scope.submitted = false;
     $scope.submitted2 = false;
@@ -68,6 +70,11 @@ angular.module('ecaApp')
     }
 
     $scope.signup = function() {
+
+        if (!$scope.appConfig.registration_enabled) {
+            return window.alert('Registration is currently closed!');
+        }
+
         $scope.members = [];
         $scope.error = "";
         $scope.submitted = true;

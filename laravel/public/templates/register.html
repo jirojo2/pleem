@@ -174,7 +174,7 @@
 					</div>
 				</div>
 				<div class="ui one bottom attached icon buttons" ng-click="signup()">
-					<div class="ui green button">
+					<div class="ui green button" ng-class="{ disabled: !appConfig.registration_enabled }">
 						<i class="signup icon"></i>
 						Register
 					</div>
