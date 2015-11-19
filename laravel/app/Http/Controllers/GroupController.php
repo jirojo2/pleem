@@ -80,7 +80,7 @@ class GroupController extends Controller
         }
 
         $group = new Group($request->only('name'));
-        $group = $group->save();
+        $group->save();
 
         // create or register to the group all the members
         foreach ($request->members as $m) {
@@ -89,7 +89,7 @@ class GroupController extends Controller
                 $qm = new Member($m);
                 $qm->password = Hash::make($m['password']);
 
-                $qm = $group->save($qm);
+                $group->members()->save($qm);
 
                 // Handle cv PDF
                 //if ($m['cv']->isValid()) {

@@ -53,10 +53,9 @@ class GroupMemberController extends Controller
 
         $member = new Member($request->input('member'));
         $member->password = Hash::make($request->input('member.password'));
-        $member->save();
+        $group->members()->save($member);
 
         try {
-            $member->groups()->attach($group->id);
             return response()->json("ok");
         }
         catch (\Illuminate\Database\QueryException $e) {
