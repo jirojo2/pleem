@@ -1,5 +1,16 @@
 <div ng-controller="registerController">
-	<div class="ui main container row">
+	<div class="ui main container row" ng-show="!appConfig.registration_enabled">
+		<div class="ui icon message">
+			<i class="inbox icon"></i>
+			<div class="content">
+				<div class="header">
+					Registration is currently closed
+				</div>
+				<p>Launch date is 19 november 2015</p>
+			</div>
+		</div>
+	</div>
+	<div class="ui main container row" ng-show="appConfig.registration_enabled">
 		<div class="ui three column centered padded grid">
 			<div class="column">
 				<form action="" class="ui form header center aligned" name="nameForm">
