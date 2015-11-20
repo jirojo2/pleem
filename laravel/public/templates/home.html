@@ -9,14 +9,30 @@
 						EESTEC Competition for Android <br/>
 						The contest of innovation, programming, and design!
 					</h2>
-					<h3 class="ui inverted large header">
-						See the <br/>
-						winning apps!
-					</h3>
-					<button class="ui large violet button">
-						<i class="trophy icon"></i>
-						Winners
-					</button>
+					<div class="ui two column grid">
+						<div class="row">
+							<div class="column">
+								<h3 class="ui inverted large header">
+									See the <br/>
+									winning apps!
+								</h3>
+								<button class="ui large violet button">
+									<i class="trophy icon"></i>
+									Winners
+								</button>
+							</div>
+							<div class="column">
+								<h3 class="ui inverted large header">
+									Register <br/>
+									your team!
+								</h3>
+								<button class="ui large violet button" ui-sref="register">
+									<i class="pencil icon"></i>
+									Register
+								</button>
+							</div>
+						</div>
+					</div>
 					<h3 class="ui inverted large header">
 						EESTEC Online Seminar <br/>
 						Watch the three parts now!
@@ -37,12 +53,13 @@
 <section id="about" class="ui content container" data-editable data-name="about">
 	<!-- editable about -->
 	<h2 class="ui header aligned center">EESTEC Competition for Android</h2>
-	<h4 class="ui header aligned center">A contest of ideas and mobile applications!</h4>
-	<p>4th Competition for Android, organised for the third consecutive year, is an EESTEC International project which is open to students from all over the world. This academical event aims at opening a door for creative innovation by deploying knowledge about programming and design.</p>
-	<p>In the past years, the usage of applications has reached immense popularity and their usefulness slowly transformed what was merely a luxurious advantage into a basic tool for daily needs in terms of information, communication, mobility, etc.</p>
-	<p>Because Android has became part of our everyday life, we ought to participate enhancing the quality of the services that such platform is providing. As young students and free thinkers, we can bring ourselves to understand the necessities of our generation and help in unknotting them.</p>
-	<p>4th EESTEC Competition for Android can be a great experience because not only it teaches you about useful technical tools, but it also pushes you to research and analyse in order to meet a demand. </p>
-	<p>This event will be an amazing opportunity for the students of your university to gain experience about programming and design, show their creativity, and build an application that could be used by millions of people from around the globe. </p>
+	<p>EESTEC Competition for Android is open to Android enthusiasts from all over the world. This academical event aims at opening doors for creative innovation by putting into practice knowledge about programming and design.</p>
+	<p>In the past years, the usage of applications has reached immense popularity and their usefulness slowly transformed from what was merely a luxurious advantage into a basic tool for daily needs in terms of information, communication, mobility, entertainment etc.</p>
+	<p>Because Android has become a part of our everyday life, we ought to participate in enhancing the quality of the services that the platform provides.
+	As young students and free-thinkers, we can bring ourselves to understand the needs of our generation and help fulfil them.</p>
+	<p>The 5th EESTEC Competition for Android is a great experience not only because it teaches students about useful technical tools - it also pushes them to research and analyse in order to meet a demand.</p>
+	<p>This event will be an amazing opportunity for the developers to gain experience about programming and design, show their creativity, and build an application that could be used by millions of people from all around the globe.</p>
+
 	<img src="assets/images/eca-logo.png" alt="" class="ui centered large image">
 	<h2 class="ui header aligned center margin top four">About <strong class="ui red header">EESTEC</strong></h2>
 	<h3 class="ui header aligned center">Electrical Engineering STudents' European assoCiation</h3>
@@ -104,11 +121,10 @@
 			</div>
 			<div class="content">
 				<div class="description">
-					<div class="ui inverted accordion">
+					<div class="ui inverted">
 						<div class="title" data-editable data-name="faq-q-1">
 							<!-- editable faq-q-1 -->
-							<i class="dropdown icon"></i>
-							<p>What is EESTEC Competition for Android?</p>
+							<h3>What is EESTEC Competition for Android?</h3>
 							<!-- endeditable faq-q-1 -->
 						</div>
 						<div class="content" data-editable data-name="faq-a-1">
@@ -116,10 +132,10 @@
 							<p>EESTEC Competition for Android is a contest of ideas and mobile applications, developed for the Android platform.<br> The project is organized for the 4th consecutive year by Electrical Engineering STudents European assoCiation.</p>
 							<!-- endeditable faq-a-1 -->
 						</div>
+						<br><br>
 						<div class="title" data-editable data-name="faq-q-2">
 							<!-- editable faq-q-2 -->
-							<i class="dropdown icon"></i>
-							<p>Who can participate?</p>
+							<h3>Who can participate?</h3>
 							<!-- endeditable faq-q-2 -->
 						</div>
 						<div class="content" data-editable data-name="faq-a-2">
@@ -155,14 +171,14 @@
 					<p>Rewards the most innovative idea. This award’s purpose is to encourage participants who didn’t have enough skills to complete the implementing part, but they came up with a great idea and work towards developing it to an application.</p>
 				</div>
 				<div class="ui column segment">
-					<i class="ui huge child icon"></i>
-					<h4 class="ui header">People's choice</h4>
-					<p>A new prize category that has been added this year, awards the most popular app. The app can be promoted by the team in social media and be also uploaded in Google Play before the second deadline. The most liked one or the one with the best rating on Google Play will have a non monetary prize (special certificate, etc).</p>
-				</div>
-				<div class="ui column segment">
 					<i class="ui huge line chart icon"></i>
 					<h4 class="ui header">Best overall score</h4>
 					<p>Rewards the team with the highest total score in all judging criteria. So, the team which gathers the above characteristics, skillfully designed , innovative, popular and stands out will have this award.</p>
+				</div>
+				<div class="ui column segment">
+					<i class="ui huge child icon"></i>
+					<h4 class="ui header">People's choice</h4>
+					<p>A new prize category that has been added this year, awards the most popular app. The app can be promoted by the team in social media. The app will be uploaded to Google Play by the organization once it is submitted by the team, before the second deadline. The app with the best rating on our Google Play account will have a non monetary prize (special certificate, etc).</p>
 				</div>
 			</div>
 		</div>
@@ -415,7 +431,7 @@
 		    	<div class="header">
 		      		Want to get in touch with us?
 		    	</div>
-		    	<p>Send us an email at <a href="mailto:android.competition@eestec.net">android.competition@eestec.net</a> or <a href="mailto:eca-cp@eestec.net">eca-cp@eestec.net</a></p>
+		    	<p>Send us an email at <a href="mailto:eca-cp@eestec.net">eca-cp@eestec.net</a></p>
 		  	</div>
 		</div>
 	</div>

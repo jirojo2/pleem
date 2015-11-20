@@ -13,17 +13,17 @@
 					<div class="field">
 						<input type="email" name="email" placeholder="Email" ng-model="email" required>
 						<div class="ui pointing red basic label" ng-show="(loginForm.email.$dirty || submitted)  && loginForm.email.$error.required">
-					    	Email is required!
-					    </div>
+							Email is required!
+						</div>
 						<div class="ui pointing red basic label" ng-show="loginForm.email.$error.email">
-					    	Not valid email!
-					    </div>
+							Not valid email!
+						</div>
 					</div>
 					<div class="field">
-						<input type="password" name="password" placeholder="Password" ng-model="password" required>
+						<input type="password" name="password" placeholder="Password" ng-model="password" ng-keypress="loginOnEnter($event)" required>
 						<div class="ui pointing red basic label" ng-show="(loginForm.password.$dirty || submitted) && loginForm.password.$error.required">
-					    	Password is required!
-					    </div>
+							Password is required!
+						</div>
 					</div>
 				</form>
 			</div>
@@ -35,8 +35,8 @@
 	<div class="ui horizontal divider">Or</div>
 	<a ui-sref="register">
 		<div class="ui orange labeled icon button">
-	    	<i class="signup icon"></i>
-	    	Register
-	 	</div>
+			<i class="signup icon"></i>
+			Register
+		</div>
 	</a>
 </div>

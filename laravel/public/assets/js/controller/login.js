@@ -4,6 +4,11 @@ angular.module('ecaApp')
 
 	$scope.submitted = false;
 
+	$scope.loginOnEnter = function(keyEvent) {
+		if (keyEvent.which === 13)
+			$scope.login();
+	}
+
 	$scope.login = function() {
 		$scope.submitted = true;
 		if ($scope.loginForm.$valid){
