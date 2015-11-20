@@ -46,7 +46,7 @@ angular.module('ecaApp')
         password_confirmation: ''
     }
 
-    $http.get('https://restcountries-v1.p.mashape.com/region/europe', {headers: {
+    $http.get('https://restcountries-v1.p.mashape.com/all', {headers: {
         'X-Mashape-Key': 'yhNwA5NusOmshGvY4U4Q0WBGXQS4p17AkD7jsnzl6zSzE44h5w',
         'Accept': 'application/json'
     }}).then(function(response) {
