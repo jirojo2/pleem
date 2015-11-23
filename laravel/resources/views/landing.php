@@ -101,7 +101,7 @@
                     <div class="four wide column">
                         <h4 class="ui inverted header">Support</h4>
                         <div class="ui inverted link list">
-                            <a href="" class="item">Online Seminar</a>
+                            <a href="https://www.youtube.com/playlist?list=PLG3b018Xl5L9IZxLZxeRx5QI_6l3HsvyT" target="_blank" class="item">Online Seminar</a>
                             <a href="" class="item">Support Portal</a>
                             <a href="" class="item">Tutorials</a>
                         </div>
@@ -110,7 +110,6 @@
                         <h4 class="ui inverted header">Contact Us</h4>
                         <div class="ui inverted link list">
                             <a ng-click="scrollTo('contact')" class="item">Contact Form</a>
-                            <a href="mailto:android.competition@eestec.net" class="item">android.competition@eestec.net</a>
                             <a href="mailto:eca-cp@eestec.net" class="item">eca-cp@eestec.net</a>
                         </div>
                     </div>
