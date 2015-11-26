@@ -144,7 +144,7 @@
                 </div>
                 <div class="ui inverted section divider"></div>
                 <div class="ui horizontal center aligned inverted small container">
-                    <span>&copy; 2015-2016 <a href="www.eestec.net" target="_blank">EESTEC International</a></span>
+                    <span>&copy; 2015-2016 <a href="http://www.eestec.net" target="_blank">EESTEC International</a></span>
                 </div>
             </div>
         </div>
