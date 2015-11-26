@@ -102,8 +102,7 @@
                         <h4 class="ui inverted header">Support</h4>
                         <div class="ui inverted link list">
                             <a href="https://www.youtube.com/playlist?list=PLG3b018Xl5L9IZxLZxeRx5QI_6l3HsvyT" target="_blank" class="item">Online Seminar</a>
-                            <a href="" class="item">Support Portal</a>
-                            <a href="" class="item">Tutorials</a>
+                            <a ui-sref="login" class="item">Tutorials</a>
                         </div>
                     </div>
                     <div class="four wide column">
@@ -145,7 +144,7 @@
                 </div>
                 <div class="ui inverted section divider"></div>
                 <div class="ui horizontal center aligned inverted small container">
-                    <span>&copy; 2015-2016 EESTEC</span>
+                    <span>&copy; 2015-2016 <a href="www.eestec.net" target="_blank">EESTEC International</a></span>
                 </div>
             </div>
         </div>

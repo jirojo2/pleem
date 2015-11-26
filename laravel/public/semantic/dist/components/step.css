@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.1.4 - Step
+ * # Semantic UI 2.1.6 - Step
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -411,7 +411,7 @@
 /* Completed */
 .ui.steps .step.completed > .icon:before,
 .ui.ordered.steps .step.completed:before {
-  color: #21BA45;
+  color: #4CAF50;
 }
 
 /* Disabled */
@@ -441,7 +441,7 @@
 
 
 /* Tablet Or Below */
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .ui[class*="tablet stackable"].steps {
     display: -webkit-inline-box;
     display: -webkit-inline-flex;
