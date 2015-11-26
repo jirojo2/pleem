@@ -83,6 +83,40 @@
                     </div>
                 </div>
                 <div class="field">
+                    <label>Faculty/Department</label>
+                    <input type="text" name="faculty" placeholder="Faculty/Department" required ng-model="member1.faculty">
+                    <div class="ui pointing red basic label" ng-show="(member1Form.faculty.$dirty || submitted)  && member1Form.faculty.$error.required">
+                        Faculty or department is required is required!
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Study level</label>
+                    <select name="study_level" placeholder="Study level" required ng-model="member1.study_level">
+                        <option value="">Select study level</option>
+                        <option value='graduate'>Graduate</option>
+                        <option value='master'>Master</option>
+                        <option value='phd'>PhD</option>
+                    </select>
+                    <div class="ui pointing red basic label" ng-show="(member1Form.study_level.$dirty || submitted)  && member1Form.study_level.$error.required">
+                        Study level is required!
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Study year</label>
+                    <select name="years_study" placeholder="Study level" required ng-model="member1.years_study">
+                        <option value="">Select study year</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                        <option value='6'>6</option>
+                    </select>
+                    <div class="ui pointing red basic label" ng-show="(member1Form.years_study.$dirty || submitted)  && member1Form.years_study.$error.required">
+                        Study year is required!
+                    </div>
+                </div>
+                <div class="field">
                     <label>Email</label>
                     <input type="email" name="email" placeholder="Email" required ng-model="member1.email">
                     <div class="ui pointing red basic label" ng-show="(member1Form.email.$dirty || submitted)  && member1Form.email.$error.required">
@@ -106,13 +140,20 @@
                         Password confirmation is required!
                     </div>
                 </div>
+                <div class="field ui slider checkbox">
+                    <input type="checkbox" name="agrees" required ng-model="member1.agrees">
+                    <label>Accept <a target="_blank" ui-sref="terms">terms and conditions</a></label>
+                    <div class="ui pointing red basic label" ng-show="(member1Form.agrees.$dirty || submitted)  && member1Form.agrees.$error.required">
+                        Accepting terms and conditions is required.
+                    </div>
+                </div>
             </form>
         </div>
         <div class="actions">
             <div class="ui red deny button">
                 Cancel
             </div>
-            <div class="ui positive right labeled icon button" ng-click="addMember()">
+            <div class="ui right green labeled icon button" ng-click="addMember()">
                 Add Member
                 <i class="add user icon"></i>
             </div>
