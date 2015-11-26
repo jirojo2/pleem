@@ -19,9 +19,13 @@ angular.module('ecaApp')
         birthdate: '',
         sex:'',
         country: '',
+        faculty: '',
+        study_level: '',
+        years_study: '',
         email: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        agrees: false,
     }
 
     $scope.member2 = {
@@ -30,9 +34,13 @@ angular.module('ecaApp')
         birthdate: '',
         sex:'',
         country: '',
+        faculty: '',
+        study_level: '',
+        years_study: '',
         email: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        agrees: false,
     }
 
     $scope.member3 = {
@@ -41,9 +49,13 @@ angular.module('ecaApp')
         birthdate: '',
         sex:'',
         country: '',
+        faculty: '',
+        study_level: '',
+        years_study: '',
         email: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        agrees: false,
     }
 
     $http.get('https://restcountries-v1.p.mashape.com/all', {headers: {
@@ -92,7 +104,7 @@ angular.module('ecaApp')
                 $scope.submitted3 = true;
             }
         }
-        if (($scope.nameForm.$valid)||($scope.member1Form.$valid)){
+        if (($scope.nameForm.$valid)&&($scope.member1Form.$valid)){
             $scope.members.push($scope.member1)
             var group = new API.Group({ name: $scope.name });
             group.members = $scope.members;

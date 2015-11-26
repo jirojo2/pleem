@@ -14,10 +14,16 @@ angular.module('ecaApp')
             birthdate: '',
             sex:'',
             country: '',
+            faculty: '',
+            study_level: '',
+            years_study: '',
             email: '',
             password: '',
-            password_confirmation: ''
+            password_confirmation: '',
+            agrees: false
         }
+
+        $scope.submitted = false;
 
         User.userPromise().then(function(response) {
             $scope.user = response.data;
@@ -28,7 +34,7 @@ angular.module('ecaApp')
         });
 
         $scope.addMember = function() {
-
+            $scope.submitted = true;
             if ($scope.member1Form.$valid) {
                 $http.post('/group/'+$scope.user.group.id+'/member/', $scope.member1)
                     .then(function(response) {
