@@ -101,7 +101,7 @@ class GroupController extends Controller
             }
         }
 
-        Mail::send('emails.admin.groupCreated', ['group' => $group], function ($m) use ($group) {
+        Mail::send('emails.admin.groupCreated', ['group' => $group], function ($m) use ($group, $cfg) {
             $m->from('eca-noreply@eestec.net', 'EESTEC Android Competition');
             $m->to($cfg->admin_email, 'ECA Admin')->subject('New group registered!');
         });
