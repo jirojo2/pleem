@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Hash;
+use Mail;
 use Validator;
 use App\Event;
 use App\Group;
@@ -35,8 +36,10 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
+        $cfg = Config::first();
+
         // Check config if registration is enabled
-        if (!Config::first()->registration_enabled) {
+        if (!$cfg->registration_enabled) {
             return response()->json(["msg" => "registrations are disabled"], 403);
         }
 
@@ -97,6 +100,11 @@ class GroupController extends Controller
                 //}
             }
         }
+
+        Mail::send('emails.admin.groupCreated', ['group' => $group], function ($m) use ($group) {
+            $m->from('eca-noreply@eestec.net', 'EESTEC Android Competition');
+            $m->to($cfg->admin_email, 'ECA Admin')->subject('New group registered!');
+        });
 
         return response()->json($group);
     }
