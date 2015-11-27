@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ConfigAdminEmail extends Migration
+class MemberUpdate extends Migration
 {
     /**
      * Run the migrations.
