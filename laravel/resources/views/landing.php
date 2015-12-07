@@ -6,6 +6,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="EESTEC Competition for Android is open to Android enthusiasts from all over the world. This academical event aims at opening doors for creative innovation by putting into practice knowledge about programming and design.">
         <meta property="og:image" content="assets/images/social-logo.png" />
 
         <!-- Site Properities -->
