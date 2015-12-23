@@ -53,7 +53,8 @@ class AuthServiceProvider extends ServiceProvider
             return $group->members->contains($user);
         });
         $gate->define('destroy-group', function($user, $group) {
-            return $group->members->contains($user);
+            return false;
+            //return $group->members->contains($user);
         });
 
         // Member related abilities

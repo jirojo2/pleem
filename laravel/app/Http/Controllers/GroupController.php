@@ -83,7 +83,7 @@ class GroupController extends Controller
             }
         }
 
-        $group = new Group($request->only('name'));
+        $group = new Group($request->only('name', 'repository'));
         $group->save();
 
         // create or register to the group all the members
@@ -136,18 +136,15 @@ class GroupController extends Controller
     {
         $group = Group::findOrFail($id);
 
-        //
-        //if (Gate::denies('edit-group', $event, $group)) {
-        //    abort(403);
-        //}
-        //
+        if (Gate::denies('edit-group', $event, $group)) {
+            abort(403);
+        }
 
         $this->validate($request, [
-            'name' => 'required|max:255',
             'repository' => 'required|max:255'
         ]);
 
-        $group->fill($request->all());
+        $group->fill($request->only('repository'));
         $group->save();
         return response()->json($group);
     }
@@ -162,11 +159,9 @@ class GroupController extends Controller
     {
         $group = Group::findOrFail($id);
 
-        //
-        //if (Gate::denies('destroy-group', $event, $group)) {
-        //    abort(403);
-        //}
-        //
+        if (Gate::denies('destroy-group', $event, $group)) {
+            abort(403);
+        }
 
         $group->delete();
         return response()->json("ok");
