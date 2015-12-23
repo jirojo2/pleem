@@ -8,7 +8,7 @@ class Group extends Model
 {
     protected $table = 'groups';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'repository'];
 
     /**
      * Get the members that compose this group.

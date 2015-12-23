@@ -45,6 +45,7 @@ class GroupController extends Controller
 
         $v = Validator::make($request->all(), [
             'name' => 'required|max:255|unique:groups',
+            'repository' => 'required|max:255',
             'members' => 'required|array',
         ]);
 
@@ -142,7 +143,8 @@ class GroupController extends Controller
         //
 
         $this->validate($request, [
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
+            'repository' => 'required|max:255'
         ]);
 
         $group->fill($request->all());
