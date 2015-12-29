@@ -17,8 +17,8 @@
         <link rel="stylesheet" type="text/css" href="assets/css/eca.css">
     </head>
 
-    <body ng-app="ecaApp">
-        <div class="ui top fixed borderless menu" ng-controller="headerController">
+    <body ng-app="ecaApp" ng-controller="LandingLayoutController">
+        <div class="ui top fixed borderless menu">
             <div class="ui grid container">
                 <div class="ui computer tablet only row">
                     <a ui-sref="home" class="header down item">
@@ -103,7 +103,7 @@
                     <div class="four wide column">
                         <h4 class="ui inverted header">Support</h4>
                         <div class="ui inverted link list">
-                            <a href="https://www.youtube.com/playlist?list=PLG3b018Xl5L9IZxLZxeRx5QI_6l3HsvyT" target="_blank" class="item">Online Seminar</a>
+                            <a href="https://www.youtube.com/playlist?list=PLG3b018Xl5L_iZmf3Sb90VGmLN1NbNTfh" target="_blank" class="item">Online Seminar</a>
                             <a ui-sref="login" class="item">Tutorials</a>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
         <script src="assets/js/app.js"></script>
         <script src="assets/js/controller/login.js"></script>
         <script src="assets/js/controller/register.js"></script>
-        <script src="assets/js/controller/header.js"></script>
+        <script src="assets/js/controller/landing.js"></script>
         <script src="assets/js/controller/team.js"></script>
         <script src="assets/js/controller/idea.js"></script>
         <script src="assets/js/controller/admin.js"></script>

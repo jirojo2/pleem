@@ -1,5 +1,5 @@
 angular.module('ecaApp')
-.controller ('headerController', ['$scope', '$rootScope', '$state', '$location', '$anchorScroll', 'User', 'API',
+.controller ('LandingLayoutController', ['$scope', '$rootScope', '$state', '$location', '$anchorScroll', 'User', 'API',
 function($scope, $rootScope, $state, $location, $anchorScroll, User, API){
 
     $rootScope.loggedin = false;
