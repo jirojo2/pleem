@@ -24,6 +24,19 @@
 				</form>
 			</div>
 		</div>
+		<div class="ui three column centered padded grid">
+			<div class="column">
+				<form action="" class="ui form header center aligned" name="repoForm">
+					<div class="field">
+						<label>Team Repository</label>
+						<input type="text" name="repository" placeholder="Team Repository" ng-model="repository" required>
+						<div class="ui pointing red basic label" ng-show="(nameForm.repository.$dirty || submitted)  && repoForm.repository.$error.required">
+					    	Team repository is required!
+					    </div>
+					</div>
+				</form>
+			</div>
+		</div>
 		<div class="ui three cards">
 			<div class="ui blurring dimmed dimmable segment card member2">
 				<div class="ui inverted active flex center dimmer">
