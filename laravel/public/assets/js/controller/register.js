@@ -64,7 +64,10 @@ angular.module('ecaApp')
         'Accept': 'application/json'
     }}).then(function(response) {
         $scope.countries = response.data;
-        $scope.countries.push("Other country");
+        $scope.countries.push({
+            name: "Other country",
+            alpha2Code: "Other"
+        });
     });
 
 
