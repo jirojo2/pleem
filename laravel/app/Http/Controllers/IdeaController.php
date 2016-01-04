@@ -42,10 +42,11 @@ class IdeaController extends Controller
 
         $this->validate($request, [
             'name' => 'required|unique:ideas|max:255',
+            'repository' => 'required|max:255',
             'description' => 'required',
         ]);
 
-        $idea = new Idea($request->only('name', 'description'));
+        $idea = new Idea($request->only('name', 'description', 'repository'));
         $idea = Auth::user()->group->idea()->save($idea);
 
         return response()->json($idea);

@@ -45,7 +45,6 @@ class GroupController extends Controller
 
         $v = Validator::make($request->all(), [
             'name' => 'required|max:255|unique:groups',
-            'repository' => 'required|max:255',
             'members' => 'required|array',
         ]);
 
@@ -83,7 +82,7 @@ class GroupController extends Controller
             }
         }
 
-        $group = new Group($request->only('name', 'repository'));
+        $group = new Group($request->only('name'));
         $group->save();
 
         // create or register to the group all the members
@@ -140,12 +139,11 @@ class GroupController extends Controller
             abort(403);
         }
 
-        $this->validate($request, [
-            'repository' => 'required|max:255'
-        ]);
+        //$this->validate($request, [
+        //]);
 
-        $group->fill($request->only('repository'));
-        $group->save();
+        // this does nothing atm, the name is not allowed to be changed
+
         return response()->json($group);
     }
 

@@ -30,6 +30,13 @@
 			</div>
 		</div>
 		<div class="field">
+			<label for="repository">Repository</label>
+			<input type="text" name="name" id="repository" placeholder="Your idea repository" ng-model="idea.repository" required>
+			<div class="ui pointing red basic label" ng-show="(ideaForm.repository.$dirty || submitted)  && ideaForm.repository.$error.required">
+				Repository is required!
+			</div>
+		</div>
+		<div class="field">
 			<label for="idea-description">Idea description</label>
 			<textarea name="description" id="description" placeholder="Your idea description" ng-model="idea.description" required></textarea>
 			<div class="ui pointing red basic label" ng-show="(ideaForm.description.$dirty || submitted)  && ideaForm.description.$error.required">

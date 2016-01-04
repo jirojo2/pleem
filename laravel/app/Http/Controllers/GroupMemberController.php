@@ -89,11 +89,9 @@ class GroupMemberController extends Controller
         $group = Group::findOrFail($groupId);
         $member = $group->members()->findOrFail($memeberId);
 
-        //
-        //if (Gate::denies('detach-member', $event, $group, $member)) {
-        //    abort(403);
-        //}
-        //
+        if (Gate::denies('detach-member', $event, $group, $member)) {
+            abort(403);
+        }
 
         $member->groups()->detach();
         return response()->json("ok");

@@ -25,7 +25,7 @@ angular.module('ecaApp')
 
             if ($scope.ideaForm.$valid){
                 if ($scope.idea){
-                    var newIdea = new API.Idea({ ideaId: $scope.idea.id },{ name: $scope.name, description: $scope.description });
+                    var newIdea = new API.Idea({ ideaId: $scope.idea.id },{ name: $scope.name, description: $scope.description, repository: $scope.repository });
                     newIdea.$update()
                         .then(function ok(response) {
                             API.Group.get({ groupId: $scope.user.group.id }, function(response){

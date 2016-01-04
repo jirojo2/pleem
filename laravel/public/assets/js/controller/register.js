@@ -8,7 +8,6 @@ angular.module('ecaApp')
     $scope.appConfig = API.Config.get();
 
     $scope.name = '';
-    $scope.repository = '';
     $scope.submitted = false;
     $scope.submitted2 = false;
     $scope.submitted3 = false;
@@ -111,7 +110,7 @@ angular.module('ecaApp')
         }
         if (($scope.nameForm.$valid)&&($scope.member1Form.$valid)){
             $scope.members.push($scope.member1)
-            var group = new API.Group({ name: $scope.name, repository: $scope.repository });
+            var group = new API.Group({ name: $scope.name });
             group.members = $scope.members;
             group.$save()
                 .then(function ok(response) {
