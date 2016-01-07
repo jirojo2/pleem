@@ -78,7 +78,7 @@
 							    </div>
 							</div>
 							<div class="field">
-								<label>Faculty/Department</label>
+								<label>School/High School/Faculty/Department</label>
 		    					<input type="text" name="faculty" placeholder="Faculty/Department" required ng-model="member2.faculty">
 								<div class="ui pointing red basic label" ng-show="(member2Form.faculty.$dirty || submitted2)  && member2Form.faculty.$error.required">
 							    	Faculty or department is required is required!
@@ -88,6 +88,8 @@
 								<label>Study level</label>
 		    					<select name="study_level" placeholder="Study level" required ng-model="member2.study_level">
 									<option value="">Select study level</option>
+									<option value='elementary-school'>Elementary School</option>
+									<option value='high-school'>High School</option>
 									<option value='graduate'>Graduate</option>
 									<option value='master'>Master</option>
 									<option value='phd'>PhD</option>
