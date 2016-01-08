@@ -3,7 +3,7 @@ angular.module('ecaApp')
     function($scope, $rootScope, $state, User, API) {
         $scope.loading = true;
         $scope.editingIdea = false;
-        $scope.creatingIdea = true;
+        $scope.creatingIdea = false;
         $scope.idea = API.Idea.get();
 
         $scope.idea.$promise.then(function(idea) {
