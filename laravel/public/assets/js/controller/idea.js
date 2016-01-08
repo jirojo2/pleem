@@ -2,19 +2,16 @@ angular.module('ecaApp')
 .controller('ideaController', ['$scope', '$rootScope', '$state', 'User', 'API',
     function($scope, $rootScope, $state, User, API) {
         $scope.loading = true;
-        $scope.creatingIdea = true;
         $scope.editingIdea = false;
-        $scope.idea = {};
+        $scope.creatingIdea = true;
+        $scope.idea = API.Idea.get();
 
-        User.userPromise().then(function(response) {
-            $scope.user = response.data;
-            API.Group.get({ groupId: $scope.user.group.id }, function(response) {
-                if (response.idea) {
-                    $scope.creatingIdea = false;
-                    $scope.idea = response.idea || {};
-                }
-                $scope.loading = false;
-            });
+        $scope.idea.$promise.then(function(idea) {
+            if (!idea) {
+                $scope.creatingIdea = true;
+                $scope.idea = new API.Idea();
+            }
+            $scope.loading = false;
         });
 
         $scope.editIdea = function() {

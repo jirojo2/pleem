@@ -23,9 +23,9 @@ class IdeaController extends Controller
             abort(403);
         }
 
-        $ideas = Idea::all();
+        $idea = Auth::user()->group->idea;
 
-        return response()->json($ideas);
+        return response()->json($idea);
     }
 
     /**
