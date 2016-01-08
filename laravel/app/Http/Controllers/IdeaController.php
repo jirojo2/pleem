@@ -86,10 +86,12 @@ class IdeaController extends Controller
 
         $this->validate($request, [
             'name' => 'required|unique:ideas|max:255',
+            'repository' => 'required|max:255',
             'description' => 'required',
         ]);
 
         $idea->name = $request->name;
+        $idea->repository = $request->repository;
         $idea->description = $request->description;
         $idea->save();
 

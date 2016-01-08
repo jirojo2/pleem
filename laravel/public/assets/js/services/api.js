@@ -27,6 +27,7 @@ angular.module('ecaApp')
                     'ideaId': '@id'
                 },
                 {
+                    'get':    { method:'GET' },
                     'save':   { method:'POST' },
                     'update': { method:'PUT' }
                 }
