@@ -27,10 +27,11 @@ angular.module('ecaApp')
 
         User.userPromise().then(function(response) {
             $scope.user = response.data;
-            API.Group.get({ groupId: $scope.user.group.id }, function(response){
-                $scope.team = response;
-                $rootScope.teamName = $scope.team.name;
-            });
+            if ($scope.user.group)
+                API.Group.get({ groupId: $scope.user.group.id }, function(response){
+                    $scope.team = response;
+                    $rootScope.teamName = $scope.team.name;
+                });
         });
 
         $scope.addMember = function() {

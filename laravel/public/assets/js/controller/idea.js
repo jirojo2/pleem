@@ -34,7 +34,7 @@ angular.module('ecaApp')
                             $scope.error = "Error saving the idea";
                         });
                 } else {
-                    newIdea.$save()
+                    $scope.idea.$save()
                         .then(function ok(response) {
                             $scope.loading = false;
                             $scope.creatingIdea = false;
