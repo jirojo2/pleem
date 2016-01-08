@@ -8,7 +8,7 @@ class Idea extends Model
 {
     protected $table = 'ideas';
 
-    protected $fillable = ['name', 'description', 'modules', 'platform'];
+    protected $fillable = ['name', 'repository', 'description', 'modules', 'platform'];
 
     /**
      * Get the team that sumbited this idea.
