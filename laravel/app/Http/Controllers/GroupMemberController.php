@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\Group;
 use App\Member;
+use App\Config;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
