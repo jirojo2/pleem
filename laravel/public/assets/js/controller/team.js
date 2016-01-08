@@ -39,7 +39,7 @@ angular.module('ecaApp')
         $scope.addMember = function() {
             $scope.submitted = true;
             if ($scope.member1Form.$valid) {
-                $http.post('/group/'+$scope.user.group.id+'/member/', $scope.member1)
+                $http.post('api/v1/group/'+$scope.user.group.id+'/member', $scope.member1)
                     .then(function(response) {
                         API.Group.get({ groupId: $scope.user.group.id }, function(response){
                             $scope.team = response;
