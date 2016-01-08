@@ -45,15 +45,15 @@ class GroupMemberController extends Controller
         }
 
         $this->validate($request, [
-            'member.email' => 'required|unique|email|max:255',
-            'member.password' => 'required|confirmed|min:6',
-            'member.first_name' => 'required|max:255',
-            'member.last_name' => 'required|max:255',
-            'member.birthdate' => 'required|date',
-            'member.sex' => 'required|in:m,f'
+            'email' => 'required|unique|email|max:255',
+            'password' => 'required|confirmed|min:6',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'birthdate' => 'required|date',
+            'sex' => 'required|in:m,f'
         ]);
 
-        $member = new Member($request->input('member'));
+        $member = new Member($request->all());
         $member->password = Hash::make($request->input('member.password'));
         $group->members()->save($member);
 
