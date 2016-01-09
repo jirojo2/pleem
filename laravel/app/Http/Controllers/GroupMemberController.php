@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Gate;
 use Illuminate\Http\Request;
 
+use Auth;
+use Hash;
+use Mail;
 use App\Event;
 use App\Group;
 use App\Member;
