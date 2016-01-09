@@ -57,7 +57,7 @@ class GroupMemberController extends Controller
         ]);
 
         $member = new Member($request->all());
-        $member->password = Hash::make($request->input('member.password'));
+        $member->password = Hash::make($request->input('password'));
         $group->members()->save($member);
 
         try {
