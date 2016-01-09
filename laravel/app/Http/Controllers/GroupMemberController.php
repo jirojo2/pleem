@@ -45,7 +45,7 @@ class GroupMemberController extends Controller
         }
 
         $this->validate($request, [
-            'email' => 'required|unique|email|max:255',
+            'email' => 'required|unique:members,email|email|max:255',
             'password' => 'required|confirmed|min:6',
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
