@@ -7,8 +7,7 @@ angular.module('ecaApp')
         $scope.idea = API.Idea.get();
 
         $scope.idea.$promise.then(function(idea) {
-            console.log(idea);
-            if (!idea) {
+            if (!idea.name) {
                 $scope.creatingIdea = true;
                 $scope.idea = new API.Idea();
             }
