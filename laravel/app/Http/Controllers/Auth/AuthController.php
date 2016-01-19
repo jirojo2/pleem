@@ -147,4 +147,13 @@ class AuthController extends Controller
             return response()->json(null);
         }
     }
+
+    // Admin login
+    public function loginPath() {
+        return '/admin/login';
+    }
+
+    public function redirectPath() {
+        return '/admin';
+    }
 }

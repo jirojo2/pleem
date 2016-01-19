@@ -58,3 +58,15 @@ Route::group(array('prefix' => 'api/v1'), function() {
                     ['only' => ['index', 'store']]);
 
 });
+
+// Admin
+Route::group(array('prefix' => 'admin'), function() {
+    Route::get('/login', 'AdminController@login');
+
+    Route::post('/login', 'Auth\AuthController@postLogin');
+    Route::get('/logout', 'Auth\AuthController@getLogout');
+
+    Route::get('/', 'AdminController@index');
+    Route::get('/members', 'AdminController@members');
+    Route::get('/teams', 'AdminController@teams');
+});

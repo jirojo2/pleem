@@ -32,6 +32,11 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
+        // Admin
+        $gate->define('admin', function($user) {
+            return $user->admin;
+        });
+
         // ContentTools
         $gate->define('save-page', function($user) {
             return $user->admin;
