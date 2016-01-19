@@ -2,6 +2,13 @@
 
 @section('title', 'Teams')
 
+@section('sidebar')
+  @parent
+  <ul class="nav nav-sidebar">
+    <li><a href="/admin/teams/csv">Export CSV</a></li>
+  </ul>
+@endsection
+
 @section('content')
   <h1 class="page-header">Teams</h1>
   <div class="table-responsive">

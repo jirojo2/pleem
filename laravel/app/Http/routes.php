@@ -69,4 +69,7 @@ Route::group(array('prefix' => 'admin'), function() {
     Route::get('/', 'AdminController@index');
     Route::get('/members', 'AdminController@members');
     Route::get('/teams', 'AdminController@teams');
+
+    Route::get('/members/csv', 'AdminController@membersCsv');
+    Route::get('/teams/csv', 'AdminController@teamsCsv');
 });
