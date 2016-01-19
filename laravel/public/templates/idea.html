@@ -38,7 +38,11 @@
 			</div>
 		</div>
 		<div class="field">
-			<label for="idea-description">Idea description.<br>Please, mention in separate paragraphs: the purpose, general description and modules of your idea.</label>
+			<label for="idea-description">
+				Idea description.<br>
+				Please, mention in separate paragraphs: the purpose, general description and modules of your idea.<br>
+				Please, make sure the description you submit is between 200-500 words.
+			</label>
 			<textarea name="description" id="description" placeholder="Your idea description" ng-model="idea.description" required></textarea>
 			<div class="ui pointing red basic label" ng-show="ideaForm.description.$dirty && ideaForm.description.$error.required">
 				Idea description is required!
