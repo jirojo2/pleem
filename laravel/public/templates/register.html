@@ -78,10 +78,10 @@
 							    </div>
 							</div>
 							<div class="field">
-								<label>School/High School/Faculty/Department</label>
+								<label>Elementary School/HighSchool - Class profile/Faculty/Department</label>
 		    					<input type="text" name="faculty" placeholder="Faculty/Department" required ng-model="member2.faculty">
 								<div class="ui pointing red basic label" ng-show="(member2Form.faculty.$dirty || submitted2)  && member2Form.faculty.$error.required">
-							    	Faculty or department is required is required!
+							    	 Elementary School/HighSchool - Class profile/Faculty/Department is required!
 							    </div>
 							</div>
 							<div class="field">
@@ -93,6 +93,7 @@
 									<option value='graduate'>Graduate</option>
 									<option value='master'>Master</option>
 									<option value='phd'>PhD</option>
+									<option value='other'>Other</option>
 								</select>
 								<div class="ui pointing red basic label" ng-show="(member2Form.study_level.$dirty || submitted2)  && member2Form.study_level.$error.required">
 							    	Study level is required!
@@ -108,6 +109,7 @@
 									<option value='4'>4</option>
 									<option value='5'>5</option>
 									<option value='6'>6</option>
+									<option value='0'>Other</option>
 								</select>
 								<div class="ui pointing red basic label" ng-show="(member2Form.years_study.$dirty || submitted2)  && member2Form.years_study.$error.required">
 							    	Study year is required!
