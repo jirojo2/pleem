@@ -18,7 +18,7 @@ class Member extends Model implements AuthenticatableContract,
 
     protected $table = 'members';
 
-    protected $fillable = ['first_name', 'last_name', 'birthdate', 'email', 'password', 'country', 'years_study', 'study_level', 'faculty', 'department'];
+    protected $fillable = ['first_name', 'last_name', 'birthdate', 'sex', 'email', 'password', 'country', 'years_study', 'study_level', 'faculty', 'department'];
     protected $hidden = ['password', 'remember_token'];
 
     protected $casts = [
