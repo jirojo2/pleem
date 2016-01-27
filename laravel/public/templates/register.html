@@ -204,19 +204,22 @@
 							    </div>
 							</div>
 							<div class="field">
-								<label>Faculty/Department</label>
-		    					<input type="text" name="faculty" placeholder="Faculty/Department" required ng-model="member1.faculty">
+								<label>Elementary School/HighSchool - Class profile/Faculty/Department</label>
+		    					<input type="text" name="faculty" placeholder="Elementary School/HighSchool - Class profile/Faculty/Department" required ng-model="member1.faculty">
 								<div class="ui pointing red basic label" ng-show="(member1Form.faculty.$dirty || submitted1)  && member1Form.faculty.$error.required">
-							    	Faculty or department is required is required!
+							    	Elementary School/HighSchool - Class profile/Faculty/Department is required is required!
 							    </div>
 							</div>
 							<div class="field">
 								<label>Study level</label>
 		    					<select name="study_level" placeholder="Study level" required ng-model="member1.study_level">
 									<option value="">Select study level</option>
-									<option value='graduate'>Graduate</option>
-									<option value='master'>Master</option>
-									<option value='phd'>PhD</option>
+						            <option value='elementary-school'>Elementary School</option>
+						            <option value='high-school'>High School</option>
+						            <option value='graduate'>Graduate</option>
+						            <option value='master'>Master</option>
+						            <option value='phd'>PhD</option>
+						            <option value='other'>Other</option>
 								</select>
 								<div class="ui pointing red basic label" ng-show="(member1Form.study_level.$dirty || submitted)  && member1Form.study_level.$error.required">
 							    	Study level is required!
@@ -232,6 +235,7 @@
 									<option value='4'>4</option>
 									<option value='5'>5</option>
 									<option value='6'>6</option>
+            						<option value='0'>Other</option>
 								</select>
 								<div class="ui pointing red basic label" ng-show="(member1Form.years_study.$dirty || submitted)  && member1Form.years_study.$error.required">
 							    	Study year is required!
@@ -331,19 +335,22 @@
 							    </div>
 							</div>
 							<div class="field">
-								<label>Faculty/Department</label>
-		    					<input type="text" name="faculty" placeholder="Faculty/Department" required ng-model="member3.faculty">
+								<label>Elementary School/HighSchool - Class profile/Faculty/Department</label>
+		    					<input type="text" name="faculty" placeholder="Elementary School/HighSchool - Class profile/Faculty/Department" required ng-model="member3.faculty">
 								<div class="ui pointing red basic label" ng-show="(member3Form.faculty.$dirty || submitted3)  && member3Form.faculty.$error.required">
-							    	Faculty or department is required is required!
+							    	Elementary School/HighSchool - Class profile/Faculty/Department is required is required!
 							    </div>
 							</div>
 							<div class="field">
 								<label>Study level</label>
 		    					<select name="study_level" placeholder="Study level" required ng-model="member3.study_level">
 									<option value="">Select study level</option>
-									<option value='graduate'>Graduate</option>
-									<option value='master'>Master</option>
-									<option value='phd'>PhD</option>
+						            <option value='elementary-school'>Elementary School</option>
+						            <option value='high-school'>High School</option>
+						            <option value='graduate'>Graduate</option>
+						            <option value='master'>Master</option>
+						            <option value='phd'>PhD</option>
+						            <option value='other'>Other</option>
 								</select>
 								<div class="ui pointing red basic label" ng-show="(member3Form.study_level.$dirty || submitted3)  && member3Form.study_level.$error.required">
 							    	Study level is required!
@@ -359,6 +366,7 @@
 									<option value='4'>4</option>
 									<option value='5'>5</option>
 									<option value='6'>6</option>
+            						<option value='0'>Other</option>
 								</select>
 								<div class="ui pointing red basic label" ng-show="(member3Form.years_study.$dirty || submitted3)  && member3Form.years_study.$error.required">
 							    	Study year is required!

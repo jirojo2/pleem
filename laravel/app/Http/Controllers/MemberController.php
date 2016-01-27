@@ -60,11 +60,22 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (Gate::denies('edit-member')) {
+        $member = Member::findOrFail($id);
+
+        if (Gate::denies('edit-member', $member)) {
             abort(403);
         }
 
-        // @TODO
+        $member->first_name = $request->input("first_name");
+        $member->last_name = $request->input("last_name");
+        $member->birthdate = $request->input("birthdate");
+        $member->country = $request->input("country");
+        $member->sex = $request->input("sex");
+        $member->faculty = $request->input("faculty");
+        $member->years_study = $request->input("years_study");
+        $member->study_level = $request->input("study_level");
+        $member->save();
+        return response()->json($member);
     }
 
     /**

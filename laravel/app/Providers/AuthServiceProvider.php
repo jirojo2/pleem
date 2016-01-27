@@ -66,8 +66,8 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('attach-member', function($user, $group) {
             return $group->members->contains($user);
         });
-        $gate->define('edit-member', function($user) {
-            return true;
+        $gate->define('edit-member', function($user, $member) {
+            return $member->group->members->contains($user);
         });
         $gate->define('destroy-member', function($user) {
             return true;

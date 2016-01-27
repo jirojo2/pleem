@@ -49,6 +49,25 @@ angular.module('ecaApp')
                     })
             }
         }
+
+        $scope.saveMember = function(member) {
+            $scope.submitted3 = true;
+            if ($scope.editMemberForm.$valid) {
+                $http.put('api/v1/member/'+member.id, member)
+                    .then(function(response) {
+                        $('#edit-user-modal').modal('hide');
+                    })
+                    .catch(function(err) {
+                        alert("Error saving member, please contact ECA team for additional support");
+                    })
+            }
+        }
+
+        $scope.edit = function(member) {
+            $scope.member = member;
+            $scope.submitted3 = false;
+            $('#edit-user-modal').modal('show');
+        }
     }
 
 ])

@@ -44,7 +44,7 @@ Route::group(array('prefix' => 'api/v1'), function() {
     Route::get('auth/user', 'Auth\AuthController@getUser');
 
     Route::resource('member', 'MemberController',
-                    ['except' => ['index', 'show', 'create', 'edit']]);
+                    ['except' => ['index', 'show', 'create']]);
     Route::resource('group', 'GroupController',
                     ['except' => ['create', 'edit']]);
     Route::resource('group.member', 'GroupMemberController',
