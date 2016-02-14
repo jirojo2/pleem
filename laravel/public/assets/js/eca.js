@@ -48,6 +48,16 @@ function getCookie(cname) {
 			$(this).siblings().removeClass('active');
 		});
 
+		$('body').on('click', '#supporters .menu a.item', function() {
+			var target = $(this).attr('data-target');
+
+			$('.ui.supporters.container').addClass('hidden');
+			$(target).removeClass('hidden');
+
+			$(this).addClass('active');
+			$(this).siblings().removeClass('active');
+		});
+
 		// Enable modal toggle
 		$('body').on('click', '[data-modal]', function() {
 			var modal = $(this).attr('data-modal');

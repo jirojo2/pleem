@@ -30,6 +30,7 @@
                         <a ng-click="scrollTo('rules')" class="item">Rules</a>
                         <a ng-click="scrollTo('prizes')" class="item">Prizes</a>
                         <a ng-click="scrollTo('people')" class="item">People</a>
+                        <a ng-click="scrollTo('supporters')" class="item">Supporters</a>
                         <a ng-click="scrollTo('contact')" class="item">Contact</a>
                         <div class="item" ng-show="!loggedin">
                             <a ui-sref="login" class="ui green button">
