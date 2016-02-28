@@ -116,6 +116,12 @@ angular.module('ecaApp', [
                 url: '/admin',
                 templateUrl: 'templates/admin.dashboard.html',
                 onEnter: requireAdmin
+            })
+            .state('authed.application', {
+                url: '/application',
+                templateUrl: 'templates/application.html',
+				onEnter: requireAuth
             });
+
     }
 ])

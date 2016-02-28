@@ -164,6 +164,7 @@
         <script src="assets/js/controller/landing.js"></script>
         <script src="assets/js/controller/team.js"></script>
         <script src="assets/js/controller/idea.js"></script>
+        <script src="assets/js/controller/application.js"></script>
         <script src="assets/js/controller/admin.js"></script>
         <script src="assets/js/services/user.js"></script>
         <script src="assets/js/services/api.js"></script>

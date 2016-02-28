@@ -1,0 +1,30 @@
+<div class="ui container row" ng-controller="applicationController">
+	<form class="ui form" name="applicationForm" ng-show="creatingApplication">
+		<div class="field">
+			<label for="application">Application name</label>
+			<input type="text" name="name" id="application" placeholder="Your application name" ng-model="application.name" required>
+			<div class="ui pointing red basic label" ng-show="applicationForm.name.$dirty && applicationForm.name.$error.required">
+				Application name is required!
+			</div>
+		</div>
+		<div class="field">
+			<label for="application-description">
+				Application description
+			</label>
+			<textarea name="description" id="application-description" placeholder="Your application description" ng-model="application.description" required></textarea>
+			<div class="ui pointing red basic label" ng-show="applicationForm.description.$dirty && applicationForm.description.$error.required">
+				Application description is required!
+			</div>
+		</div>
+		<div class="field">
+			<label for="file">
+				.apk file
+			</label>
+			<input id="file" name="file" type="file" file-model="application.file" required />
+			<div class="ui pointing red basic label" ng-show="applicationForm.file.$dirty && applicationForm.file.$error.required">
+				.apk file is required!
+			</div>
+		</div>
+		<button class="ui green button" ng-click="submitApp()">Save</button>
+	</form>
+</div>
