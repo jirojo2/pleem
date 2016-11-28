@@ -1,2 +1,173 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+$ec-blue-light: #51e2ea;
+$ec-blue: #51bcea;
+$ec-blue-strong: #5196ea;
+$white: #ffffff;
+
+/* ec-blue */
+.ui.ec-blue.segment:not(.inverted) {
+  border-top: 1px solid $ec-blue;
+}
+.ui.inverted.ec-blue.segment {
+  background-color: $ec-blue !important;
+  color: $white !important;
+}
+
+.ui.ec-blue.buttons .button,
+.ui.ec-blue.button {
+  background-color: $ec-blue;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.ui.ec-blue.button {
+  box-shadow: 0px 0em 0px 0px rgba(32, 74, 92, 0.15) inset;
+}
+.ui.ec-blue.buttons .button:hover,
+.ui.ec-blue.button:hover {
+  background-color: $ec-blue-light;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.ui.ec-blue.buttons .button:focus,
+.ui.ec-blue.button:focus {
+  background-color: $ec-blue-strong;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.ui.ec-blue.buttons .button:active,
+.ui.ec-blue.button:active {
+  background-color: $ec-blue-strong;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.ui.ec-blue.buttons .active.button,
+.ui.ec-blue.buttons .active.button:active,
+.ui.ec-blue.active.button,
+.ui.ec-blue.button .active.button:active {
+  background-color: $ec-blue-strong;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.ui.basic.ec-blue.buttons .button,
+.ui.basic.ec-blue.button {
+  box-shadow: 0px 0px 0px 1px $ec-blue inset !important;
+  color: $ec-blue !important;
+}
+.ui.basic.ec-blue.buttons .button:hover,
+.ui.basic.ec-blue.button:hover {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 1px $ec-blue-light inset !important;
+  color: $ec-blue-light !important;
+}
+.ui.basic.ec-blue.buttons .button:focus,
+.ui.basic.ec-blue.button:focus {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 1px $ec-blue-strong inset !important;
+  color: $ec-blue-strong !important;
+}
+.ui.basic.ec-blue.buttons .active.button,
+.ui.basic.ec-blue.active.button {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 1px $ec-blue-strong inset !important;
+  color: #3d8b40 !important;
+}
+.ui.basic.ec-blue.buttons .button:active,
+.ui.basic.ec-blue.button:active {
+  box-shadow: 0px 0px 0px 1px $ec-blue-strong inset !important;
+  color: #3d8b40 !important;
+}
+.ui.buttons:not(.vertical) > .basic.ec-blue.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.ui.inverted.ec-blue.buttons .button,
+.ui.inverted.ec-blue.button {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 2px $ec-blue-light inset !important;
+  color: $ec-blue-light;
+}
+.ui.inverted.ec-blue.buttons .button:hover,
+.ui.inverted.ec-blue.button:hover,
+.ui.inverted.ec-blue.buttons .button:focus,
+.ui.inverted.ec-blue.button:focus,
+.ui.inverted.ec-blue.buttons .button.active,
+.ui.inverted.ec-blue.button.active,
+.ui.inverted.ec-blue.buttons .button:active,
+.ui.inverted.ec-blue.button:active {
+  box-shadlightOw: none !important;
+  color: #FFFFFF;
+}
+.ui.inverted.ec-blue.buttons .button:hover,
+.ui.inverted.ec-blue.button:hover {
+  background-color: $ec-blue-light;
+}
+.ui.inverted.ec-blue.buttons .button:focus,
+.ui.inverted.ec-blue.button:focus {
+  background-color: $ec-blue-strong;
+}
+.ui.inverted.ec-blue.buttons .active.button,
+.ui.inverted.ec-blue.active.button {
+  background-color: $ec-blue-strong;
+}
+.ui.inverted.ec-blue.buttons .button:active,
+.ui.inverted.ec-blue.button:active {
+  background-color: $ec-blue-strong;
+}
+
+/* Inverted Basic */
+.ui.inverted.ec-blue.basic.buttons .button,
+.ui.inverted.ec-blue.buttons .basic.button,
+.ui.inverted.ec-blue.basic.button {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.ui.inverted.ec-blue.basic.buttons .button:hover,
+.ui.inverted.ec-blue.buttons .basic.button:hover,
+.ui.inverted.ec-blue.basic.button:hover {
+  box-shadow: 0px 0px 0px 2px $ec-blue-light inset !important;
+  color: $ec-blue-light !important;
+}
+.ui.inverted.ec-blue.basic.buttons .button:focus,
+.ui.inverted.ec-blue.basic.buttons .button:focus,
+.ui.inverted.ec-blue.basic.button:focus {
+  box-shadow: 0px 0px 0px 2px $ec-blue-light inset !important;
+  color: #2ECC40 !important;
+}
+.ui.inverted.ec-blue.basic.buttons .active.button,
+.ui.inverted.ec-blue.buttons .basic.active.button,
+.ui.inverted.ec-blue.basic.active.button {
+  box-shadow: 0px 0px 0px 2px $ec-blue-strong inset !important;
+  color:  $ec-blue-strong !important;
+}
+.ui.inverted.ec-blue.basic.buttons .button:active,
+.ui.inverted.ec-blue.buttons .basic.button:active,
+.ui.inverted.ec-blue.basic.button:active {
+  box-shadow: 0px 0px 0px 2px  $ec-blue-strong inset !important;
+  color:  $ec-blue-strong !important;
+}
+
+/* ec-blue menu */
+.ui.inverted.menu .ec-blue.active.item,
+.ui.inverted.ec-blue.menu {
+  background-color: $ec-blue;
+}
+.ui.inverted.ec-blue.menu .item:before {
+  background-color: rgba(32, 74, 92, 0.1);
+}
+.ui.inverted.ec-blue.menu .active.item {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.ui.ec-blue.message {
+  background-color: rgba(32, 74, 92, 0.1);
+  color: black;
+}
+.ui.ec-blue.message .header {
+  color: black;
+}
