@@ -6,12 +6,13 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="EESTEC Competition for Android is open to Android enthusiasts from all over the world. This academical event aims at opening doors for creative innovation by putting into practice knowledge about programming and design.">
-        <meta property="og:image" content="assets/images/social-logo.png" />
+        <meta name="description" content="EESTech Challenge is an international project that aims to gather machine learning enthusiast from all over the Europe.">
+        <meta property="og:image" content="assets/images/ec-big-logo.png" />
 
         <!-- Site Properities -->
-        <title>EESTECh Challenge 2017</title>
+        <title>EESTech Challenge 2016-2017</title>
 
+        <link rel="icon" type="image/png" href="assets/images/favicon.png" />
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="assets/lib/content-tools/content-tools.min.css">
         <link rel="stylesheet" type="text/css" href="assets/css/eca.css">
@@ -53,7 +54,7 @@
                 </div>
                 <div class="ui mobile only row">
                     <a ui-sref="home" class="header item">
-                        <img class="ui small fluid image" src="assets/images/logo.png">
+                        <img class="ui small fluid image" src="assets/images/ec-logo.png">
                     </a>
                     <div class="right menu open">
                         <div class="item" ng-show="!loggedin">
