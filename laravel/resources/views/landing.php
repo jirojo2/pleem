@@ -122,18 +122,18 @@
                                 </button>
                                 Twitter
                             </a>
-<!--                            <a href="https://plus.google.com/100084775576992258658/about" target="_blank" class="item">-->
-<!--                                <button class="ui circular google plus icon button">-->
-<!--                                    <i class="google plus icon"></i>-->
-<!--                                </button>-->
-<!--                                Google Plus-->
-<!--                            </a>-->
-<!--                            <a href="http://www.linkedin.com/groups/EESTEC-Competition-Android-8160587" target="_blank" class="item">-->
-<!--                                <button class="ui circular linkedin icon button">-->
-<!--                                    <i class="linkedin icon"></i>-->
-<!--                                </button>-->
-<!--                                LinkedIn-->
-<!--                            </a>-->
+                            <a href="https://www.instagram.com/eestechchallenge/" target="_blank" class="item">
+                                <button class="ui circular instagram icon button">
+                                    <i class="instagram icon"></i>
+                                </button>
+                                Instagram
+                            </a>
+                            <a href="https://www.linkedin.com/groups/66771" target="_blank" class="item">
+                                <button class="ui circular linkedin icon button">
+                                    <i class="linkedin icon"></i>
+                                </button>
+                                LinkedIn
+                            </a>
                         </div>
                     </div>
                 </div>
