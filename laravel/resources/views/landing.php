@@ -28,28 +28,26 @@
                     </a>
                     <div class="right small menu">
                         <a ui-sref="home" class="item">Home</a>
-                        <a ng-click="scrollTo('about')" class="item">About</a>
-                        <a ng-click="scrollTo('rules')" class="item">Rules</a>
-                        <a ng-click="scrollTo('prizes')" class="item">Prizes</a>
-                        <a ng-click="scrollTo('people')" class="item">People</a>
-                        <a ng-click="scrollTo('supporters')" class="item">Supporters</a>
+                        <a ng-click="scrollTo('cities')" class="item">Cities</a>
+                        <a ng-click="scrollTo('online-seminars')" class="item">Online Seminars</a>
+                        <a ng-click="scrollTo('eestec')" class="item">EESTEC</a>
                         <a ng-click="scrollTo('contact')" class="item">Contact</a>
-                        <div class="item" ng-show="!loggedin">
-                            <a ui-sref="login" class="ui ec-blue button">
-                                <i class="user icon"></i> Log in
-                            </a>
-                        </div>
-                        <div ui-sref-active="active" class="ui dropdown item" ng-show="loggedin">
-							Account <i class="dropdown icon"></i>
-							<div class="menu">
-								<a class="item" ui-sref="authed.team">
-									<i class="users icon"></i> My Team
-								</a>
-								<a class="item" ng-click="logout()" ui-sref="login">
-									<i class="log out icon"></i> Log out
-								</a>
-							</div>
-						</div>
+<!--                        <div class="item" ng-show="!loggedin">-->
+<!--                            <a ui-sref="login" class="ui ec-blue button">-->
+<!--                                <i class="user icon"></i> Log in-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div ui-sref-active="active" class="ui dropdown item" ng-show="loggedin">-->
+<!--							Account <i class="dropdown icon"></i>-->
+<!--							<div class="menu">-->
+<!--								<a class="item" ui-sref="authed.team">-->
+<!--									<i class="users icon"></i> My Team-->
+<!--								</a>-->
+<!--								<a class="item" ng-click="logout()" ui-sref="login">-->
+<!--									<i class="log out icon"></i> Log out-->
+<!--								</a>-->
+<!--							</div>-->
+<!--						</div>-->
                     </div>
                 </div>
                 <div class="ui mobile only row">
@@ -57,32 +55,31 @@
                         <img class="ui small fluid image" src="assets/images/ec-logo.png">
                     </a>
                     <div class="right menu open">
-                        <div class="item" ng-show="!loggedin">
-                            <a ui-sref="login" class="ui ec-blue button">
-                                <i class="user icon"></i>
-                            </a>
-                        </div>
-                        <div class="ui dropdown item" ng-show="loggedin">
-							Account <i class="dropdown icon"></i>
-							<div class="menu">
-								<a class="item" ui-sref="authed.team">
-									<i class="users icon"></i> My Team
-								</a>
-								<a class="item" ng-click="logout()" ui-sref="login">
-									<i class="log out icon"></i> Log out
-								</a>
-							</div>
-						</div>
+<!--                        <div class="item" ng-show="!loggedin">-->
+<!--                            <a ui-sref="login" class="ui ec-blue button">-->
+<!--                                <i class="user icon"></i>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="ui dropdown item" ng-show="loggedin">-->
+<!--							Account <i class="dropdown icon"></i>-->
+<!--							<div class="menu">-->
+<!--								<a class="item" ui-sref="authed.team">-->
+<!--									<i class="users icon"></i> My Team-->
+<!--								</a>-->
+<!--								<a class="item" ng-click="logout()" ui-sref="login">-->
+<!--									<i class="log out icon"></i> Log out-->
+<!--								</a>-->
+<!--							</div>-->
+<!--						</div>-->
                         <a class="toggle item">
                             <i class="ec-blue sidebar icon"></i>
                         </a>
                     </div>
                     <div class="ui inverted ec-blue vertical navbar menu hidden fluid">
                         <a ui-sref="home" class="item">Home</a>
-                        <a ng-click="scrollTo('about')" class="item">About</a>
-                        <a ng-click="scrollTo('rules')" class="item">Rules</a>
-                        <a ng-click="scrollTo('prizes')" class="item">Prizes</a>
-                        <a ng-click="scrollTo('people')" class="item">People</a>
+                        <a ng-click="scrollTo('cities')" class="item">Cities</a>
+                        <a ng-click="scrollTo('online-seminars')" class="item">Online Seminars</a>
+                        <a ng-click="scrollTo('eestec')" class="item">EESTEC</a>
                         <a ng-click="scrollTo('contact')" class="item">Contact</a>
                     </div>
                 </div>
@@ -94,30 +91,23 @@
         <div class="ui ec-blue inverted vertical footer bottom segment row">
             <div class="ui container">
                 <div class="ui stackable grid">
-                    <div class="four wide column">
+                    <div class="five wide column">
                         <h4 class="ui invertedheader">Overview</h4>
                         <div class="ui inverted link list">
-                            <a ng-click="scrollTo('about')" class="item">About Us</a>
-                            <a ng-click="scrollTo('rules')" class="item">Rules</a>
-                            <a ng-click="scrollTo('prizes')" class="item">Prizes</a>
-                            <a ng-click="scrollTo('people')" class="item">People</a>
+                            <a ui-sref="home" class="item">Home</a>
+                            <a ng-click="scrollTo('cities')" class="item">Cities</a>
+                            <a ng-click="scrollTo('online-seminars')" class="item">Online Seminars</a>
+                            <a ng-click="scrollTo('eestec')" class="item">EESTEC</a>
+                            <a ng-click="scrollTo('contact')" class="item">Contact</a>
                         </div>
                     </div>
-                    <div class="four wide column">
-                        <h4 class="ui inverted header">Support</h4>
-                        <div class="ui inverted link list">
-                            <a href="https://www.youtube.com/playlist?list=PLG3b018Xl5L_iZmf3Sb90VGmLN1NbNTfh" target="_blank" class="item">Online Seminar</a>
-                            <a ui-sref="login" class="item">Tutorials</a>
-                        </div>
-                    </div>
-                    <div class="four wide column">
+                    <div class="six wide column">
                         <h4 class="ui inverted header">Contact Us</h4>
                         <div class="ui inverted link list">
-                            <a ng-click="scrollTo('contact')" class="item">Contact Form</a>
-                            <a href="mailto:eca-cp@eestec.net" class="item">eca-cp@eestec.net</a>
+                            <a href="mailto:eestech-challenge@eestec.net" class="item">eestech-challenge@eestec.net</a>
                         </div>
                     </div>
-                    <div class="four wide column">
+                    <div class="five wide column">
                         <h4 class="ui inverted header">Stay in touch</h4>
                         <div class="ui inverted link list">
                             <a href="https://www.facebook.com/eestechchallenge" target="_blank" class="item">
