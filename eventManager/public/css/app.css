@@ -1,0 +1,289 @@
+/* ec-blue */
+
+.ui.ec-blue.segment:not(.inverted) {
+  border-top: 1px solid #51bcea;
+}
+
+.ui.inverted.ec-blue.segment {
+  background-color: #51bcea !important;
+  color: #ffffff !important;
+}
+
+.ui.ec-blue.buttons .button,
+.ui.ec-blue.button {
+  background-color: #51bcea;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+
+.ui.ec-blue.button {
+  box-shadow: 0px 0em 0px 0px rgba(32, 74, 92, 0.15) inset;
+}
+
+.ui.ec-blue.buttons .button:hover,
+.ui.ec-blue.button:hover {
+  background-color: #51e2ea;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+.ui.ec-blue.buttons .button:focus,
+.ui.ec-blue.button:focus {
+  background-color: #5196ea;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+.ui.ec-blue.buttons .button:active,
+.ui.ec-blue.button:active {
+  background-color: #5196ea;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+.ui.ec-blue.buttons .active.button,
+.ui.ec-blue.buttons .active.button:active,
+.ui.ec-blue.active.button,
+.ui.ec-blue.button .active.button:active {
+  background-color: #5196ea;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+
+.ui.basic.ec-blue.buttons .button,
+.ui.basic.ec-blue.button {
+  box-shadow: 0px 0px 0px 1px #51bcea inset !important;
+  color: #51bcea !important;
+}
+
+.ui.basic.ec-blue.buttons .button:hover,
+.ui.basic.ec-blue.button:hover {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 1px #51e2ea inset !important;
+  color: #51e2ea !important;
+}
+
+.ui.basic.ec-blue.buttons .button:focus,
+.ui.basic.ec-blue.button:focus {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 1px #5196ea inset !important;
+  color: #5196ea !important;
+}
+
+.ui.basic.ec-blue.buttons .active.button,
+.ui.basic.ec-blue.active.button {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 1px #5196ea inset !important;
+  color: #3d8b40 !important;
+}
+
+.ui.basic.ec-blue.buttons .button:active,
+.ui.basic.ec-blue.button:active {
+  box-shadow: 0px 0px 0px 1px #5196ea inset !important;
+  color: #3d8b40 !important;
+}
+
+.ui.buttons:not(.vertical) > .basic.ec-blue.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+
+.ui.inverted.ec-blue.buttons .button,
+.ui.inverted.ec-blue.button {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 2px #51e2ea inset !important;
+  color: #51e2ea;
+}
+
+.ui.inverted.ec-blue.buttons .button:hover,
+.ui.inverted.ec-blue.button:hover,
+.ui.inverted.ec-blue.buttons .button:focus,
+.ui.inverted.ec-blue.button:focus,
+.ui.inverted.ec-blue.buttons .button.active,
+.ui.inverted.ec-blue.button.active,
+.ui.inverted.ec-blue.buttons .button:active,
+.ui.inverted.ec-blue.button:active {
+  box-shadlightOw: none !important;
+  color: #FFFFFF;
+}
+
+.ui.inverted.ec-blue.buttons .button:hover,
+.ui.inverted.ec-blue.button:hover {
+  background-color: #51e2ea;
+}
+
+.ui.inverted.ec-blue.buttons .button:focus,
+.ui.inverted.ec-blue.button:focus {
+  background-color: #5196ea;
+}
+
+.ui.inverted.ec-blue.buttons .active.button,
+.ui.inverted.ec-blue.active.button {
+  background-color: #5196ea;
+}
+
+.ui.inverted.ec-blue.buttons .button:active,
+.ui.inverted.ec-blue.button:active {
+  background-color: #5196ea;
+}
+
+/* Inverted Basic */
+
+.ui.inverted.ec-blue.basic.buttons .button,
+.ui.inverted.ec-blue.buttons .basic.button,
+.ui.inverted.ec-blue.basic.button {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+
+.ui.inverted.ec-blue.basic.buttons .button:hover,
+.ui.inverted.ec-blue.buttons .basic.button:hover,
+.ui.inverted.ec-blue.basic.button:hover {
+  box-shadow: 0px 0px 0px 2px #51e2ea inset !important;
+  color: #51e2ea !important;
+}
+
+.ui.inverted.ec-blue.basic.buttons .button:focus,
+.ui.inverted.ec-blue.basic.buttons .button:focus,
+.ui.inverted.ec-blue.basic.button:focus {
+  box-shadow: 0px 0px 0px 2px #51e2ea inset !important;
+  color: #2ECC40 !important;
+}
+
+.ui.inverted.ec-blue.basic.buttons .active.button,
+.ui.inverted.ec-blue.buttons .basic.active.button,
+.ui.inverted.ec-blue.basic.active.button {
+  box-shadow: 0px 0px 0px 2px #5196ea inset !important;
+  color: #5196ea !important;
+}
+
+.ui.inverted.ec-blue.basic.buttons .button:active,
+.ui.inverted.ec-blue.buttons .basic.button:active,
+.ui.inverted.ec-blue.basic.button:active {
+  box-shadow: 0px 0px 0px 2px #5196ea inset !important;
+  color: #5196ea !important;
+}
+
+/* ec-blue menu */
+
+.ui.inverted.menu .ec-blue.active.item,
+.ui.inverted.ec-blue.menu {
+  background-color: #51bcea;
+}
+
+.ui.inverted.ec-blue.menu .item:before {
+  background-color: rgba(32, 74, 92, 0.1);
+}
+
+.ui.inverted.ec-blue.menu .active.item {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.ui.ec-blue.message {
+  background-color: rgba(32, 74, 92, 0.1);
+  color: black;
+}
+
+.ui.ec-blue.message .header {
+  color: black;
+}
+
+/*quote*/
+
+.testimonial-quote {
+  font-size: 16px;
+}
+
+.testimonial-quote blockquote {
+  /* Negate theme styles */
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: gray;
+  font-family: Georgia, serif;
+  font-size: 1.5em;
+  font-style: italic;
+  line-height: 1.4 !important;
+  margin: 0;
+  position: relative;
+  text-shadow: 0 1px white;
+}
+
+.testimonial-quote blockquote * {
+  box-sizing: border-box;
+}
+
+.testimonial-quote blockquote p {
+  color: #75808a;
+  font-size: 1.25em;
+  line-height: 1.4 !important;
+}
+
+.testimonial-quote blockquote p:first-child:before {
+  content: '\201C';
+  color: #81bedb;
+  font-size: 7.5em;
+  font-weight: 700;
+  opacity: .3;
+  position: absolute;
+  top: -.4em;
+  left: -.2em;
+  text-shadow: none;
+  z-index: -300;
+}
+
+.testimonial-quote img {
+  border: 3px solid #9CC1D3;
+  border-radius: 50%;
+  display: block;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: -.2em;
+  left: 0;
+}
+
+.testimonial-quote cite {
+  color: gray;
+  display: block;
+  font-size: .8em;
+}
+
+.testimonial-quote cite span {
+  color: #5e5e5e;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 1px white;
+}
+
+.testimonial-quote {
+  position: relative;
+}
+
+.testimonial-quote.right .quote-container {
+  padding-left: 0;
+}
+
+.testimonial-quote.right img {
+  left: auto;
+  right: 0;
+}
+
+.testimonial-quote.right cite {
+  text-align: right;
+}
+
+/* p */
+
+.content p {
+  font-size: 16px;
+}
